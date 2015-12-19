@@ -23,17 +23,17 @@
 
 	<repositories>
 		<repository>
-				<id>nexus-releases</id>
-				<name>私服</name>
-				<url>http://192.168.6.20:8081/nexus/content/groups/public</url> 
-				<snapshots>
-					<enabled>true</enabled>
-				</snapshots>
-		</repository>
-		<repository>
 			<id>springsource-repos</id>
 			<name>SpringSource Repository</name>
 			<url>http://repository.jboss.org/maven2/</url>
+			<snapshots>
+				<enabled>false</enabled>
+			</snapshots>
+	    </repository>
+	    <repository>
+			<id>mvnrepository-repos</id>
+			<name>mvnrepository Repository</name>
+			<url>http://mvnrepository.com/</url>
 			<snapshots>
 				<enabled>false</enabled>
 			</snapshots>
