@@ -1,0 +1,775 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<!--#include virtual="/root.jsp"  -->
+<title>maStoreApply</title>
+<!--#include virtual="/include.html"  -->
+<script type="text/javascript"
+	src="codeDict/queryScript.ajax?codeType=storeType,goodPayMode,storeFeature,storeSign"></script>
+<script type="text/javascript"
+	src="http://221.180.144.57:17095/gisability?ability=apiserver&abilityuri=webapi/auth.json&t=ajaxmap&v=3.0&key=32dbb8748a9896ed3cd93a1e802c27e636fa7ff397705a95fdc2a4886f9b24061803f0f5c60270cb"></script>
+</head>
+<body>
+	<div class="page-content">
+		<!-- 新增活动按钮 -->
+		<div class="table-responsive">
+			<form class="form-horizontal" role="form" id="add-form"
+				onsubmit="return false;">
+				<h5 class="header smaller lighter blue"><i class="ace-icon glyphicon glyphicon-flag"></i>位置信息</h5>
+				<input type="hidden" name="maStoreId" id="maStoreId" /> <input
+					type="hidden" name="updId" id="updId" />
+					<input type="hidden" name="storeStatus" id="storeStatus">
+					<input type="hidden" name="maStoreApply.storeStatus" id="storeStatus">
+				<div class="row">
+					<div class="col-xs-12">
+						<div class="form-group">
+							<label class="col-sm-2 control-label no-padding-right text-right"
+								for="regionCode"><span class="red">*</span> 地址: </label>
+							<div class="col-sm-2" style="width:11.1%">
+								<select name="maStoreApply.regionCode" id="regionCode"
+									class="form-control input-sm" ></select>
+							</div>
+							<div class="col-sm-2" style="width:11.1%">
+								<select name="maStoreApply.areaCode" id="areaCode"
+								class="form-control input-sm" ></select>
+							</div>
+							<div class="col-sm-2" style="width:11.1%">
+								<select name="maStoreApply.businessZone" id="businessZone"
+								class="form-control input-sm" ></select>
+							</div>
+						</div>
+						
+						<div class="form-group">
+							<label class="col-sm-2 control-label no-padding-right text-right"
+								for="storeAddress"> <span class="red">*</span> 商户地址:
+							</label>
+							<div class="col-sm-4">
+								<input  autocomplete="off" type="text" name="maStoreApply.storeAddress"
+									id="storeAddress" class="form-control input-sm placeholder" placeholder="详细地址，无需重复填写城市/政区"/>
+							</div>
+							<div class="help-block"><span class="help-fontGrey">请输入详细门牌地址，如泉城路26号</span></div>
+						</div>
+						
+						<div class="form-group">
+							<div class="col-sm-2" style="padding-left:120px;">
+								<button class="btn btn-purple btn-sm" type="button"
+									id="searchBtn">定位查询</button>
+							</div>
+							<div class="col-sm-4">
+								<input  autocomplete="off" type="text" name="addressKeyWord" id="addressKeyWord"
+									placeholder="查询地址名称" class="form-control input-sm" />
+							</div>
+							
+						</div>
+						
+						<div class="form-group">
+							<label class="col-sm-2 control-label no-padding-right text-right"
+								for="searchResult"> <span class="red">*</span> 查询结果:</label>
+							<div class="col-sm-4">
+								<select name="searchResult" id="searchResult" placeholder=""
+									class="form-control input-sm"></select>
+							</div>
+						</div>
+						
+						<div class="form-group" style="display:none;">
+							<label class="col-sm-2 control-label no-padding-right text-right"
+								for="mapLong"><span class="red">*</span>(和地图)门店的经度: </label>
+							<div class="col-sm-4">
+								<input  autocomplete="off" type="text" name="maShopApply.mapLong" id="mapLong"
+									class="form-control input-sm" />
+							</div>
+						</div>
+						<div class="form-group" style="display:none;">
+							<label class="col-sm-2 control-label no-padding-right text-right"
+								for="mapLat"><span class="red">*</span>(和地图)门店的 纬度: </label>
+							<div class="col-sm-4">
+								<input  autocomplete="off" type="text" name="maShopApply.mapLat" id="mapLat"
+									class="form-control input-sm" />
+							</div>
+						</div>
+						
+						<div class="form-group">
+							<label class="col-sm-2 control-label no-padding-right text-right"
+								for="nearByBus">附近公交: </label>
+							<div class="col-sm-4">
+								<input  autocomplete="off" type="text" name="maShopApply.nearByBus" id="nearByBus"
+									class="form-control input-sm" />
+							</div>
+						</div>
+					</div>
+
+				</div>
+				<h5 class="header smaller lighter blue"><i class="ace-icon glyphicon glyphicon-cloud"></i>商户信息</h5>
+				<div class="row">
+					<input  type="hidden" name="maShopId" id="maShopId" />
+					<div class="col-xs-8">
+						<div class="form-group">
+							<label class="col-sm-3 control-label no-padding-right text-right"
+								for="storeName"> <span class="red">*</span> 商户名称:
+							</label>
+							<div class="col-sm-6">
+								<input  autocomplete="off" type="text" name="maStoreApply.storeName" id="storeName"
+									class="form-control input-sm" />
+							</div>
+						</div>
+						
+						<div class="form-group">
+							<label class="col-sm-3 control-label no-padding-right text-right"
+								for="storeShortName"> 商户简称: </label>
+							<div class="col-sm-6">
+								<input type="text" name="maStoreApply.storeShortName"
+									id="storeShortName" class="form-control input-sm" />
+							</div>
+						</div>
+						
+						<div class="form-group">
+							<label class="col-sm-3 control-label no-padding-right text-right"
+								for="storeSmImgGroupId"> <span class="red">*</span>
+								商户小图:
+							</label>
+							<div class="col-sm-6">
+								<div id="storeSmImgLogoAttach"></div>
+
+							</div>
+						</div>
+						
+						<div class="form-group">
+							<label class="col-sm-3 control-label no-padding-right text-right"
+								for="storeMnImgGroupId"> <span class="red">*</span>
+								商户主图:
+							</label>
+							<div class="col-sm-6">
+								<div id="storeMnImgLogoAttach"></div>
+							</div>
+						</div>
+						
+						<div class="form-group">
+							<label class="col-sm-3 control-label no-padding-right text-right"
+								for="storeSign"> <span class="red">*</span>商户标识:
+							</label>
+							<div class="col-sm-6">
+								<select name="maStoreApply.storeSign" id="storeSign"
+									class="form-control input-sm"></select>
+							</div>
+						</div>
+						
+						<div class="form-group">
+							<label class="col-sm-3 control-label no-padding-right text-right"
+								for="storeTypeId"> <span class="red">*</span>商户一级分类:
+							</label>
+							<div class="col-sm-6">
+								<select name="maStoreApply.storeTypeId" id="storeTypeId"
+									class="form-control input-sm"></select>
+							</div>
+						</div>
+						<!--
+						<div class="form-group">
+							<label class="col-sm-3 control-label no-padding-right text-right"
+								for="storeCateId">
+								<span class="red">*</span>鍟嗘埛浜岀骇鍒嗙被:
+							</label>
+							<div class="col-sm-6">
+								<!--
+								<input type="hidden" name="maStoreApply.storeCateId" id="storeCateIdStr"/>
+								<select class="form-control input-sm" multiple="mul
+								tiple" name="storeCateId" id="storeCateId" data-placeholder="璇烽�夋嫨浜岀骇鍒嗙被"></select>
+								<select name="maStoreApply.storeCateId" id="storeCateId"
+									class="form-control input-sm" data-placeholder="璇烽�夋嫨浜岀骇鍒嗙被"></select>
+							</div>
+						</div>-->
+						
+						<div class="form-group">
+							<label class="col-sm-3 control-label no-padding-right text-right"
+								for="storeCateId"> <span class="red">*</span>商户二级分类:
+							</label>
+							<div class="col-sm-6">
+								<select name="maStoreApply.storeCateId" id="storeCateId"
+									class="form-control input-sm"></select>
+							</div>
+						</div>
+						
+						<div class="form-group">
+							<label class="col-sm-3 control-label no-padding-right text-right"
+								for="storeDesc"> 商户简介:
+							</label>
+							<div class="col-sm-6">
+								<!--#include virtual="kindeditor_simple.shtml"  -->	
+								<textarea name="maStoreApply.storeDesc" id="storeDesc" style="widht:800px;height:300px">
+								</textarea>
+							</div>
+						</div>
+						
+						<div class="form-group">
+							<label class="col-sm-3 control-label no-padding-right text-right"
+								for="storeTel"><span class="red">*</span> 联系电话: </label>
+							<div class="col-sm-6">
+								<input  autocomplete="off" type="text" name="maStoreApply.storeTel" id="storeTel"
+									mutipTelValid="storeTel" class="form-control input-sm"
+									placeholder="多个电话号码，请用空格分隔"  />
+							</div>
+						</div>
+						
+						<div class="form-group">
+							<label class="col-sm-3 control-label no-padding-right text-right"
+								for="promotionInfo"> 优惠信息: </label>
+							<div class="col-sm-6">
+								<input  autocomplete="off" type="text" name="maStoreApply.promotionInfo"
+									id="promotionInfo" class="form-control input-sm" />
+							</div>
+						</div>
+				</div>
+				
+					<div class="row">
+						<div class="col-xs-8">
+							<div class="widget-box transparent">
+								<div class="widget-header widget-header-flat">
+									<h4 class="widget-title lighter">
+										<i class="ace-icon fa fa-star orange"></i>
+										更多
+									</h4>
+			
+									<div class="widget-toolbar">
+										<a href="javascript:void(0);" data-action="collapse">
+											<i class="ace-icon fa fa-chevron-up"></i>
+										</a>
+									</div>
+								</div>
+											
+								<div class="widget-body" style="display:none;">
+									<div class="widget-main"><!-- no-padding -->
+										<div class="form-group">
+											<label class="col-sm-3 control-label no-padding-right text-right"
+												for="areaCode"> 商户特性: </label>
+											<div class="col-sm-6">
+												<input type="hidden" name="maStoreApply.storeFeatures"
+													id="storeFeaturesStr" />
+													<select class="multiselect"  data-placeholder="选择商户特性" multiple="multiple" 
+													name="storeFeature" id="storeFeature"></select>
+											</div>
+										</div>
+				
+										<div class="form-group">
+											<label class="col-sm-3 control-label no-padding-right text-right"
+												for="storeTags"> 商户标签: </label>
+											<div class="col-sm-6">
+												<input  autocomplete="off" type="text" name="maStoreApply.storeTags" id="storeTags"
+													placeholder="关键字，用于搜索（逗号分隔）" class="form-control input-sm" />
+											</div>
+										</div>
+				
+										<div class="form-group">
+											<label class="col-sm-3 control-label no-padding-right text-right"
+												for="storeContact"> 联系人: </label>
+											<div class="col-sm-6">
+												<input  autocomplete="off" type="text" name="maStoreApply.storeContact"
+													id="storeContact" class="form-control input-sm" />
+											</div>
+										</div>
+										<div class="form-group">
+											<label class="col-sm-3 control-label no-padding-right text-right"
+												for="storeServiceRange"> 服务范围: </label>
+											<div class="col-sm-6">
+												<input  autocomplete="off" type="text" name="maStoreApply.storeServiceRange"
+													id="storeServiceRange" class="form-control input-sm" />
+											</div>
+										</div>
+										<!--
+										<div class="form-group" id="paymentMethod">
+											<label class="col-sm-3 control-label no-padding-right text-right"
+												for="storePayModes"> 商户支持的支付方式: </label>
+											<div class="col-sm-6">
+												<input   type="hidden" name="maStoreApply.storePayMode"
+													id="storePayModeStr" /> <select class="multiselect"
+													multiple="multiple" name="storePayMode" id="storePayMode"
+													class="ace" data-placeholder="请选择支付方式"></select>
+											</div>
+										</div>
+										-->
+										<div class="form-group">
+											<label class="col-sm-3 control-label no-padding-right text-right"
+												for="averageCheck"> 人均消费(元): </label>
+											<div class="col-sm-6">
+												<input  autocomplete="off" type="text" name="maStoreApply.averageCheck"
+													id="averageCheck" class="form-control input-sm" />
+											</div>
+										</div>
+										
+										<div class="form-group">
+											<label class="col-sm-3 control-label no-padding-right text-right"
+												for="chainStore"> 所属连锁店: </label>
+											<div class="col-sm-6">
+												<select name="maStoreApply.chainStore" id="chainStore"
+													class="form-control input-sm"></select>
+											</div>
+										</div>
+				
+										<div class="form-group">
+											<label class="col-sm-3 control-label no-padding-right text-right"
+												for="storeFax"> 传真: </label>
+											<div class="col-sm-6">
+												<input  autocomplete="off" type="text" name="maStoreApply.storeFax" id="storeFax"
+													class="form-control input-sm" />
+											</div>
+										</div>
+										<div class="form-group">
+											<label class="col-sm-3 control-label no-padding-right text-right"
+												for="supportTel"> 服务电话: </label>
+											<div class="col-sm-6">
+												<input  autocomplete="off" type="text" name="maStoreApply.supportTel"
+													id="supportTel" mutipTelValid="supportTel"
+													class="form-control input-sm" />
+											</div>
+										</div>
+									</div><!-- /.widget-main -->
+								</div><!-- /.widget-body -->
+							</div><!-- /.widget-box -->
+						</div>
+				</div>
+				
+				
+
+				<div class="clearfix form-actions">
+					<div class="col-md-offset-4 col-md-12">
+						<button class="btn btn-info" type="submit" id="submitButton">
+							<i class="ace-icon fa fa-check bigger-110"></i> 保存/提交
+						</button>
+						&nbsp; &nbsp; &nbsp;
+						<button class="btn"
+							onclick="javascript:location.href = document.referrer;"
+							type="button" id="backButton">
+							<i class="ace-icon fa fa-arrow-left bigger-110"></i> 返回
+						</button>
+						&nbsp; &nbsp; &nbsp;
+						<button class="btn" type="button" id="resetBtn">
+							<i class="ace-icon fa fa-undo bigger-110"></i> 重 置
+						</button>
+					</div>
+				</div>
+			</form>
+		</div>
+	</div>
+
+	<!--#include virtual="/include_footer.html"  -->
+
+	<script type="text/javascript">
+			var update_url = ctxPaths + '/maStoreApply/add.ajax';
+			var view_url = ctxPaths + '/maStoreApply/getStoreAndShop.ajax';
+			var pkId = getP('maStoreId');
+			var isAudit = getP('isAudit');
+			if(isAudit=="true"){
+				$("#storeStatus").val("0000");
+			}
+			var shopId = getP('maShopId');
+			$("#maStoreId").val(pkId);
+			$("#maShopId").val(shopId);
+			
+			$("#storeSign").localRender(CodeDict['storeSign'],{
+				firstOption:{text:'请选择商户标识',value:''},
+				keyValue:{text:'value',value:'key'}
+			});
+			
+			$('#storeSign').bind('change',function(){
+				$("#storeTypeId").localRender(CodeDict['storeType'],{
+					firstOption:{text:'请选择一级分类',value:''},
+					keyValue:{text:'value',value:'key'}
+				});
+				if(this.value == 'F'){
+					$("#storeTypeId option[value='70']").remove();
+				}else{
+					$("#storeTypeId option[value='10']").remove();
+					$("#storeTypeId option[value='20']").remove();
+					$("#storeTypeId option[value='30']").remove();
+					$("#storeTypeId option[value='40']").remove();
+					$("#storeTypeId option[value='b0000001']").remove();
+				}
+			});
+			
+			$("#storeFeature").localRender(CodeDict['storeFeature'],{
+				keyValue:{text:'value',value:'key'}
+			});
+			
+			$('#storeFeature').bind('change',function(){
+				$('#storeFeaturesStr').val($('#storeFeature').val());
+			});
+			/*
+			$("#storePayMode").localRender(CodeDict['goodPayMode'],{
+				keyValue:{text:'value',value:'key'}
+			});
+			
+			$('#storePayMode').bind('change',function(){
+				$('#storePayModeStr').val($('#storePayMode').val());
+			});
+			*/
+			$("#storeTypeId").bind('change',function(){
+				//$('#storeCateId').chosen('destroy');
+				$("#storeCateId").ajaxRender(window.ctxPaths+"/codeDict/query.ajax?codeType=storeType_"+this.value,{
+					root:"data",firstOption:{text:'请选择二级分类',value:''},keyValue:{text:'value',value:'key'}});
+				//$('#storeCateId').chosen({width:'100%'});
+			});
+			
+			$('#storeCateId').bind('change',function(){
+				$('#storeCateIdStr').val($('#storeCateId').val());
+			});
+			
+			$("#chainStore").ajaxRender(window.ctxPaths+"/codeDict/query.ajax?codeType=chainStore",{
+				root:"data",firstOption:{text:'无',value:''},keyValue:{text:'value',value:'key'}});
+		
+			$("#regionCode").ajaxRender(window.ctxPaths+"/maDataDict/getRegionListByParentCode.ajax?parentCode=370000",{
+				root:"data",firstOption:{text:'请选择城市',value:''},keyValue:{text:'dataName',value:'dataCode'}});
+			var regionCodeText='';
+			$("#regionCode").bind('change',function(){
+				if(this !=null && this.options !=null && this.selectedIndex !='-1'){
+					regionCodeText=this.options[this.selectedIndex].innerHTML;
+				}				
+				$("#addressKeyWord").val(regionCodeText);
+				$("#storeAddress").val(regionCodeText);
+				$("#areaCode").ajaxRender(window.ctxPaths+"/maDataDict/getRegionListByParentCode.ajax?parentCode="+this.value,{
+					root:"data",firstOption:{text:'请选择区',value:''},keyValue:{text:'dataName',value:'dataCode'}});
+			});
+			var areaCodeText='';
+			$("#areaCode").bind('change',function(){
+				if(this !=null && this.options !=null && this.selectedIndex !='-1'){
+					areaCodeText=this.options[this.selectedIndex].innerHTML;
+				} 
+				$("#addressKeyWord").val(regionCodeText+areaCodeText);
+				$("#storeAddress").val(regionCodeText+areaCodeText);
+				$("#businessZone").ajaxRender(window.ctxPaths+"/maDataDict/getRegionListByParentCode.ajax?parentCode="+this.value,{
+					root:"data",firstOption:{text:'商圈',value:''},keyValue:{text:'dataName',value:'dataCode'}});
+			});
+			
+			$("#businessZone").bind('change',function(){
+				var codeText='';
+				if(this !=null && this.options !=null && this.selectedIndex !='-1'){
+					codeText=this.options[this.selectedIndex].innerHTML;
+				} 
+				$("#addressKeyWord").val(regionCodeText+areaCodeText+codeText);
+				$("#storeAddress").val(regionCodeText+areaCodeText+codeText);
+			});
+			
+			/*
+			if(null == $("#maStoreId").val() || "" == $("#maStoreId").val()){
+				//查询是否有支付标识
+				$.ajax({
+					type: "GET",
+					url: ctxPaths + '/maStoreApply/queryPayIdentification.ajax',
+					dataType: "json",
+					async: false,
+					success: function(rtn){
+						if(null != rtn.rows[0].storePayIdentification && "" != rtn.rows[0].storePayIdentification){
+							//有支付标识
+							$("#paymentMethod").show();
+							$('#storePayMode').selected("1");
+							$('#storePayMode').chosen({width:'100%'});
+						}else{//无支付标识
+							$("#paymentMethod").hide();
+						}
+					}
+				});
+			}
+			*/
+			$("#searchBtn").bind("click",function(){
+				var geocoderOption = {
+				        range:300,//范围
+				        crossnum:2,//道路交叉口数
+				        roadnum :3,//路线记录数
+				        poinum:2//POI点数fff
+				 };
+				var geocoder = new MMap.Geocoder(geocoderOption);
+				var keyword=$("#storeAddress").val();
+				geocoder.geocode(keyword,function(data){
+					if(data && data.status=='E0'){
+						var list=data.list;			
+						for(var i=0;i<list.length;i++){
+							list[i].value=list[i].x+","+list[i].y;
+						}
+						
+						$("#searchResult").localRender(list,{
+							firstOption:{text:'请选择',value:''},
+							keyValue:{text:'name',value:'value'}
+						});
+						if(list.length==1){
+							var val=list[0].x+","+list[0].y;
+							document.getElementById("searchResult").options.selectedIndex=1;
+							$("#mapLat").val(list[0].y);
+							$("#mapLong").val(list[0].x);
+						}
+					}else{
+						Q_Alert_Fail("没有相关的地图数据");
+					}
+				});
+			});
+			
+			$("#searchResult").bind('change',function(){		
+				var opt=this.value;
+				var opts=opt.split(',');
+				$("#mapLat").val(opts[1]);
+				$("#mapLong").val(opts[0]);
+			});
+			var initMnImg = function(attach){
+				var logoAttach = new PlUploaderObj('storeMnImgLogoAttach');
+				logoAttach.init({
+					'btnName' : '选择Logo,440*200px,150k',
+					'btnWidth' : '100px',
+					'hiddenName' : 'maStoreApply.storeMnImgGroupId',					
+					'initData' : attach,
+					//'attachTypeId' : 'qm_pro_logo',
+					'max_file_size' : '150k',
+					'maxImgW' : 440,
+					'maxImgH' : 200,
+					'disTheme' : 2,
+					mime_types : [{
+						title : "图片文件(jpg,png)",
+						extensions : "jpg,png"
+					}]
+				});
+			};
+			var initSmImg = function(attach){
+				var logoAttach = new PlUploaderObj('storeSmImgLogoAttach');
+				logoAttach.init({
+					'btnName' : '选择Logo,180*120px ,50k',
+					'btnWidth' : '100px',
+					'hiddenName' : 'maStoreApply.storeSmImgGroupId',						
+					'initData' : attach,
+					//'attachTypeId' : 'qm_pro_logo',
+					'max_file_size' : '50k',
+					'maxImgW' : 180,
+					'maxImgH' : 120,
+					'disTheme' : 2,
+					mime_types : [{
+						title : "图片文件(jpg,png,)",
+						extensions : "jpg,png"
+					}]
+				});	
+			};
+			
+			//文本编辑
+			KindEditor.ready(function(K) {
+				editor =K.create('#storeDesc', {
+	                uploadJson : window.ctxPaths+'/js/kindeditor-4.1.10/jsp/upload_json.jsp',
+	                fileManagerJson : window.ctxPaths+'/js/kindeditor-4.1.10/jsp/file_manager_json.jsp',
+	                allowFileManager : true,
+	                autoHeightMode : false,
+	                allowImageUpload : true,
+	                items : [
+	 						'fontname', 'fontsize', '|', 'forecolor', 'hilitecolor', 'bold', 'italic', 'underline',
+	 						'removeformat', '|', 'justifyleft', 'justifycenter', 'justifyright', 'insertorderedlist',
+	 						'insertunorderedlist', '|', 'emoticons', 'image', 'link'],
+	 				afterBlur: function(){
+	 					this.sync();
+	 				},
+	 				afterCreate : function() {
+						var self = this;
+						K.ctrl(document, 13, function() {
+							self.sync();
+							document.forms['add-form'].submit();
+						});
+						K.ctrl(self.edit.doc, 13, function() {
+							self.sync();
+							document.forms['add-form'].submit();
+						});
+						this.loadPlugin('autoheight');
+					}
+				});
+			});
+			
+			jQuery.validator.addMethod("areaCodeIsNotNull", function(value, element) {   
+				var areaCode = $("#areaCode").val();
+				if(areaCode == "" || areaCode == null){
+					return false;
+				}else{
+					return true;
+				}
+				}, "不能为空");
+			jQuery.validator.addMethod("searchResultIsNotNull", function(value, element) {   
+			var searchR = $("#searchResult").val();
+			if(searchR == "" || searchR == 0){
+				return false;
+			}else{
+				return true;
+			}
+			}, "不能为空");
+			$(function() {
+				var add_validator = $('#add-form').validate({
+					rules : {
+						'maStoreApply.storeName' : {
+							required : true,
+							maxlength : 50
+						},
+						'maStoreApply.areaCode' : {
+							maxlength : 20
+						},
+						'maStoreApply.businessZone' : {
+							areaCodeIsNotNull : true,
+							maxlength : 20
+						},
+						'maStoreApply.storeAddress' : {
+							required : true,
+							maxlength : 256
+						},
+						'maStoreApply.storeShortName' : {
+							
+							maxlength : 50
+						},
+						'maStoreApply.chainStore' : {							
+							maxlength : 50
+						},
+						'maStoreApply.storeTypeId' : {
+							required : true,
+							maxlength : 60
+						},
+						'maStoreApply.storeCateId' : {
+							required : true,
+							maxlength : 60
+						},
+						'maStoreApply.regionCode' : {
+							maxlength : 10
+						},
+						'maStoreApply.storeSign' : {
+							required:true,
+						},
+						'maStoreApply.storeTags' : {
+							maxlength : 128
+						},
+						'maStoreApply.storeSmImgGroupId' : {
+							required : true,
+							maxlength : 20
+						},						
+						'maStoreApply.storeMnImgGroupId' : {
+							required : true,
+							maxlength : 20
+						},
+						'maStoreApply.promotionInfo' : {
+							maxlength : 256
+						},
+						'maShopApply.mapLat' : {
+							maxlength : 20,
+							max:90,
+							min:-90
+						},
+						'maShopApply.mapLong' : {
+							maxlength : 20,
+							max:180,
+							min:-180
+						},
+						'maShopApply.nearByBus' : {
+							maxlength : 128
+						},'maStoreApply.storeTel' : {
+							required : true,
+							maxlength : 30
+						},'maStoreApply.supportTel' : {
+							maxlength : 30
+						},
+						
+						'maStoreApply.storeContact' : {
+							maxlength : 30
+						},
+						'maStoreApply.storeFax' : {
+							maxlength : 30,
+							digits: true
+						},
+						'maStoreApply.storeServiceRange' : {
+							maxlength : 512
+						},
+						'maStoreApply.storeDesc' : {
+							//required : true,
+							maxlength : 4000
+						},						
+						'maStoreApply.averageCheck' : {
+							digits : true,
+							maxlength : 5
+						},
+						'searchResult' : {
+							required : true,
+							searchResultIsNotNull: true
+						}
+						
+					},
+					submitHandler : function(form) {
+						$.ajaxSubmit(update_url, $(form).serializeJson(), function(data) {
+							if (data.success == true) {
+								Q_Alert('操作成功', function() {
+									if(isAudit=="true"){
+										location.href = ctxPaths + '/pages/shop/maStoreApply_auditList.shtml';
+									}else{
+										location.href = ctxPaths + '/pages/shop/maStoreApply_list.shtml';
+									}
+									
+								});
+							} else {
+								Q_Alert_Fail(data.message);
+							}
+						});
+						return false;
+					}
+				});
+				
+				$('#resetBtn').bind('click',function(){
+					//$('#queryForm')[0].reset();
+					resetForm($('#add-form'),add_validator);
+					initMnImg();
+					initSmImg();
+					editor.html("");
+					//$("#storeFeature").empty(); 
+					$('#storeFeature').chosen('destroy');
+					$('#storeFeature').chosen({width:'100%'});
+				});
+				
+				
+				
+				if (pkId) {
+					$('#updId').val(pkId);
+					$.ajaxSubmit(view_url, {
+						'maStoreId' : pkId
+					}, function(rtn) {
+						if (rtn.success) {
+							$('#add-form').json2Form2(rtn.data);
+							
+							/*//查询是否有支付标识
+							$.ajax({
+								type: "GET",
+								url: ctxPaths + '/maStoreApply/queryPayIdentification.ajax',
+								dataType: "json",
+								async: false,
+								success: function(rtn){
+									
+									//如果支付标识为空，不让用户选择支付方式
+									if(null != rtn.rows[0].storePayIdentification && "" != rtn.rows[0].storePayIdentification){	
+										//有支付标识
+										$('#storePayMode').selected(rtn.data.maStoreApply.storePayMode);
+									}else{
+										//无支付标识
+										$("#storePayMode").empty(); 
+									}
+									
+								
+								}
+							});
+							*/
+							
+							//$('#storePayMode').chosen({width:'100%'});
+							$('#storeFeature').selected(rtn.data.maStoreApply.storeFeatures);
+							$('#storeFeature').chosen({width:'100%'});
+							/*
+							$('#storeCateId').selected(rtn.data.maStoreApply.storeCateId);
+							$('#storeCateId').chosen({width:'100%'});*/
+							//文本编辑,回显数据
+							editor.html(rtn.data.maStoreApply.storeDesc);
+							
+							initSmImg(rtn.data.maStoreApply.smAttachmentFileList);
+							initMnImg(rtn.data.maStoreApply.mmAttachmentFileList);
+						} else {
+							
+							Q_Alert_Fail(data.message);
+						}
+					});					
+				}else{
+					//$('#storePayMode').chosen({width:'100%'});
+					$('#storeFeature').chosen({width:'100%'});
+					//$('#storeCateId').chosen({width:'100%'});
+					initSmImg();
+					initMnImg();
+				}
+			})
+		</script>
+</body>
+</html>
