@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="gb2312"?>
+<!DOCTYPE domain SYSTEM "Metadata_Auth_Main.dtd">
+<domain id="admin" subsystem="hvp-admin">
+	<!-- 资源分类－第一级 -->
+	<resource-category key="manager" orderKey="2000"
+		name="投票管理系统" desc="投票管理系统">
+		<resource-category key="auth_partner_manager" name="阶段管理"
+			desc="合作伙伴管理">
+			<resource key="auth_partner_manager_activityOverview" name="流量下发监控"
+				desc="合作伙伴列表">
+				<operation key="get" name="流量下发监控" desc="流量下发监控">
+					<address name="流量下发监控" url="/pages/activityOverview.shtml" />
+					<address name="看板内容" url="/businessBoard/initReportForm.ajax" />
+					<address name="top5数据" url="/businessBoard/initData.ajax" />
+				</operation>
+			</resource>
+			<resource key="auth_partner_manager_list" name="合作伙伴列表"
+				desc="合作伙伴列表">
+				<operation key="query" name="列表" desc="列表">
+					<address name="合作伙伴列表" url="/pages/partnerInfo_list.shtml" />
+					<address name="查询请求" url="/partnerInfo/query.ajax" />
+				</operation>
+				<operation key="detail" name="详情" desc="详情">
+					<address name="合作伙伴列表" url="/pages/partnerInfo_view.shtml" />
+					<address name="查询请求" url="/partnerInfo/get.ajax" />
+					<address name="初始化账户信息" url="/partnerInfo/initBalance.ajax" />
+					<address name="初始化产品协议订单历史记录" url="/orderDealRecord/getOrderDealRecord.ajax" />
+					<address name="下载" url="/orderDealRecord/download.ajax" />
+				</operation>
+
+			</resource>
+		</resource-category>
+
+	</resource-category>
+</domain>
