@@ -1,5 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <config>
+    <!--中国赛区组织ID-->
+	<departmentId></departmentId>
 	<!-- kindEditor 文件保存绝对路径 /var/apsire/ -->
 	<kindEditorFilesSavePath></kindEditorFilesSavePath>
 	<!-- kindEditor 文件的url路径:http://localhost:8080/app/ -->

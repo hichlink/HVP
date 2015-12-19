@@ -1,4 +1,4 @@
-/*** Auto generator by codegenerator 2015-11-28 14:10:51*/
+/*** Auto generator by codegenerator 2015-12-19 22:36:18*/
 package com.hichlink.hvp.common.entity;
 
 import java.util.Date;
@@ -8,8 +8,6 @@ public class WxAccessConf {
 	 * 自增序列
 	 */
 	private Long seqId;
-
-	private Long customerId;
 
 	/**
 	 * 微信名称
@@ -329,13 +327,4 @@ public class WxAccessConf {
 	public void setApiKey(String apiKey) {
 		this.apiKey = apiKey == null ? null : apiKey.trim();
 	}
-
-	public Long getCustomerId() {
-		return customerId;
-	}
-
-	public void setCustomerId(Long customerId) {
-		this.customerId = customerId;
-	}
-
 }

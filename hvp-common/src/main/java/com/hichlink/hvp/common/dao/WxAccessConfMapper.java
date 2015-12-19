@@ -1,10 +1,9 @@
-/*** Auto generator by codegenerator 2015-09-09 10:22:21*/
+/*** Auto generator by codegenerator 2015-12-19 22:36:18*/
 package com.hichlink.hvp.common.dao;
-
-import java.util.List;
 
 import com.aspire.webbas.core.pagination.mybatis.pager.Page;
 import com.hichlink.hvp.common.entity.WxAccessConf;
+import java.util.List;
 
 public interface WxAccessConfMapper {
     int deleteByPrimaryKey(Long seqId);
@@ -20,10 +19,4 @@ public interface WxAccessConfMapper {
     int updateByPrimaryKeySelective(WxAccessConf record);
 
     int updateByPrimaryKey(WxAccessConf record);
-
-	WxAccessConf getByActId(String actId);
-
-	WxAccessConf getByCustomerId(Long customerId);
-	
-	WxAccessConf getByWxConf(WxAccessConf wxAccessConf);
 }

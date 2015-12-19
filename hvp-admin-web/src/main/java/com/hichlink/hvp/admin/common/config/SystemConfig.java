@@ -52,5 +52,8 @@ public class SystemConfig {
 	public String getKindEditorFilesURL() {
 		return getString("kindEditorFilesURL");
 	}
+	public String getDepartmentId() {
+		return getString("departmentId");
+	}
 
 }
