@@ -1,0 +1,255 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+	<meta charset="utf-8" />
+	<!--#include virtual="/root.jsp"  -->
+	<title>actInfo</title>
+	<!--#include virtual="/include.html"  -->
+</head>
+<body>
+	<div class="page-content">
+		<!-- 新增活动按钮 -->
+		<div class="table-responsive">
+			<div class="page-header">
+			<h1>
+				actInfo
+				<small> <i class="ace-icon fa fa-angle-double-right"></i>
+					新增/修改
+				</small>
+			</h1>
+		</div>
+		<form class="form-horizontal" role="form"  id="add-form" onsubmit="return false;">
+		<input type="hidden" name="actSeqId"  id="actSeqId"/>
+		<input type="hidden" name="updId"  id="updId"/>
+		<div class="row">
+			
+			<div class="col-xs-6">
+				
+						 										 										<div class="form-group">
+							<label class="col-sm-3 control-label no-padding-right text-right" for="actId">
+																<span class="red">*</span>
+															活动ID:
+							</label>
+							<div class="col-sm-6">
+								<input type="text" name="actId" id="actId" class="form-control input-sm" />
+							</div>
+						</div>
+												 										 										<div class="form-group">
+							<label class="col-sm-3 control-label no-padding-right text-right" for="startTime">
+																<span class="red">*</span>
+															开始时间:
+							</label>
+							<div class="col-sm-6">
+								<input type="text" name="startTime" id="startTime" class="form-control input-sm" />
+							</div>
+						</div>
+												 										 										<div class="form-group">
+							<label class="col-sm-3 control-label no-padding-right text-right" for="isValid">
+																<span class="red">*</span>
+															是否有效 0:无效 1:有效:
+							</label>
+							<div class="col-sm-6">
+								<input type="text" name="isValid" id="isValid" class="form-control input-sm" />
+							</div>
+						</div>
+												 										 										<div class="form-group">
+							<label class="col-sm-3 control-label no-padding-right text-right" for="creator">
+																<span class="red">*</span>
+															创建者:
+							</label>
+							<div class="col-sm-6">
+								<input type="text" name="creator" id="creator" class="form-control input-sm" />
+							</div>
+						</div>
+												 										 										<div class="form-group">
+							<label class="col-sm-3 control-label no-padding-right text-right" for="updator">
+															修改者:
+							</label>
+							<div class="col-sm-6">
+								<input type="text" name="updator" id="updator" class="form-control input-sm" />
+							</div>
+						</div>
+												 										 										<div class="form-group">
+							<label class="col-sm-3 control-label no-padding-right text-right" for="remark">
+																<span class="red">*</span>
+															备注:
+							</label>
+							<div class="col-sm-6">
+								<input type="text" name="remark" id="remark" class="form-control input-sm" />
+							</div>
+						</div>
+												 										 										<div class="form-group">
+							<label class="col-sm-3 control-label no-padding-right text-right" for="focusUrl">
+															关注页面地址:
+							</label>
+							<div class="col-sm-6">
+								<input type="text" name="focusUrl" id="focusUrl" class="form-control input-sm" />
+							</div>
+						</div>
+																
+					
+				
+			</div>
+			<div class="col-xs-6">
+				
+																																							<div class="form-group">
+							<label class="col-sm-3 control-label no-padding-right text-right" for="actName">
+																<span class="red">*</span>
+															活动名称:
+							</label>
+							<div class="col-sm-6">
+								<input type="text" name="actName" id="actName" class="form-control input-sm" />
+							</div>
+						</div>
+																																		<div class="form-group">
+							<label class="col-sm-3 control-label no-padding-right text-right" for="endTime">
+																<span class="red">*</span>
+															结束时间:
+							</label>
+							<div class="col-sm-6">
+								<input type="text" name="endTime" id="endTime" class="form-control input-sm" />
+							</div>
+						</div>
+																																		<div class="form-group">
+							<label class="col-sm-3 control-label no-padding-right text-right" for="stage">
+																<span class="red">*</span>
+															当前所处阶段:
+							</label>
+							<div class="col-sm-6">
+								<input type="text" name="stage" id="stage" class="form-control input-sm" />
+							</div>
+						</div>
+																																		<div class="form-group">
+							<label class="col-sm-3 control-label no-padding-right text-right" for="createTime">
+																<span class="red">*</span>
+															创建时间:
+							</label>
+							<div class="col-sm-6">
+								<input type="text" name="createTime" id="createTime" class="form-control input-sm" />
+							</div>
+						</div>
+																																		<div class="form-group">
+							<label class="col-sm-3 control-label no-padding-right text-right" for="updateTime">
+															修改时间:
+							</label>
+							<div class="col-sm-6">
+								<input type="text" name="updateTime" id="updateTime" class="form-control input-sm" />
+							</div>
+						</div>
+																																		<div class="form-group">
+							<label class="col-sm-3 control-label no-padding-right text-right" for="isForce">
+																<span class="red">*</span>
+															是否强制关注,0:否 1:是:
+							</label>
+							<div class="col-sm-6">
+								<input type="text" name="isForce" id="isForce" class="form-control input-sm" />
+							</div>
+						</div>
+																											
+					
+				
+			</div>
+				
+			
+		</div>
+		<div class="clearfix form-actions">
+						<div class="center">
+							<button class="btn btn-info" type="submit" id="submitButton">
+								<i class="ace-icon fa fa-check bigger-110"></i>
+								保 存
+							</button>
+							&nbsp; &nbsp; &nbsp;
+							<button class="btn" type="button" id="resetBtn">
+								<i class="ace-icon fa fa-undo bigger-110"></i>
+								重 置
+							</button>
+							&nbsp; &nbsp; &nbsp;
+							<button class="btn" type="button" onclick="javascript:history.back();">
+								<i class="ace-icon fa fa-arrow-left"></i>
+								返 回
+							</button>
+						</div>
+			  </div>
+			</form>
+		</div>
+	</div>
+
+
+	<!--#include virtual="/include_footer.html"  -->
+
+	<script type="text/javascript">
+	var update_url   = ctxPaths+ '/actInfo/add.ajax';
+	var view_url 	 = ctxPaths+ '/actInfo/get.ajax';
+	var pkId = getP('actSeqId');
+	$(function(){
+		var add_validator = $('#add-form').validate({
+					rules: {
+							 						 					 										'actId' : {
+	 						 					required:true,
+	 						 					maxlength: 20
+					 },	 				 	 					 										'actName' : {
+	 						 					required:true,
+	 						 					maxlength: 64
+					 },	 				 	 					 										'startTime' : {
+	 						 					required:true,
+	 						 					maxlength: 0
+					 },	 				 	 					 										'endTime' : {
+	 						 					required:true,
+	 						 					maxlength: 0
+					 },	 				 	 					 										'isValid' : {
+	 						 					required:true,
+	 						 					maxlength: 11
+					 },	 				 	 					 										'stage' : {
+	 						 					required:true,
+	 						 					maxlength: 11
+					 },	 				 	 					 										'creator' : {
+	 						 					required:true,
+	 						 					maxlength: 64
+					 },	 				 	 					 										'createTime' : {
+	 						 					required:true,
+	 						 					maxlength: 0
+					 },	 				 	 					 										'updator' : {
+	 						 					maxlength: 64
+					 },	 				 	 					 										'updateTime' : {
+	 						 					maxlength: 0
+					 },	 				 	 					 										'remark' : {
+	 						 					required:true,
+	 						 					maxlength: 512
+					 },	 				 	 					 										'isForce' : {
+	 						 					required:true,
+	 						 					maxlength: 11
+					 },	 				 	 					 										'focusUrl' : {
+	 						 					maxlength: 128
+					 }	 				 	 									},
+					submitHandler: function (form) {
+						$.ajaxSubmit(update_url,$(form).serializeJson(),function(data){
+								if(data.success == true){
+								    Q_Alert('新增成功',function(){
+										location.href = ctxPaths+'/pages/actInfo_list.shtml';
+									});
+								}else{
+									Q_Alert_Fail(data.message); 
+								}
+						},$('#submitButton'));
+						return false;		
+					}
+	    });	
+		$('#resetBtn').on('click',function(){
+			resetForm($('#add-form'),add_validator);
+		});
+		if (pkId){
+			$('#updId').val(pkId);
+			$.ajaxSubmit(view_url, {'actSeqId':pkId}, function(rtn) {
+				if (rtn.success) {
+					$('#add-form').json2Form2(rtn.data);
+				} else {
+					Q_Alert_Fail(data.message); 
+				}
+			});
+		}
+	})
+	
+	
+	</script>
+</body>
+</html>

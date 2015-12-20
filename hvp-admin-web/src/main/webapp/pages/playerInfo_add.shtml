@@ -1,0 +1,401 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+	<meta charset="utf-8" />
+	<!--#include virtual="/root.jsp"  -->
+	<title>playerInfo</title>
+	<!--#include virtual="/include.html"  -->
+</head>
+<body>
+	<div class="page-content">
+		<!-- 新增活动按钮 -->
+		<div class="table-responsive">
+			<div class="page-header">
+			<h1>
+				playerInfo
+				<small> <i class="ace-icon fa fa-angle-double-right"></i>
+					新增/修改
+				</small>
+			</h1>
+		</div>
+		<form class="form-horizontal" role="form"  id="add-form" onsubmit="return false;">
+		<input type="hidden" name="playerId"  id="playerId"/>
+		<input type="hidden" name="updId"  id="updId"/>
+		<div class="row">
+			
+			<div class="col-xs-6">
+				
+						 										 										<div class="form-group">
+							<label class="col-sm-3 control-label no-padding-right text-right" for="actId">
+																<span class="red">*</span>
+															活动ID:
+							</label>
+							<div class="col-sm-6">
+								<input type="text" name="actId" id="actId" class="form-control input-sm" />
+							</div>
+						</div>
+												 										 										<div class="form-group">
+							<label class="col-sm-3 control-label no-padding-right text-right" for="playerName">
+																<span class="red">*</span>
+															选手姓名:
+							</label>
+							<div class="col-sm-6">
+								<input type="text" name="playerName" id="playerName" class="form-control input-sm" />
+							</div>
+						</div>
+												 										 										<div class="form-group">
+							<label class="col-sm-3 control-label no-padding-right text-right" for="headImgUrl">
+																<span class="red">*</span>
+															选手头像URL:
+							</label>
+							<div class="col-sm-6">
+								<input type="text" name="headImgUrl" id="headImgUrl" class="form-control input-sm" />
+							</div>
+						</div>
+												 										 										<div class="form-group">
+							<label class="col-sm-3 control-label no-padding-right text-right" for="picImgUrl">
+															选手形象照片url:
+							</label>
+							<div class="col-sm-6">
+								<input type="text" name="picImgUrl" id="picImgUrl" class="form-control input-sm" />
+							</div>
+						</div>
+												 										 										<div class="form-group">
+							<label class="col-sm-3 control-label no-padding-right text-right" for="caseInfo">
+															话剧案例:
+							</label>
+							<div class="col-sm-6">
+								<input type="text" name="caseInfo" id="caseInfo" class="form-control input-sm" />
+							</div>
+						</div>
+												 										 										<div class="form-group">
+							<label class="col-sm-3 control-label no-padding-right text-right" for="bigareaName">
+																<span class="red">*</span>
+															所在大区:
+							</label>
+							<div class="col-sm-6">
+								<input type="text" name="bigareaName" id="bigareaName" class="form-control input-sm" />
+							</div>
+						</div>
+												 										 										<div class="form-group">
+							<label class="col-sm-3 control-label no-padding-right text-right" for="officeName">
+																<span class="red">*</span>
+															所在办事处:
+							</label>
+							<div class="col-sm-6">
+								<input type="text" name="officeName" id="officeName" class="form-control input-sm" />
+							</div>
+						</div>
+												 										 										<div class="form-group">
+							<label class="col-sm-3 control-label no-padding-right text-right" for="isUpgrade">
+																<span class="red">*</span>
+															是否晋级 0:否 1:是:
+							</label>
+							<div class="col-sm-6">
+								<input type="text" name="isUpgrade" id="isUpgrade" class="form-control input-sm" />
+							</div>
+						</div>
+												 										 										<div class="form-group">
+							<label class="col-sm-3 control-label no-padding-right text-right" for="stage1VoteNum">
+																<span class="red">*</span>
+															一阶段总票数:
+							</label>
+							<div class="col-sm-6">
+								<input type="text" name="stage1VoteNum" id="stage1VoteNum" class="form-control input-sm" />
+							</div>
+						</div>
+												 										 										<div class="form-group">
+							<label class="col-sm-3 control-label no-padding-right text-right" for="stage3VoteNum">
+																<span class="red">*</span>
+															三阶段总票数:
+							</label>
+							<div class="col-sm-6">
+								<input type="text" name="stage3VoteNum" id="stage3VoteNum" class="form-control input-sm" />
+							</div>
+						</div>
+												 										 										<div class="form-group">
+							<label class="col-sm-3 control-label no-padding-right text-right" for="createTime">
+																<span class="red">*</span>
+															创建时间:
+							</label>
+							<div class="col-sm-6">
+								<input type="text" name="createTime" id="createTime" class="form-control input-sm" />
+							</div>
+						</div>
+												 										 										<div class="form-group">
+							<label class="col-sm-3 control-label no-padding-right text-right" for="updateTime">
+															修改时间:
+							</label>
+							<div class="col-sm-6">
+								<input type="text" name="updateTime" id="updateTime" class="form-control input-sm" />
+							</div>
+						</div>
+												 										 										<div class="form-group">
+							<label class="col-sm-3 control-label no-padding-right text-right" for="videoUrl">
+															视频地址:
+							</label>
+							<div class="col-sm-6">
+								<input type="text" name="videoUrl" id="videoUrl" class="form-control input-sm" />
+							</div>
+						</div>
+												 														
+					
+				
+			</div>
+			<div class="col-xs-6">
+				
+																																							<div class="form-group">
+							<label class="col-sm-3 control-label no-padding-right text-right" for="playerCode">
+																<span class="red">*</span>
+															选手编号:
+							</label>
+							<div class="col-sm-6">
+								<input type="text" name="playerCode" id="playerCode" class="form-control input-sm" />
+							</div>
+						</div>
+																																		<div class="form-group">
+							<label class="col-sm-3 control-label no-padding-right text-right" for="headImgId">
+																<span class="red">*</span>
+															选手头像ID:
+							</label>
+							<div class="col-sm-6">
+								<input type="text" name="headImgId" id="headImgId" class="form-control input-sm" />
+							</div>
+						</div>
+																																		<div class="form-group">
+							<label class="col-sm-3 control-label no-padding-right text-right" for="picImgId">
+																<span class="red">*</span>
+															选手形象照片ID:
+							</label>
+							<div class="col-sm-6">
+								<input type="text" name="picImgId" id="picImgId" class="form-control input-sm" />
+							</div>
+						</div>
+																																		<div class="form-group">
+							<label class="col-sm-3 control-label no-padding-right text-right" for="summary">
+															选手简介:
+							</label>
+							<div class="col-sm-6">
+								<input type="text" name="summary" id="summary" class="form-control input-sm" />
+							</div>
+						</div>
+																																		<div class="form-group">
+							<label class="col-sm-3 control-label no-padding-right text-right" for="bigareaId">
+																<span class="red">*</span>
+															所在大区ID:
+							</label>
+							<div class="col-sm-6">
+								<input type="text" name="bigareaId" id="bigareaId" class="form-control input-sm" />
+							</div>
+						</div>
+																																		<div class="form-group">
+							<label class="col-sm-3 control-label no-padding-right text-right" for="officeId">
+																<span class="red">*</span>
+															所在办事处ID:
+							</label>
+							<div class="col-sm-6">
+								<input type="text" name="officeId" id="officeId" class="form-control input-sm" />
+							</div>
+						</div>
+																																		<div class="form-group">
+							<label class="col-sm-3 control-label no-padding-right text-right" for="stage">
+															当前所处阶段:
+							</label>
+							<div class="col-sm-6">
+								<input type="text" name="stage" id="stage" class="form-control input-sm" />
+							</div>
+						</div>
+																																		<div class="form-group">
+							<label class="col-sm-3 control-label no-padding-right text-right" for="stageIntro">
+															晋级之路:
+							</label>
+							<div class="col-sm-6">
+								<input type="text" name="stageIntro" id="stageIntro" class="form-control input-sm" />
+							</div>
+						</div>
+																																		<div class="form-group">
+							<label class="col-sm-3 control-label no-padding-right text-right" for="stage2VoteNum">
+																<span class="red">*</span>
+															二阶段总票数:
+							</label>
+							<div class="col-sm-6">
+								<input type="text" name="stage2VoteNum" id="stage2VoteNum" class="form-control input-sm" />
+							</div>
+						</div>
+																																		<div class="form-group">
+							<label class="col-sm-3 control-label no-padding-right text-right" for="creator">
+																<span class="red">*</span>
+															创建者:
+							</label>
+							<div class="col-sm-6">
+								<input type="text" name="creator" id="creator" class="form-control input-sm" />
+							</div>
+						</div>
+																																		<div class="form-group">
+							<label class="col-sm-3 control-label no-padding-right text-right" for="updator">
+															修改者:
+							</label>
+							<div class="col-sm-6">
+								<input type="text" name="updator" id="updator" class="form-control input-sm" />
+							</div>
+						</div>
+																																		<div class="form-group">
+							<label class="col-sm-3 control-label no-padding-right text-right" for="remark">
+																<span class="red">*</span>
+															备注:
+							</label>
+							<div class="col-sm-6">
+								<input type="text" name="remark" id="remark" class="form-control input-sm" />
+							</div>
+						</div>
+																																		<div class="form-group">
+							<label class="col-sm-3 control-label no-padding-right text-right" for="status">
+																<span class="red">*</span>
+															状态 0:保存 1:有效:
+							</label>
+							<div class="col-sm-6">
+								<input type="text" name="status" id="status" class="form-control input-sm" />
+							</div>
+						</div>
+																
+					
+				
+			</div>
+				
+			
+		</div>
+		<div class="clearfix form-actions">
+						<div class="center">
+							<button class="btn btn-info" type="submit" id="submitButton">
+								<i class="ace-icon fa fa-check bigger-110"></i>
+								保 存
+							</button>
+							&nbsp; &nbsp; &nbsp;
+							<button class="btn" type="button" id="resetBtn">
+								<i class="ace-icon fa fa-undo bigger-110"></i>
+								重 置
+							</button>
+							&nbsp; &nbsp; &nbsp;
+							<button class="btn" type="button" onclick="javascript:history.back();">
+								<i class="ace-icon fa fa-arrow-left"></i>
+								返 回
+							</button>
+						</div>
+			  </div>
+			</form>
+		</div>
+	</div>
+
+
+	<!--#include virtual="/include_footer.html"  -->
+
+	<script type="text/javascript">
+	var update_url   = ctxPaths+ '/playerInfo/add.ajax';
+	var view_url 	 = ctxPaths+ '/playerInfo/get.ajax';
+	var pkId = getP('playerId');
+	$(function(){
+		var add_validator = $('#add-form').validate({
+					rules: {
+							 						 					 										'actId' : {
+	 						 					required:true,
+	 						 					maxlength: 20
+					 },	 				 	 					 										'playerCode' : {
+	 						 					required:true,
+	 						 					maxlength: 32
+					 },	 				 	 					 										'playerName' : {
+	 						 					required:true,
+	 						 					maxlength: 64
+					 },	 				 	 					 										'headImgId' : {
+	 						 					required:true,
+	 						 					maxlength: 32
+					 },	 				 	 					 										'headImgUrl' : {
+	 						 					required:true,
+	 						 					maxlength: 64
+					 },	 				 	 					 										'picImgId' : {
+	 						 					required:true,
+	 						 					maxlength: 32
+					 },	 				 	 					 										'picImgUrl' : {
+	 						 					maxlength: 64
+					 },	 				 	 					 										'summary' : {
+	 						 					maxlength: 4000
+					 },	 				 	 					 										'caseInfo' : {
+	 						 					maxlength: 8000
+					 },	 				 	 					 										'bigareaId' : {
+	 						 					required:true,
+	 						 					maxlength: 32
+					 },	 				 	 					 										'bigareaName' : {
+	 						 					required:true,
+	 						 					maxlength: 64
+					 },	 				 	 					 										'officeId' : {
+	 						 					required:true,
+	 						 					maxlength: 32
+					 },	 				 	 					 										'officeName' : {
+	 						 					required:true,
+	 						 					maxlength: 64
+					 },	 				 	 					 										'stage' : {
+	 						 					maxlength: 11
+					 },	 				 	 					 										'isUpgrade' : {
+	 						 					required:true,
+	 						 					maxlength: 11
+					 },	 				 	 					 										'stageIntro' : {
+	 						 					maxlength: 256
+					 },	 				 	 					 										'stage1VoteNum' : {
+	 						 					required:true,
+	 						 					maxlength: 20
+					 },	 				 	 					 										'stage2VoteNum' : {
+	 						 					required:true,
+	 						 					maxlength: 20
+					 },	 				 	 					 										'stage3VoteNum' : {
+	 						 					required:true,
+	 						 					maxlength: 20
+					 },	 				 	 					 										'creator' : {
+	 						 					required:true,
+	 						 					maxlength: 64
+					 },	 				 	 					 										'createTime' : {
+	 						 					required:true,
+	 						 					maxlength: 0
+					 },	 				 	 					 										'updator' : {
+	 						 					maxlength: 64
+					 },	 				 	 					 										'updateTime' : {
+	 						 					maxlength: 0
+					 },	 				 	 					 										'remark' : {
+	 						 					required:true,
+	 						 					maxlength: 512
+					 },	 				 	 					 										'videoUrl' : {
+	 						 					maxlength: 256
+					 },	 				 	 					 										'status' : {
+	 						 					required:true,
+	 						 					maxlength: 11
+					 }	 				 	 									},
+					submitHandler: function (form) {
+						$.ajaxSubmit(update_url,$(form).serializeJson(),function(data){
+								if(data.success == true){
+								    Q_Alert('新增成功',function(){
+										location.href = ctxPaths+'/pages/playerInfo_list.shtml';
+									});
+								}else{
+									Q_Alert_Fail(data.message); 
+								}
+						},$('#submitButton'));
+						return false;		
+					}
+	    });	
+		$('#resetBtn').on('click',function(){
+			resetForm($('#add-form'),add_validator);
+		});
+		if (pkId){
+			$('#updId').val(pkId);
+			$.ajaxSubmit(view_url, {'playerId':pkId}, function(rtn) {
+				if (rtn.success) {
+					$('#add-form').json2Form2(rtn.data);
+				} else {
+					Q_Alert_Fail(data.message); 
+				}
+			});
+		}
+	})
+	
+	
+	</script>
+</body>
+</html>

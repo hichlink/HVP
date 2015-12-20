@@ -1,0 +1,282 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+	<meta charset="utf-8" />
+	<!--#include virtual="/root.jsp"  -->
+	<title>playerInfo</title>
+	<!--#include virtual="/include.html"  -->
+</head>
+<body>
+	<div class="page-content">
+		<!-- 新增活动按钮 -->
+		<div class="table-responsive">
+			<div class="page-header">
+			<h1>
+				playerInfo
+				<small> <i class="ace-icon fa fa-angle-double-right"></i>
+					详情
+				</small>
+			</h1>
+		</div>
+		<form class="form-horizontal" role="form"  id="add-form" onsubmit="return false;">
+		<div class="row">
+			
+			<div class="col-xs-6">
+				
+						 										 										<div class="form-group">
+							<label class="col-sm-5 control-label no-padding-right text-right" for="actId">
+							活动ID:
+							</label>
+							<div class="col-sm-7">
+								<p name="actId" class="form-control-static"></p>
+							</div>
+						</div>
+												 										 										<div class="form-group">
+							<label class="col-sm-5 control-label no-padding-right text-right" for="playerName">
+							选手姓名:
+							</label>
+							<div class="col-sm-7">
+								<p name="playerName" class="form-control-static"></p>
+							</div>
+						</div>
+												 										 										<div class="form-group">
+							<label class="col-sm-5 control-label no-padding-right text-right" for="headImgUrl">
+							选手头像URL:
+							</label>
+							<div class="col-sm-7">
+								<p name="headImgUrl" class="form-control-static"></p>
+							</div>
+						</div>
+												 										 										<div class="form-group">
+							<label class="col-sm-5 control-label no-padding-right text-right" for="picImgUrl">
+							选手形象照片url:
+							</label>
+							<div class="col-sm-7">
+								<p name="picImgUrl" class="form-control-static"></p>
+							</div>
+						</div>
+												 										 										<div class="form-group">
+							<label class="col-sm-5 control-label no-padding-right text-right" for="caseInfo">
+							话剧案例:
+							</label>
+							<div class="col-sm-7">
+								<p name="caseInfo" class="form-control-static"></p>
+							</div>
+						</div>
+												 										 										<div class="form-group">
+							<label class="col-sm-5 control-label no-padding-right text-right" for="bigareaName">
+							所在大区:
+							</label>
+							<div class="col-sm-7">
+								<p name="bigareaName" class="form-control-static"></p>
+							</div>
+						</div>
+												 										 										<div class="form-group">
+							<label class="col-sm-5 control-label no-padding-right text-right" for="officeName">
+							所在办事处:
+							</label>
+							<div class="col-sm-7">
+								<p name="officeName" class="form-control-static"></p>
+							</div>
+						</div>
+												 										 										<div class="form-group">
+							<label class="col-sm-5 control-label no-padding-right text-right" for="isUpgrade">
+							是否晋级 0:否 1:是:
+							</label>
+							<div class="col-sm-7">
+								<p name="isUpgrade" class="form-control-static"></p>
+							</div>
+						</div>
+												 										 										<div class="form-group">
+							<label class="col-sm-5 control-label no-padding-right text-right" for="stage1VoteNum">
+							一阶段总票数:
+							</label>
+							<div class="col-sm-7">
+								<p name="stage1VoteNum" class="form-control-static"></p>
+							</div>
+						</div>
+												 										 										<div class="form-group">
+							<label class="col-sm-5 control-label no-padding-right text-right" for="stage3VoteNum">
+							三阶段总票数:
+							</label>
+							<div class="col-sm-7">
+								<p name="stage3VoteNum" class="form-control-static"></p>
+							</div>
+						</div>
+												 										 										<div class="form-group">
+							<label class="col-sm-5 control-label no-padding-right text-right" for="createTime">
+							创建时间:
+							</label>
+							<div class="col-sm-7">
+								<p name="createTime" class="form-control-static"></p>
+							</div>
+						</div>
+												 										 										<div class="form-group">
+							<label class="col-sm-5 control-label no-padding-right text-right" for="updateTime">
+							修改时间:
+							</label>
+							<div class="col-sm-7">
+								<p name="updateTime" class="form-control-static"></p>
+							</div>
+						</div>
+												 										 										<div class="form-group">
+							<label class="col-sm-5 control-label no-padding-right text-right" for="videoUrl">
+							视频地址:
+							</label>
+							<div class="col-sm-7">
+								<p name="videoUrl" class="form-control-static"></p>
+							</div>
+						</div>
+												 														
+					
+				
+			</div>
+			<div class="col-xs-6">
+				
+																																							<div class="form-group">
+							<label class="col-sm-5 control-label no-padding-right text-right" for="playerCode">
+							选手编号:
+							</label>
+							<div class="col-sm-7">
+								<p name="playerCode" class="form-control-static"></p>
+							</div>
+						</div>
+																																		<div class="form-group">
+							<label class="col-sm-5 control-label no-padding-right text-right" for="headImgId">
+							选手头像ID:
+							</label>
+							<div class="col-sm-7">
+								<p name="headImgId" class="form-control-static"></p>
+							</div>
+						</div>
+																																		<div class="form-group">
+							<label class="col-sm-5 control-label no-padding-right text-right" for="picImgId">
+							选手形象照片ID:
+							</label>
+							<div class="col-sm-7">
+								<p name="picImgId" class="form-control-static"></p>
+							</div>
+						</div>
+																																		<div class="form-group">
+							<label class="col-sm-5 control-label no-padding-right text-right" for="summary">
+							选手简介:
+							</label>
+							<div class="col-sm-7">
+								<p name="summary" class="form-control-static"></p>
+							</div>
+						</div>
+																																		<div class="form-group">
+							<label class="col-sm-5 control-label no-padding-right text-right" for="bigareaId">
+							所在大区ID:
+							</label>
+							<div class="col-sm-7">
+								<p name="bigareaId" class="form-control-static"></p>
+							</div>
+						</div>
+																																		<div class="form-group">
+							<label class="col-sm-5 control-label no-padding-right text-right" for="officeId">
+							所在办事处ID:
+							</label>
+							<div class="col-sm-7">
+								<p name="officeId" class="form-control-static"></p>
+							</div>
+						</div>
+																																		<div class="form-group">
+							<label class="col-sm-5 control-label no-padding-right text-right" for="stage">
+							当前所处阶段:
+							</label>
+							<div class="col-sm-7">
+								<p name="stage" class="form-control-static"></p>
+							</div>
+						</div>
+																																		<div class="form-group">
+							<label class="col-sm-5 control-label no-padding-right text-right" for="stageIntro">
+							晋级之路:
+							</label>
+							<div class="col-sm-7">
+								<p name="stageIntro" class="form-control-static"></p>
+							</div>
+						</div>
+																																		<div class="form-group">
+							<label class="col-sm-5 control-label no-padding-right text-right" for="stage2VoteNum">
+							二阶段总票数:
+							</label>
+							<div class="col-sm-7">
+								<p name="stage2VoteNum" class="form-control-static"></p>
+							</div>
+						</div>
+																																		<div class="form-group">
+							<label class="col-sm-5 control-label no-padding-right text-right" for="creator">
+							创建者:
+							</label>
+							<div class="col-sm-7">
+								<p name="creator" class="form-control-static"></p>
+							</div>
+						</div>
+																																		<div class="form-group">
+							<label class="col-sm-5 control-label no-padding-right text-right" for="updator">
+							修改者:
+							</label>
+							<div class="col-sm-7">
+								<p name="updator" class="form-control-static"></p>
+							</div>
+						</div>
+																																		<div class="form-group">
+							<label class="col-sm-5 control-label no-padding-right text-right" for="remark">
+							备注:
+							</label>
+							<div class="col-sm-7">
+								<p name="remark" class="form-control-static"></p>
+							</div>
+						</div>
+																																		<div class="form-group">
+							<label class="col-sm-5 control-label no-padding-right text-right" for="status">
+							状态 0:保存 1:有效:
+							</label>
+							<div class="col-sm-7">
+								<p name="status" class="form-control-static"></p>
+							</div>
+						</div>
+																
+					
+				
+			</div>
+				
+			
+		</div>
+		<div class="clearfix form-actions">
+						<div class="col-md-offset-3 col-md-9">
+							<button class="btn" type="button" onclick="javascript:history.back();">
+								<i class="ace-icon fa fa-undo bigger-110"></i>
+								返 回
+							</button>
+						</div>
+			  </div>
+			</form>
+		</div>
+	</div>
+
+
+	<!--#include virtual="/include_footer.html"  -->
+
+	<script type="text/javascript">
+	var view_url 	 = ctxPaths+ '/playerInfo/get.ajax';
+	var pkId = getP('playerId');
+	$(function(){
+		if (pkId){
+			$.ajaxSubmit(view_url, {'playerId':pkId}, function(rtn) {
+				if (rtn.success) {
+					$.dataInput($('.form-control-static'),rtn.data);
+				} else {
+					Q_Alert_Fail(data.message); 
+				}
+			});
+		}else{
+			Q_Alert_Fail('参数错误'); 
+		}
+	})
+	
+	
+	</script>
+</body>
+</html>

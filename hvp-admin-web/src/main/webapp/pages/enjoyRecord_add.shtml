@@ -1,0 +1,173 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+	<meta charset="utf-8" />
+	<!--#include virtual="/root.jsp"  -->
+	<title>enjoyRecord</title>
+	<!--#include virtual="/include.html"  -->
+</head>
+<body>
+	<div class="page-content">
+		<!-- 新增活动按钮 -->
+		<div class="table-responsive">
+			<div class="page-header">
+			<h1>
+				enjoyRecord
+				<small> <i class="ace-icon fa fa-angle-double-right"></i>
+					新增/修改
+				</small>
+			</h1>
+		</div>
+		<form class="form-horizontal" role="form"  id="add-form" onsubmit="return false;">
+		<input type="hidden" name="recordId"  id="recordId"/>
+		<input type="hidden" name="updId"  id="updId"/>
+		<div class="row">
+			
+			<div class="col-xs-6">
+				
+						 										 										<div class="form-group">
+							<label class="col-sm-3 control-label no-padding-right text-right" for="actId">
+																<span class="red">*</span>
+															活动ID:
+							</label>
+							<div class="col-sm-6">
+								<input type="text" name="actId" id="actId" class="form-control input-sm" />
+							</div>
+						</div>
+												 										 										<div class="form-group">
+							<label class="col-sm-3 control-label no-padding-right text-right" for="sourceId">
+																<span class="red">*</span>
+															来源ID:
+							</label>
+							<div class="col-sm-6">
+								<input type="text" name="sourceId" id="sourceId" class="form-control input-sm" />
+							</div>
+						</div>
+												 										 										<div class="form-group">
+							<label class="col-sm-3 control-label no-padding-right text-right" for="createTime">
+																<span class="red">*</span>
+															创建时间:
+							</label>
+							<div class="col-sm-6">
+								<input type="text" name="createTime" id="createTime" class="form-control input-sm" />
+							</div>
+						</div>
+												 														
+					
+				
+			</div>
+			<div class="col-xs-6">
+				
+																																							<div class="form-group">
+							<label class="col-sm-3 control-label no-padding-right text-right" for="recordType">
+															类型 1:选手 2:资读:
+							</label>
+							<div class="col-sm-6">
+								<input type="text" name="recordType" id="recordType" class="form-control input-sm" />
+							</div>
+						</div>
+																																		<div class="form-group">
+							<label class="col-sm-3 control-label no-padding-right text-right" for="ip">
+															评论者IP:
+							</label>
+							<div class="col-sm-6">
+								<input type="text" name="ip" id="ip" class="form-control input-sm" />
+							</div>
+						</div>
+																																		<div class="form-group">
+							<label class="col-sm-3 control-label no-padding-right text-right" for="openId">
+																<span class="red">*</span>
+															微信OpenId:
+							</label>
+							<div class="col-sm-6">
+								<input type="text" name="openId" id="openId" class="form-control input-sm" />
+							</div>
+						</div>
+																
+					
+				
+			</div>
+				
+			
+		</div>
+		<div class="clearfix form-actions">
+						<div class="center">
+							<button class="btn btn-info" type="submit" id="submitButton">
+								<i class="ace-icon fa fa-check bigger-110"></i>
+								保 存
+							</button>
+							&nbsp; &nbsp; &nbsp;
+							<button class="btn" type="button" id="resetBtn">
+								<i class="ace-icon fa fa-undo bigger-110"></i>
+								重 置
+							</button>
+							&nbsp; &nbsp; &nbsp;
+							<button class="btn" type="button" onclick="javascript:history.back();">
+								<i class="ace-icon fa fa-arrow-left"></i>
+								返 回
+							</button>
+						</div>
+			  </div>
+			</form>
+		</div>
+	</div>
+
+
+	<!--#include virtual="/include_footer.html"  -->
+
+	<script type="text/javascript">
+	var update_url   = ctxPaths+ '/enjoyRecord/add.ajax';
+	var view_url 	 = ctxPaths+ '/enjoyRecord/get.ajax';
+	var pkId = getP('recordId');
+	$(function(){
+		var add_validator = $('#add-form').validate({
+					rules: {
+							 						 					 										'actId' : {
+	 						 					required:true,
+	 						 					maxlength: 20
+					 },	 				 	 					 										'recordType' : {
+	 						 					maxlength: 11
+					 },	 				 	 					 										'sourceId' : {
+	 						 					required:true,
+	 						 					maxlength: 64
+					 },	 				 	 					 										'ip' : {
+	 						 					maxlength: 64
+					 },	 				 	 					 										'createTime' : {
+	 						 					required:true,
+	 						 					maxlength: 0
+					 },	 				 	 					 										'openId' : {
+	 						 					required:true,
+	 						 					maxlength: 64
+					 }	 				 	 									},
+					submitHandler: function (form) {
+						$.ajaxSubmit(update_url,$(form).serializeJson(),function(data){
+								if(data.success == true){
+								    Q_Alert('新增成功',function(){
+										location.href = ctxPaths+'/pages/enjoyRecord_list.shtml';
+									});
+								}else{
+									Q_Alert_Fail(data.message); 
+								}
+						},$('#submitButton'));
+						return false;		
+					}
+	    });	
+		$('#resetBtn').on('click',function(){
+			resetForm($('#add-form'),add_validator);
+		});
+		if (pkId){
+			$('#updId').val(pkId);
+			$.ajaxSubmit(view_url, {'recordId':pkId}, function(rtn) {
+				if (rtn.success) {
+					$('#add-form').json2Form2(rtn.data);
+				} else {
+					Q_Alert_Fail(data.message); 
+				}
+			});
+		}
+	})
+	
+	
+	</script>
+</body>
+</html>

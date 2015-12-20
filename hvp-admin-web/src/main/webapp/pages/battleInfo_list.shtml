@@ -1,0 +1,234 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+	<meta charset="utf-8" />
+	<!--#include virtual="/root.jsp"  -->
+	<title>battleInfo</title>
+	<!--#include virtual="/include.html"  -->
+</head>
+<body>
+	<div class="page-content">
+		<!-- 新增活动按钮 -->
+		<div class="table-responsive">
+			<!-- PAGE CONTENT BEGINS -->
+			<form id="queryForm" onsubmit="return false;">
+				<div class="widget-box">
+                        <div class="widget-header widget-header-flat search_tj_bar_tit">
+                            <h5 class="widget-title">查询条件</h5>
+                            <div class="widget-toolbar">
+                                <a href="javascript:;" data-action="collapse">
+                                    <i class="1 ace-icon fa fa-chevron-up bigger-125"></i>
+                                </a>
+                            </div>
+                        </div>
+                        <div class="row search_tj_bar">
+							<div class="col-xs-12">
+								<div class="center">
+                                    <div class="row">
+																																								                                        <div class="col-xs-4">
+                                            <span>
+                                            	<label class="col-xs-12 col-sm-3">分类ID：</label>
+												<div class="input-group col-xs-12 col-sm-9">
+                                                    <input name="params['cateId']" class="form-control search-query">
+                                                </div>
+                                            </span> 
+                                        </div>
+																														                                        <div class="col-xs-4">
+                                            <span>
+                                            	<label class="col-xs-12 col-sm-3">标题：</label>
+												<div class="input-group col-xs-12 col-sm-9">
+                                                    <input name="params['title']" class="form-control search-query">
+                                                </div>
+                                            </span> 
+                                        </div>
+																														                                        <div class="col-xs-4">
+                                            <span>
+                                            	<label class="col-xs-12 col-sm-3">图片ID：</label>
+												<div class="input-group col-xs-12 col-sm-9">
+                                                    <input name="params['picId']" class="form-control search-query">
+                                                </div>
+                                            </span> 
+                                        </div>
+																																																																																																																																																																																																																																																																																																																				</div>
+							</div>
+						</div>   
+                        <div class="bs_btn">
+						<button id="addBtn" class="btn btn-sm btn-success"><i class="ace-icon fa fa-hand-o-right bigger-120"></i>新增</button>
+						<button class="btn btn-sm" type="button" id="resetBtn">
+							<i class="ace-icon fa fa-undo bigger-110"></i>
+							重 置
+						</button>
+						<button id="seachBtn" type="button" class="btn btn-purple btn-sm">查找<i class="ace-icon fa fa-search icon-on-right bigger-110"></i></button>
+						
+                        </div>	  
+                	</div>	
+				</div>
+			</form>
+			<div class="space-6"></div>
+			<table id="grid-table"></table>
+			<div id="grid-pager"></div>
+			<!-- PAGE CONTENT ENDS -->
+		</div>
+	</div>
+	<!--#include virtual="/include_footer.html"  -->
+
+	<script type="text/javascript">
+	var list_url  = ctxPaths+ '/battleInfo/query.ajax';
+	var delete_url   = ctxPaths+ '/battleInfo/delete.ajax';
+	var grid_selector = "#grid-table";
+	var pager_selector = "#grid-pager";
+	$(function($) {
+				jqGrid_init($(grid_selector),pager_selector,{
+					url: list_url,
+					sortable : true,
+																									sortname : 'cateId',
+																																																																																																																																																																															sortorder:'desc',
+					colNames:[
+										'资讯ID',
+										'分类ID',
+										'标题',
+										'图片ID',
+										'图片URL',
+										'内容',
+										'视频地址',
+										'发布时间',
+										'开始时间',
+										'结束时间',
+										'是否有效 0:无效 1:有效',
+										'阅读数',
+										'点赞数',
+										'评论数',
+										'创建者',
+										'创建时间',
+										'修改者',
+										'修改时间',
+										''
+					],
+					colModel:[
+												   					{name:'infoId',index:'infoId', hidden:true},
+						   					   						   												{name:'cateId',index:'cateId', sortable:true,sortname : 'cate_id',width:100,formatter:formatName},
+													   					   						   												{name:'title',index:'title', sortable:true,sortname : 'title',width:100},
+													   					   						   												{name:'picId',index:'picId', sortable:true,sortname : 'pic_id',width:100},
+													   					   						   												{name:'picUrl',index:'picUrl', sortable:true,sortname : 'pic_url',width:100},
+													   					   						   												{name:'content',index:'content', sortable:true,sortname : 'content',width:100},
+													   					   						   												{name:'videoUrl',index:'videoUrl', sortable:true,sortname : 'video_url',width:100},
+													   					   						   												{name:'publishTime',index:'publishTime', sortable:true,sortname : 'publish_time',width:100},
+													   					   						   												{name:'startTime',index:'startTime', sortable:true,sortname : 'start_time',width:100},
+													   					   						   												{name:'endTime',index:'endTime', sortable:true,sortname : 'end_time',width:100},
+													   					   						   												{name:'isValid',index:'isValid', sortable:true,sortname : 'is_valid',width:100},
+													   					   						   												{name:'viewNum',index:'viewNum', sortable:true,sortname : 'view_num',width:100},
+													   					   						   												{name:'enjoyNum',index:'enjoyNum', sortable:true,sortname : 'enjoy_num',width:100},
+													   					   						   												{name:'commentNum',index:'commentNum', sortable:true,sortname : 'comment_num',width:100},
+													   					   						   												{name:'creator',index:'creator', sortable:true,sortname : 'creator',width:100},
+													   					   						   												{name:'createTime',index:'createTime', sortable:true,sortname : 'create_time',width:100},
+													   					   						   												{name:'updator',index:'updator', sortable:true,sortname : 'updator',width:100},
+													   					   						   												{name:'updateTime',index:'updateTime', sortable:true,sortname : 'update_time',width:100},
+													   					   					{name:'myac',index:'', width:120, fixed:true, sortable:false, resize:false,formatter:actionButtons}					
+					]
+				});
+				function formatName(cellvalue, options, rowObject){
+					return '<a href="javascript:;" onclick="viewEvent(\''+rowObject['infoId']+'\')">' + cellvalue + '</a>';
+				}
+				function actionButtons(cellvalue, options, rowObject){
+					return '<div >' + 
+								'<button onclick=\"editEvent('+rowObject['infoId']+')\" class=\"btn btn-xs btn-info\" data-rel=\"tooltip\" title=\"编辑\" >' +
+									'<i class=\"ace-icon fa fa-pencil bigger-120\"></i>' +
+								'</button>' + 
+								'<button onclick=\"deleteEvent('+rowObject['infoId']+')\" class=\"btn btn-xs btn-danger\" data-rel=\"tooltip\" title=\"删除\" >' +
+									'<i class=\"ace-icon fa fa-trash-o bigger-120\"></i>' +
+								'</button>'  + 
+							'</div>';
+				}
+				
+			});
+
+			function editEvent(id){
+				window.location.href = ctxPaths+'/pages/battleInfo_add.shtml?infoId=' + id;
+			};
+			function viewEvent(id){
+				window.location.href = ctxPaths+'/pages/battleInfo_view.shtml?infoId=' + id;
+			};
+			function deleteEvent(id){
+				Q_Confirm("是否要删除？",function(result) {
+					if(result){
+						$.ajaxSubmit(delete_url,{'infoId' : id}, function(data){
+							$(grid_selector).jqGrid('setGridParam',{page:1}).trigger("reloadGrid");
+						});
+					}
+				});
+			};
+			
+			add_validator = $('#add-form').validate({
+					rules: {
+							 						 					 										'cateId' : {
+	 						 					maxlength: 20
+					 },	 				 	 					 										'title' : {
+	 						 					required:true,
+	 						 					maxlength: 256
+					 },	 				 	 					 										'picId' : {
+	 						 					maxlength: 32
+					 },	 				 	 					 										'picUrl' : {
+	 						 					maxlength: 128
+					 },	 				 	 					 										'content' : {
+	 						 					required:true,
+	 						 					maxlength: 0
+					 },	 				 	 					 										'videoUrl' : {
+	 						 					maxlength: 256
+					 },	 				 	 					 										'publishTime' : {
+	 						 					required:true,
+	 						 					maxlength: 0
+					 },	 				 	 					 										'startTime' : {
+	 						 					required:true,
+	 						 					maxlength: 0
+					 },	 				 	 					 										'endTime' : {
+	 						 					required:true,
+	 						 					maxlength: 0
+					 },	 				 	 					 										'isValid' : {
+	 						 					required:true,
+	 						 					maxlength: 11
+					 },	 				 	 					 										'viewNum' : {
+	 						 					required:true,
+	 						 					maxlength: 20
+					 },	 				 	 					 										'enjoyNum' : {
+	 						 					required:true,
+	 						 					maxlength: 20
+					 },	 				 	 					 										'commentNum' : {
+	 						 					required:true,
+	 						 					maxlength: 20
+					 },	 				 	 					 										'creator' : {
+	 						 					required:true,
+	 						 					maxlength: 64
+					 },	 				 	 					 										'createTime' : {
+	 						 					required:true,
+	 						 					maxlength: 0
+					 },	 				 	 					 										'updator' : {
+	 						 					maxlength: 64
+					 },	 				 	 					 										'updateTime' : {
+	 						 					maxlength: 0
+					 }	 				 	 									},
+					submitHandler: function (form) {
+						$.ajaxSubmit(update_url,$(form).serializeJson(),function(data){
+								if(data.success == true){
+								    $('#add-form-modal').modal2('hide');
+									$(grid_selector).trigger("reloadGrid");
+								}else{
+									Q_Alert_Fail(data.message); 
+								}
+						});
+						return false;		
+					}
+			});
+			
+			$('#addBtn').on('click', function(){
+				window.location.href = ctxPaths+'/pages/battleInfo_add.shtml';
+			});
+			
+			$('#seachBtn').on('click', function(){
+				$(grid_selector).jqGrid('setGridParam',{postData: $('#queryForm').serializeJson(),page:1}).trigger("reloadGrid");
+			});
+			$('#resetBtn').on('click',function(){
+				resetForm($('#queryForm'));
+			});
+		</script>
+</body>
+</html>

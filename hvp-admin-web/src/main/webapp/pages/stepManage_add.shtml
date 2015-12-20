@@ -1,0 +1,227 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+	<meta charset="utf-8" />
+	<!--#include virtual="/root.jsp"  -->
+	<title>stepManage</title>
+	<!--#include virtual="/include.html"  -->
+</head>
+<body>
+	<div class="page-content">
+		<!-- 新增活动按钮 -->
+		<div class="table-responsive">
+			<div class="page-header">
+			<h1>
+				stepManage
+				<small> <i class="ace-icon fa fa-angle-double-right"></i>
+					新增/修改
+				</small>
+			</h1>
+		</div>
+		<form class="form-horizontal" role="form"  id="add-form" onsubmit="return false;">
+		<input type="hidden" name="stepId"  id="stepId"/>
+		<input type="hidden" name="updId"  id="updId"/>
+		<div class="row">
+			
+			<div class="col-xs-6">
+				
+						 										 										<div class="form-group">
+							<label class="col-sm-3 control-label no-padding-right text-right" for="actId">
+																<span class="red">*</span>
+															活动ID:
+							</label>
+							<div class="col-sm-6">
+								<input type="text" name="actId" id="actId" class="form-control input-sm" />
+							</div>
+						</div>
+												 										 										<div class="form-group">
+							<label class="col-sm-3 control-label no-padding-right text-right" for="stepName">
+																<span class="red">*</span>
+															阶段名称:
+							</label>
+							<div class="col-sm-6">
+								<input type="text" name="stepName" id="stepName" class="form-control input-sm" />
+							</div>
+						</div>
+												 										 										<div class="form-group">
+							<label class="col-sm-3 control-label no-padding-right text-right" for="stepSign">
+																<span class="red">*</span>
+															阶段标识 0:非当前阶段 1:当前阶段:
+							</label>
+							<div class="col-sm-6">
+								<input type="text" name="stepSign" id="stepSign" class="form-control input-sm" />
+							</div>
+						</div>
+												 										 										<div class="form-group">
+							<label class="col-sm-3 control-label no-padding-right text-right" for="endTime">
+															结束时间:
+							</label>
+							<div class="col-sm-6">
+								<input type="text" name="endTime" id="endTime" class="form-control input-sm" />
+							</div>
+						</div>
+												 										 										<div class="form-group">
+							<label class="col-sm-3 control-label no-padding-right text-right" for="createTime">
+																<span class="red">*</span>
+															创建时间:
+							</label>
+							<div class="col-sm-6">
+								<input type="text" name="createTime" id="createTime" class="form-control input-sm" />
+							</div>
+						</div>
+												 										 										<div class="form-group">
+							<label class="col-sm-3 control-label no-padding-right text-right" for="updateTime">
+															修改时间:
+							</label>
+							<div class="col-sm-6">
+								<input type="text" name="updateTime" id="updateTime" class="form-control input-sm" />
+							</div>
+						</div>
+																
+					
+				
+			</div>
+			<div class="col-xs-6">
+				
+																																							<div class="form-group">
+							<label class="col-sm-3 control-label no-padding-right text-right" for="stepNo">
+																<span class="red">*</span>
+															阶段序号:
+							</label>
+							<div class="col-sm-6">
+								<input type="text" name="stepNo" id="stepNo" class="form-control input-sm" />
+							</div>
+						</div>
+																																		<div class="form-group">
+							<label class="col-sm-3 control-label no-padding-right text-right" for="stepDesc">
+															描述信息:
+							</label>
+							<div class="col-sm-6">
+								<input type="text" name="stepDesc" id="stepDesc" class="form-control input-sm" />
+							</div>
+						</div>
+																																		<div class="form-group">
+							<label class="col-sm-3 control-label no-padding-right text-right" for="startTime">
+															开始时间:
+							</label>
+							<div class="col-sm-6">
+								<input type="text" name="startTime" id="startTime" class="form-control input-sm" />
+							</div>
+						</div>
+																																		<div class="form-group">
+							<label class="col-sm-3 control-label no-padding-right text-right" for="creator">
+																<span class="red">*</span>
+															创建者:
+							</label>
+							<div class="col-sm-6">
+								<input type="text" name="creator" id="creator" class="form-control input-sm" />
+							</div>
+						</div>
+																																		<div class="form-group">
+							<label class="col-sm-3 control-label no-padding-right text-right" for="updator">
+															修改者:
+							</label>
+							<div class="col-sm-6">
+								<input type="text" name="updator" id="updator" class="form-control input-sm" />
+							</div>
+						</div>
+																											
+					
+				
+			</div>
+				
+			
+		</div>
+		<div class="clearfix form-actions">
+						<div class="center">
+							<button class="btn btn-info" type="submit" id="submitButton">
+								<i class="ace-icon fa fa-check bigger-110"></i>
+								保 存
+							</button>
+							&nbsp; &nbsp; &nbsp;
+							<button class="btn" type="button" id="resetBtn">
+								<i class="ace-icon fa fa-undo bigger-110"></i>
+								重 置
+							</button>
+							&nbsp; &nbsp; &nbsp;
+							<button class="btn" type="button" onclick="javascript:history.back();">
+								<i class="ace-icon fa fa-arrow-left"></i>
+								返 回
+							</button>
+						</div>
+			  </div>
+			</form>
+		</div>
+	</div>
+
+
+	<!--#include virtual="/include_footer.html"  -->
+
+	<script type="text/javascript">
+	var update_url   = ctxPaths+ '/stepManage/add.ajax';
+	var view_url 	 = ctxPaths+ '/stepManage/get.ajax';
+	var pkId = getP('stepId');
+	$(function(){
+		var add_validator = $('#add-form').validate({
+					rules: {
+							 						 					 										'actId' : {
+	 						 					required:true,
+	 						 					maxlength: 20
+					 },	 				 	 					 										'stepNo' : {
+	 						 					required:true,
+	 						 					maxlength: 11
+					 },	 				 	 					 										'stepName' : {
+	 						 					required:true,
+	 						 					maxlength: 32
+					 },	 				 	 					 										'stepDesc' : {
+	 						 					maxlength: 512
+					 },	 				 	 					 										'stepSign' : {
+	 						 					required:true,
+	 						 					maxlength: 11
+					 },	 				 	 					 										'startTime' : {
+	 						 					maxlength: 0
+					 },	 				 	 					 										'endTime' : {
+	 						 					maxlength: 0
+					 },	 				 	 					 										'creator' : {
+	 						 					required:true,
+	 						 					maxlength: 64
+					 },	 				 	 					 										'createTime' : {
+	 						 					required:true,
+	 						 					maxlength: 0
+					 },	 				 	 					 										'updator' : {
+	 						 					maxlength: 64
+					 },	 				 	 					 										'updateTime' : {
+	 						 					maxlength: 0
+					 }	 				 	 									},
+					submitHandler: function (form) {
+						$.ajaxSubmit(update_url,$(form).serializeJson(),function(data){
+								if(data.success == true){
+								    Q_Alert('新增成功',function(){
+										location.href = ctxPaths+'/pages/stepManage_list.shtml';
+									});
+								}else{
+									Q_Alert_Fail(data.message); 
+								}
+						},$('#submitButton'));
+						return false;		
+					}
+	    });	
+		$('#resetBtn').on('click',function(){
+			resetForm($('#add-form'),add_validator);
+		});
+		if (pkId){
+			$('#updId').val(pkId);
+			$.ajaxSubmit(view_url, {'stepId':pkId}, function(rtn) {
+				if (rtn.success) {
+					$('#add-form').json2Form2(rtn.data);
+				} else {
+					Q_Alert_Fail(data.message); 
+				}
+			});
+		}
+	})
+	
+	
+	</script>
+</body>
+</html>
