@@ -1,0 +1,130 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.hichlink.hvp.common.dao.ViewRecordMapper" >
+  <resultMap id="BaseResultMap" type="com.hichlink.hvp.common.entity.ViewRecord" >
+    <id column="record_id" property="recordId" jdbcType="BIGINT" />
+    <result column="act_id" property="actId" jdbcType="VARCHAR" />
+    <result column="type" property="type" jdbcType="INTEGER" />
+    <result column="source_id" property="sourceId" jdbcType="VARCHAR" />
+    <result column="open_id" property="openId" jdbcType="VARCHAR" />
+    <result column="ip" property="ip" jdbcType="VARCHAR" />
+    <result column="create_time" property="createTime" jdbcType="TIMESTAMP" />
+  </resultMap>
+  <sql id="Example_Where_Clause" >
+    <where >
+      <!--例子:<if test="params['name'] != null and  params['name'] != ''">and name=#{params.name}</if>-->
+    </where>
+  </sql>
+  <sql id="Base_Column_List" >
+    record_id, act_id, type, source_id, open_id, ip, create_time
+  </sql>
+  <select id="pageQuery" resultMap="BaseResultMap" parameterType="com.aspire.webbas.core.pagination.mybatis.pager.Page" >
+    select
+    <include refid="Base_Column_List" />
+    from view_record
+    <if test="params != null" >
+      <include refid="Example_Where_Clause" />
+    </if>
+  </select>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Long" >
+    select 
+    <include refid="Base_Column_List" />
+    from view_record
+    where record_id = #{recordId,jdbcType=BIGINT}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Long" >
+    delete from view_record
+    where record_id = #{recordId,jdbcType=BIGINT}
+  </delete>
+  <insert id="insert" parameterType="com.hichlink.hvp.common.entity.ViewRecord" >
+    insert into view_record (record_id, act_id, type, 
+      source_id, open_id, ip, 
+      create_time)
+    values (#{recordId,jdbcType=BIGINT}, #{actId,jdbcType=VARCHAR}, #{type,jdbcType=INTEGER}, 
+      #{sourceId,jdbcType=VARCHAR}, #{openId,jdbcType=VARCHAR}, #{ip,jdbcType=VARCHAR}, 
+      #{createTime,jdbcType=TIMESTAMP})
+  </insert>
+  <insert id="insertSelective" parameterType="com.hichlink.hvp.common.entity.ViewRecord" >
+    insert into view_record
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="recordId != null" >
+        record_id,
+      </if>
+      <if test="actId != null" >
+        act_id,
+      </if>
+      <if test="type != null" >
+        type,
+      </if>
+      <if test="sourceId != null" >
+        source_id,
+      </if>
+      <if test="openId != null" >
+        open_id,
+      </if>
+      <if test="ip != null" >
+        ip,
+      </if>
+      <if test="createTime != null" >
+        create_time,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="recordId != null" >
+        #{recordId,jdbcType=BIGINT},
+      </if>
+      <if test="actId != null" >
+        #{actId,jdbcType=VARCHAR},
+      </if>
+      <if test="type != null" >
+        #{type,jdbcType=INTEGER},
+      </if>
+      <if test="sourceId != null" >
+        #{sourceId,jdbcType=VARCHAR},
+      </if>
+      <if test="openId != null" >
+        #{openId,jdbcType=VARCHAR},
+      </if>
+      <if test="ip != null" >
+        #{ip,jdbcType=VARCHAR},
+      </if>
+      <if test="createTime != null" >
+        #{createTime,jdbcType=TIMESTAMP},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.hichlink.hvp.common.entity.ViewRecord" >
+    update view_record
+    <set >
+      <if test="actId != null" >
+        act_id = #{actId,jdbcType=VARCHAR},
+      </if>
+      <if test="type != null" >
+        type = #{type,jdbcType=INTEGER},
+      </if>
+      <if test="sourceId != null" >
+        source_id = #{sourceId,jdbcType=VARCHAR},
+      </if>
+      <if test="openId != null" >
+        open_id = #{openId,jdbcType=VARCHAR},
+      </if>
+      <if test="ip != null" >
+        ip = #{ip,jdbcType=VARCHAR},
+      </if>
+      <if test="createTime != null" >
+        create_time = #{createTime,jdbcType=TIMESTAMP},
+      </if>
+    </set>
+    where record_id = #{recordId,jdbcType=BIGINT}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.hichlink.hvp.common.entity.ViewRecord" >
+    update view_record
+    set act_id = #{actId,jdbcType=VARCHAR},
+      type = #{type,jdbcType=INTEGER},
+      source_id = #{sourceId,jdbcType=VARCHAR},
+      open_id = #{openId,jdbcType=VARCHAR},
+      ip = #{ip,jdbcType=VARCHAR},
+      create_time = #{createTime,jdbcType=TIMESTAMP}
+    where record_id = #{recordId,jdbcType=BIGINT}
+  </update>
+</mapper>

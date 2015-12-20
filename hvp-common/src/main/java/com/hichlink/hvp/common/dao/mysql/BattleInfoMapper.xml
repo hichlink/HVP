@@ -1,0 +1,304 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.hichlink.hvp.common.dao.BattleInfoMapper" >
+  <resultMap id="BaseResultMap" type="com.hichlink.hvp.common.entity.BattleInfo" >
+    <id column="info_id" property="infoId" jdbcType="BIGINT" />
+    <result column="cate_id" property="cateId" jdbcType="BIGINT" />
+    <result column="title" property="title" jdbcType="VARCHAR" />
+    <result column="pic_id" property="picId" jdbcType="VARCHAR" />
+    <result column="pic_url" property="picUrl" jdbcType="VARCHAR" />
+    <result column="video_url" property="videoUrl" jdbcType="VARCHAR" />
+    <result column="publish_time" property="publishTime" jdbcType="TIMESTAMP" />
+    <result column="start_time" property="startTime" jdbcType="TIMESTAMP" />
+    <result column="end_time" property="endTime" jdbcType="TIMESTAMP" />
+    <result column="is_valid" property="isValid" jdbcType="INTEGER" />
+    <result column="view_num" property="viewNum" jdbcType="BIGINT" />
+    <result column="enjoy_num" property="enjoyNum" jdbcType="BIGINT" />
+    <result column="comment_num" property="commentNum" jdbcType="BIGINT" />
+    <result column="creator" property="creator" jdbcType="VARCHAR" />
+    <result column="create_time" property="createTime" jdbcType="TIMESTAMP" />
+    <result column="updator" property="updator" jdbcType="VARCHAR" />
+    <result column="update_time" property="updateTime" jdbcType="TIMESTAMP" />
+  </resultMap>
+  <resultMap id="ResultMapWithBLOBs" type="com.hichlink.hvp.common.entity.BattleInfo" extends="BaseResultMap" >
+    <result column="content" property="content" jdbcType="LONGVARCHAR" />
+  </resultMap>
+  <sql id="Example_Where_Clause" >
+    <where >
+      <!--例子:<if test="params['name'] != null and  params['name'] != ''">and name=#{params.name}</if>-->
+    </where>
+  </sql>
+  <sql id="Base_Column_List" >
+    info_id, cate_id, title, pic_id, pic_url, video_url, publish_time, start_time, end_time, 
+    is_valid, view_num, enjoy_num, comment_num, creator, create_time, updator, update_time
+  </sql>
+  <sql id="Blob_Column_List" >
+    content
+  </sql>
+  <select id="selectByExampleWithBLOBs" resultMap="ResultMapWithBLOBs" parameterType="com.hichlink.hvp.common.entity.BattleInfoExample" >
+    select
+    <if test="distinct" >
+      distinct
+    </if>
+    'false' as QUERYID,
+    <include refid="Base_Column_List" />
+    ,
+    <include refid="Blob_Column_List" />
+    from battle_info
+    <if test="params != null" >
+      <include refid="Example_Where_Clause" />
+    </if>
+    <if test="orderByClause != null" >
+      order by ${orderByClause}
+    </if>
+  </select>
+  <select id="pageQuery" resultMap="BaseResultMap" parameterType="com.aspire.webbas.core.pagination.mybatis.pager.Page" >
+    select
+    <include refid="Base_Column_List" />
+    from battle_info
+    <if test="params != null" >
+      <include refid="Example_Where_Clause" />
+    </if>
+  </select>
+  <select id="selectByPrimaryKey" resultMap="ResultMapWithBLOBs" parameterType="java.lang.Long" >
+    select 
+    <include refid="Base_Column_List" />
+    ,
+    <include refid="Blob_Column_List" />
+    from battle_info
+    where info_id = #{infoId,jdbcType=BIGINT}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Long" >
+    delete from battle_info
+    where info_id = #{infoId,jdbcType=BIGINT}
+  </delete>
+  <insert id="insert" parameterType="com.hichlink.hvp.common.entity.BattleInfo" >
+    insert into battle_info (info_id, cate_id, title, 
+      pic_id, pic_url, video_url, 
+      publish_time, start_time, end_time, 
+      is_valid, view_num, enjoy_num, 
+      comment_num, creator, create_time, 
+      updator, update_time, content
+      )
+    values (#{infoId,jdbcType=BIGINT}, #{cateId,jdbcType=BIGINT}, #{title,jdbcType=VARCHAR}, 
+      #{picId,jdbcType=VARCHAR}, #{picUrl,jdbcType=VARCHAR}, #{videoUrl,jdbcType=VARCHAR}, 
+      #{publishTime,jdbcType=TIMESTAMP}, #{startTime,jdbcType=TIMESTAMP}, #{endTime,jdbcType=TIMESTAMP}, 
+      #{isValid,jdbcType=INTEGER}, #{viewNum,jdbcType=BIGINT}, #{enjoyNum,jdbcType=BIGINT}, 
+      #{commentNum,jdbcType=BIGINT}, #{creator,jdbcType=VARCHAR}, #{createTime,jdbcType=TIMESTAMP}, 
+      #{updator,jdbcType=VARCHAR}, #{updateTime,jdbcType=TIMESTAMP}, #{content,jdbcType=LONGVARCHAR}
+      )
+  </insert>
+  <insert id="insertSelective" parameterType="com.hichlink.hvp.common.entity.BattleInfo" >
+    insert into battle_info
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="infoId != null" >
+        info_id,
+      </if>
+      <if test="cateId != null" >
+        cate_id,
+      </if>
+      <if test="title != null" >
+        title,
+      </if>
+      <if test="picId != null" >
+        pic_id,
+      </if>
+      <if test="picUrl != null" >
+        pic_url,
+      </if>
+      <if test="videoUrl != null" >
+        video_url,
+      </if>
+      <if test="publishTime != null" >
+        publish_time,
+      </if>
+      <if test="startTime != null" >
+        start_time,
+      </if>
+      <if test="endTime != null" >
+        end_time,
+      </if>
+      <if test="isValid != null" >
+        is_valid,
+      </if>
+      <if test="viewNum != null" >
+        view_num,
+      </if>
+      <if test="enjoyNum != null" >
+        enjoy_num,
+      </if>
+      <if test="commentNum != null" >
+        comment_num,
+      </if>
+      <if test="creator != null" >
+        creator,
+      </if>
+      <if test="createTime != null" >
+        create_time,
+      </if>
+      <if test="updator != null" >
+        updator,
+      </if>
+      <if test="updateTime != null" >
+        update_time,
+      </if>
+      <if test="content != null" >
+        content,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="infoId != null" >
+        #{infoId,jdbcType=BIGINT},
+      </if>
+      <if test="cateId != null" >
+        #{cateId,jdbcType=BIGINT},
+      </if>
+      <if test="title != null" >
+        #{title,jdbcType=VARCHAR},
+      </if>
+      <if test="picId != null" >
+        #{picId,jdbcType=VARCHAR},
+      </if>
+      <if test="picUrl != null" >
+        #{picUrl,jdbcType=VARCHAR},
+      </if>
+      <if test="videoUrl != null" >
+        #{videoUrl,jdbcType=VARCHAR},
+      </if>
+      <if test="publishTime != null" >
+        #{publishTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="startTime != null" >
+        #{startTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="endTime != null" >
+        #{endTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="isValid != null" >
+        #{isValid,jdbcType=INTEGER},
+      </if>
+      <if test="viewNum != null" >
+        #{viewNum,jdbcType=BIGINT},
+      </if>
+      <if test="enjoyNum != null" >
+        #{enjoyNum,jdbcType=BIGINT},
+      </if>
+      <if test="commentNum != null" >
+        #{commentNum,jdbcType=BIGINT},
+      </if>
+      <if test="creator != null" >
+        #{creator,jdbcType=VARCHAR},
+      </if>
+      <if test="createTime != null" >
+        #{createTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="updator != null" >
+        #{updator,jdbcType=VARCHAR},
+      </if>
+      <if test="updateTime != null" >
+        #{updateTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="content != null" >
+        #{content,jdbcType=LONGVARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.hichlink.hvp.common.entity.BattleInfo" >
+    update battle_info
+    <set >
+      <if test="cateId != null" >
+        cate_id = #{cateId,jdbcType=BIGINT},
+      </if>
+      <if test="title != null" >
+        title = #{title,jdbcType=VARCHAR},
+      </if>
+      <if test="picId != null" >
+        pic_id = #{picId,jdbcType=VARCHAR},
+      </if>
+      <if test="picUrl != null" >
+        pic_url = #{picUrl,jdbcType=VARCHAR},
+      </if>
+      <if test="videoUrl != null" >
+        video_url = #{videoUrl,jdbcType=VARCHAR},
+      </if>
+      <if test="publishTime != null" >
+        publish_time = #{publishTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="startTime != null" >
+        start_time = #{startTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="endTime != null" >
+        end_time = #{endTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="isValid != null" >
+        is_valid = #{isValid,jdbcType=INTEGER},
+      </if>
+      <if test="viewNum != null" >
+        view_num = #{viewNum,jdbcType=BIGINT},
+      </if>
+      <if test="enjoyNum != null" >
+        enjoy_num = #{enjoyNum,jdbcType=BIGINT},
+      </if>
+      <if test="commentNum != null" >
+        comment_num = #{commentNum,jdbcType=BIGINT},
+      </if>
+      <if test="creator != null" >
+        creator = #{creator,jdbcType=VARCHAR},
+      </if>
+      <if test="createTime != null" >
+        create_time = #{createTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="updator != null" >
+        updator = #{updator,jdbcType=VARCHAR},
+      </if>
+      <if test="updateTime != null" >
+        update_time = #{updateTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="content != null" >
+        content = #{content,jdbcType=LONGVARCHAR},
+      </if>
+    </set>
+    where info_id = #{infoId,jdbcType=BIGINT}
+  </update>
+  <update id="updateByPrimaryKeyWithBLOBs" parameterType="com.hichlink.hvp.common.entity.BattleInfo" >
+    update battle_info
+    set cate_id = #{cateId,jdbcType=BIGINT},
+      title = #{title,jdbcType=VARCHAR},
+      pic_id = #{picId,jdbcType=VARCHAR},
+      pic_url = #{picUrl,jdbcType=VARCHAR},
+      video_url = #{videoUrl,jdbcType=VARCHAR},
+      publish_time = #{publishTime,jdbcType=TIMESTAMP},
+      start_time = #{startTime,jdbcType=TIMESTAMP},
+      end_time = #{endTime,jdbcType=TIMESTAMP},
+      is_valid = #{isValid,jdbcType=INTEGER},
+      view_num = #{viewNum,jdbcType=BIGINT},
+      enjoy_num = #{enjoyNum,jdbcType=BIGINT},
+      comment_num = #{commentNum,jdbcType=BIGINT},
+      creator = #{creator,jdbcType=VARCHAR},
+      create_time = #{createTime,jdbcType=TIMESTAMP},
+      updator = #{updator,jdbcType=VARCHAR},
+      update_time = #{updateTime,jdbcType=TIMESTAMP},
+      content = #{content,jdbcType=LONGVARCHAR}
+    where info_id = #{infoId,jdbcType=BIGINT}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.hichlink.hvp.common.entity.BattleInfo" >
+    update battle_info
+    set cate_id = #{cateId,jdbcType=BIGINT},
+      title = #{title,jdbcType=VARCHAR},
+      pic_id = #{picId,jdbcType=VARCHAR},
+      pic_url = #{picUrl,jdbcType=VARCHAR},
+      video_url = #{videoUrl,jdbcType=VARCHAR},
+      publish_time = #{publishTime,jdbcType=TIMESTAMP},
+      start_time = #{startTime,jdbcType=TIMESTAMP},
+      end_time = #{endTime,jdbcType=TIMESTAMP},
+      is_valid = #{isValid,jdbcType=INTEGER},
+      view_num = #{viewNum,jdbcType=BIGINT},
+      enjoy_num = #{enjoyNum,jdbcType=BIGINT},
+      comment_num = #{commentNum,jdbcType=BIGINT},
+      creator = #{creator,jdbcType=VARCHAR},
+      create_time = #{createTime,jdbcType=TIMESTAMP},
+      updator = #{updator,jdbcType=VARCHAR},
+      update_time = #{updateTime,jdbcType=TIMESTAMP}
+    where info_id = #{infoId,jdbcType=BIGINT}
+  </update>
+</mapper>

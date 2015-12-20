@@ -1,0 +1,212 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.hichlink.hvp.common.dao.ActInfoMapper" >
+  <resultMap id="BaseResultMap" type="com.hichlink.hvp.common.entity.ActInfo" >
+    <id column="act_seq_id" property="actSeqId" jdbcType="BIGINT" />
+    <result column="act_id" property="actId" jdbcType="VARCHAR" />
+    <result column="act_name" property="actName" jdbcType="VARCHAR" />
+    <result column="start_time" property="startTime" jdbcType="TIMESTAMP" />
+    <result column="end_time" property="endTime" jdbcType="TIMESTAMP" />
+    <result column="is_valid" property="isValid" jdbcType="INTEGER" />
+    <result column="stage" property="stage" jdbcType="INTEGER" />
+    <result column="creator" property="creator" jdbcType="VARCHAR" />
+    <result column="create_time" property="createTime" jdbcType="TIMESTAMP" />
+    <result column="updator" property="updator" jdbcType="VARCHAR" />
+    <result column="update_time" property="updateTime" jdbcType="TIMESTAMP" />
+    <result column="remark" property="remark" jdbcType="VARCHAR" />
+    <result column="is_force" property="isForce" jdbcType="INTEGER" />
+    <result column="focus_url" property="focusUrl" jdbcType="VARCHAR" />
+  </resultMap>
+  <sql id="Example_Where_Clause" >
+    <where >
+      <!--例子:<if test="params['name'] != null and  params['name'] != ''">and name=#{params.name}</if>-->
+    </where>
+  </sql>
+  <sql id="Base_Column_List" >
+    act_seq_id, act_id, act_name, start_time, end_time, is_valid, stage, creator, create_time, 
+    updator, update_time, remark, is_force, focus_url
+  </sql>
+  <select id="pageQuery" resultMap="BaseResultMap" parameterType="com.aspire.webbas.core.pagination.mybatis.pager.Page" >
+    select
+    <include refid="Base_Column_List" />
+    from act_info
+    <if test="params != null" >
+      <include refid="Example_Where_Clause" />
+    </if>
+  </select>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Long" >
+    select 
+    <include refid="Base_Column_List" />
+    from act_info
+    where act_seq_id = #{actSeqId,jdbcType=BIGINT}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Long" >
+    delete from act_info
+    where act_seq_id = #{actSeqId,jdbcType=BIGINT}
+  </delete>
+  <insert id="insert" parameterType="com.hichlink.hvp.common.entity.ActInfo" >
+    insert into act_info (act_seq_id, act_id, act_name, 
+      start_time, end_time, is_valid, 
+      stage, creator, create_time, 
+      updator, update_time, remark, 
+      is_force, focus_url)
+    values (#{actSeqId,jdbcType=BIGINT}, #{actId,jdbcType=VARCHAR}, #{actName,jdbcType=VARCHAR}, 
+      #{startTime,jdbcType=TIMESTAMP}, #{endTime,jdbcType=TIMESTAMP}, #{isValid,jdbcType=INTEGER}, 
+      #{stage,jdbcType=INTEGER}, #{creator,jdbcType=VARCHAR}, #{createTime,jdbcType=TIMESTAMP}, 
+      #{updator,jdbcType=VARCHAR}, #{updateTime,jdbcType=TIMESTAMP}, #{remark,jdbcType=VARCHAR}, 
+      #{isForce,jdbcType=INTEGER}, #{focusUrl,jdbcType=VARCHAR})
+  </insert>
+  <insert id="insertSelective" parameterType="com.hichlink.hvp.common.entity.ActInfo" >
+    insert into act_info
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="actSeqId != null" >
+        act_seq_id,
+      </if>
+      <if test="actId != null" >
+        act_id,
+      </if>
+      <if test="actName != null" >
+        act_name,
+      </if>
+      <if test="startTime != null" >
+        start_time,
+      </if>
+      <if test="endTime != null" >
+        end_time,
+      </if>
+      <if test="isValid != null" >
+        is_valid,
+      </if>
+      <if test="stage != null" >
+        stage,
+      </if>
+      <if test="creator != null" >
+        creator,
+      </if>
+      <if test="createTime != null" >
+        create_time,
+      </if>
+      <if test="updator != null" >
+        updator,
+      </if>
+      <if test="updateTime != null" >
+        update_time,
+      </if>
+      <if test="remark != null" >
+        remark,
+      </if>
+      <if test="isForce != null" >
+        is_force,
+      </if>
+      <if test="focusUrl != null" >
+        focus_url,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="actSeqId != null" >
+        #{actSeqId,jdbcType=BIGINT},
+      </if>
+      <if test="actId != null" >
+        #{actId,jdbcType=VARCHAR},
+      </if>
+      <if test="actName != null" >
+        #{actName,jdbcType=VARCHAR},
+      </if>
+      <if test="startTime != null" >
+        #{startTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="endTime != null" >
+        #{endTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="isValid != null" >
+        #{isValid,jdbcType=INTEGER},
+      </if>
+      <if test="stage != null" >
+        #{stage,jdbcType=INTEGER},
+      </if>
+      <if test="creator != null" >
+        #{creator,jdbcType=VARCHAR},
+      </if>
+      <if test="createTime != null" >
+        #{createTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="updator != null" >
+        #{updator,jdbcType=VARCHAR},
+      </if>
+      <if test="updateTime != null" >
+        #{updateTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="remark != null" >
+        #{remark,jdbcType=VARCHAR},
+      </if>
+      <if test="isForce != null" >
+        #{isForce,jdbcType=INTEGER},
+      </if>
+      <if test="focusUrl != null" >
+        #{focusUrl,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.hichlink.hvp.common.entity.ActInfo" >
+    update act_info
+    <set >
+      <if test="actId != null" >
+        act_id = #{actId,jdbcType=VARCHAR},
+      </if>
+      <if test="actName != null" >
+        act_name = #{actName,jdbcType=VARCHAR},
+      </if>
+      <if test="startTime != null" >
+        start_time = #{startTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="endTime != null" >
+        end_time = #{endTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="isValid != null" >
+        is_valid = #{isValid,jdbcType=INTEGER},
+      </if>
+      <if test="stage != null" >
+        stage = #{stage,jdbcType=INTEGER},
+      </if>
+      <if test="creator != null" >
+        creator = #{creator,jdbcType=VARCHAR},
+      </if>
+      <if test="createTime != null" >
+        create_time = #{createTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="updator != null" >
+        updator = #{updator,jdbcType=VARCHAR},
+      </if>
+      <if test="updateTime != null" >
+        update_time = #{updateTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="remark != null" >
+        remark = #{remark,jdbcType=VARCHAR},
+      </if>
+      <if test="isForce != null" >
+        is_force = #{isForce,jdbcType=INTEGER},
+      </if>
+      <if test="focusUrl != null" >
+        focus_url = #{focusUrl,jdbcType=VARCHAR},
+      </if>
+    </set>
+    where act_seq_id = #{actSeqId,jdbcType=BIGINT}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.hichlink.hvp.common.entity.ActInfo" >
+    update act_info
+    set act_id = #{actId,jdbcType=VARCHAR},
+      act_name = #{actName,jdbcType=VARCHAR},
+      start_time = #{startTime,jdbcType=TIMESTAMP},
+      end_time = #{endTime,jdbcType=TIMESTAMP},
+      is_valid = #{isValid,jdbcType=INTEGER},
+      stage = #{stage,jdbcType=INTEGER},
+      creator = #{creator,jdbcType=VARCHAR},
+      create_time = #{createTime,jdbcType=TIMESTAMP},
+      updator = #{updator,jdbcType=VARCHAR},
+      update_time = #{updateTime,jdbcType=TIMESTAMP},
+      remark = #{remark,jdbcType=VARCHAR},
+      is_force = #{isForce,jdbcType=INTEGER},
+      focus_url = #{focusUrl,jdbcType=VARCHAR}
+    where act_seq_id = #{actSeqId,jdbcType=BIGINT}
+  </update>
+</mapper>

@@ -1,0 +1,130 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.hichlink.hvp.common.dao.EnjoyRecordMapper" >
+  <resultMap id="BaseResultMap" type="com.hichlink.hvp.common.entity.EnjoyRecord" >
+    <id column="record_id" property="recordId" jdbcType="BIGINT" />
+    <result column="act_id" property="actId" jdbcType="VARCHAR" />
+    <result column="record_type" property="recordType" jdbcType="INTEGER" />
+    <result column="source_id" property="sourceId" jdbcType="VARCHAR" />
+    <result column="ip" property="ip" jdbcType="VARCHAR" />
+    <result column="create_time" property="createTime" jdbcType="TIMESTAMP" />
+    <result column="open_id" property="openId" jdbcType="VARCHAR" />
+  </resultMap>
+  <sql id="Example_Where_Clause" >
+    <where >
+      <!--例子:<if test="params['name'] != null and  params['name'] != ''">and name=#{params.name}</if>-->
+    </where>
+  </sql>
+  <sql id="Base_Column_List" >
+    record_id, act_id, record_type, source_id, ip, create_time, open_id
+  </sql>
+  <select id="pageQuery" resultMap="BaseResultMap" parameterType="com.aspire.webbas.core.pagination.mybatis.pager.Page" >
+    select
+    <include refid="Base_Column_List" />
+    from enjoy_record
+    <if test="params != null" >
+      <include refid="Example_Where_Clause" />
+    </if>
+  </select>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Long" >
+    select 
+    <include refid="Base_Column_List" />
+    from enjoy_record
+    where record_id = #{recordId,jdbcType=BIGINT}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Long" >
+    delete from enjoy_record
+    where record_id = #{recordId,jdbcType=BIGINT}
+  </delete>
+  <insert id="insert" parameterType="com.hichlink.hvp.common.entity.EnjoyRecord" >
+    insert into enjoy_record (record_id, act_id, record_type, 
+      source_id, ip, create_time, 
+      open_id)
+    values (#{recordId,jdbcType=BIGINT}, #{actId,jdbcType=VARCHAR}, #{recordType,jdbcType=INTEGER}, 
+      #{sourceId,jdbcType=VARCHAR}, #{ip,jdbcType=VARCHAR}, #{createTime,jdbcType=TIMESTAMP}, 
+      #{openId,jdbcType=VARCHAR})
+  </insert>
+  <insert id="insertSelective" parameterType="com.hichlink.hvp.common.entity.EnjoyRecord" >
+    insert into enjoy_record
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="recordId != null" >
+        record_id,
+      </if>
+      <if test="actId != null" >
+        act_id,
+      </if>
+      <if test="recordType != null" >
+        record_type,
+      </if>
+      <if test="sourceId != null" >
+        source_id,
+      </if>
+      <if test="ip != null" >
+        ip,
+      </if>
+      <if test="createTime != null" >
+        create_time,
+      </if>
+      <if test="openId != null" >
+        open_id,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="recordId != null" >
+        #{recordId,jdbcType=BIGINT},
+      </if>
+      <if test="actId != null" >
+        #{actId,jdbcType=VARCHAR},
+      </if>
+      <if test="recordType != null" >
+        #{recordType,jdbcType=INTEGER},
+      </if>
+      <if test="sourceId != null" >
+        #{sourceId,jdbcType=VARCHAR},
+      </if>
+      <if test="ip != null" >
+        #{ip,jdbcType=VARCHAR},
+      </if>
+      <if test="createTime != null" >
+        #{createTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="openId != null" >
+        #{openId,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.hichlink.hvp.common.entity.EnjoyRecord" >
+    update enjoy_record
+    <set >
+      <if test="actId != null" >
+        act_id = #{actId,jdbcType=VARCHAR},
+      </if>
+      <if test="recordType != null" >
+        record_type = #{recordType,jdbcType=INTEGER},
+      </if>
+      <if test="sourceId != null" >
+        source_id = #{sourceId,jdbcType=VARCHAR},
+      </if>
+      <if test="ip != null" >
+        ip = #{ip,jdbcType=VARCHAR},
+      </if>
+      <if test="createTime != null" >
+        create_time = #{createTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="openId != null" >
+        open_id = #{openId,jdbcType=VARCHAR},
+      </if>
+    </set>
+    where record_id = #{recordId,jdbcType=BIGINT}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.hichlink.hvp.common.entity.EnjoyRecord" >
+    update enjoy_record
+    set act_id = #{actId,jdbcType=VARCHAR},
+      record_type = #{recordType,jdbcType=INTEGER},
+      source_id = #{sourceId,jdbcType=VARCHAR},
+      ip = #{ip,jdbcType=VARCHAR},
+      create_time = #{createTime,jdbcType=TIMESTAMP},
+      open_id = #{openId,jdbcType=VARCHAR}
+    where record_id = #{recordId,jdbcType=BIGINT}
+  </update>
+</mapper>

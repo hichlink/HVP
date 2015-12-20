@@ -1,0 +1,166 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.hichlink.hvp.common.dao.VoteInfoMapper" >
+  <resultMap id="BaseResultMap" type="com.hichlink.hvp.common.entity.VoteInfo" >
+    <id column="vote_id" property="voteId" jdbcType="BIGINT" />
+    <result column="act_id" property="actId" jdbcType="VARCHAR" />
+    <result column="player_id" property="playerId" jdbcType="BIGINT" />
+    <result column="open_id" property="openId" jdbcType="VARCHAR" />
+    <result column="vote_num" property="voteNum" jdbcType="INTEGER" />
+    <result column="stage" property="stage" jdbcType="INTEGER" />
+    <result column="step_name" property="stepName" jdbcType="VARCHAR" />
+    <result column="mobile" property="mobile" jdbcType="VARCHAR" />
+    <result column="create_time" property="createTime" jdbcType="TIMESTAMP" />
+    <result column="ip" property="ip" jdbcType="VARCHAR" />
+  </resultMap>
+  <sql id="Example_Where_Clause" >
+    <where >
+      <!--例子:<if test="params['name'] != null and  params['name'] != ''">and name=#{params.name}</if>-->
+    </where>
+  </sql>
+  <sql id="Base_Column_List" >
+    vote_id, act_id, player_id, open_id, vote_num, stage, step_name, mobile, create_time, 
+    ip
+  </sql>
+  <select id="pageQuery" resultMap="BaseResultMap" parameterType="com.aspire.webbas.core.pagination.mybatis.pager.Page" >
+    select
+    <include refid="Base_Column_List" />
+    from vote_info
+    <if test="params != null" >
+      <include refid="Example_Where_Clause" />
+    </if>
+  </select>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Long" >
+    select 
+    <include refid="Base_Column_List" />
+    from vote_info
+    where vote_id = #{voteId,jdbcType=BIGINT}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Long" >
+    delete from vote_info
+    where vote_id = #{voteId,jdbcType=BIGINT}
+  </delete>
+  <insert id="insert" parameterType="com.hichlink.hvp.common.entity.VoteInfo" >
+    insert into vote_info (vote_id, act_id, player_id, 
+      open_id, vote_num, stage, 
+      step_name, mobile, create_time, 
+      ip)
+    values (#{voteId,jdbcType=BIGINT}, #{actId,jdbcType=VARCHAR}, #{playerId,jdbcType=BIGINT}, 
+      #{openId,jdbcType=VARCHAR}, #{voteNum,jdbcType=INTEGER}, #{stage,jdbcType=INTEGER}, 
+      #{stepName,jdbcType=VARCHAR}, #{mobile,jdbcType=VARCHAR}, #{createTime,jdbcType=TIMESTAMP}, 
+      #{ip,jdbcType=VARCHAR})
+  </insert>
+  <insert id="insertSelective" parameterType="com.hichlink.hvp.common.entity.VoteInfo" >
+    insert into vote_info
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="voteId != null" >
+        vote_id,
+      </if>
+      <if test="actId != null" >
+        act_id,
+      </if>
+      <if test="playerId != null" >
+        player_id,
+      </if>
+      <if test="openId != null" >
+        open_id,
+      </if>
+      <if test="voteNum != null" >
+        vote_num,
+      </if>
+      <if test="stage != null" >
+        stage,
+      </if>
+      <if test="stepName != null" >
+        step_name,
+      </if>
+      <if test="mobile != null" >
+        mobile,
+      </if>
+      <if test="createTime != null" >
+        create_time,
+      </if>
+      <if test="ip != null" >
+        ip,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="voteId != null" >
+        #{voteId,jdbcType=BIGINT},
+      </if>
+      <if test="actId != null" >
+        #{actId,jdbcType=VARCHAR},
+      </if>
+      <if test="playerId != null" >
+        #{playerId,jdbcType=BIGINT},
+      </if>
+      <if test="openId != null" >
+        #{openId,jdbcType=VARCHAR},
+      </if>
+      <if test="voteNum != null" >
+        #{voteNum,jdbcType=INTEGER},
+      </if>
+      <if test="stage != null" >
+        #{stage,jdbcType=INTEGER},
+      </if>
+      <if test="stepName != null" >
+        #{stepName,jdbcType=VARCHAR},
+      </if>
+      <if test="mobile != null" >
+        #{mobile,jdbcType=VARCHAR},
+      </if>
+      <if test="createTime != null" >
+        #{createTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="ip != null" >
+        #{ip,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.hichlink.hvp.common.entity.VoteInfo" >
+    update vote_info
+    <set >
+      <if test="actId != null" >
+        act_id = #{actId,jdbcType=VARCHAR},
+      </if>
+      <if test="playerId != null" >
+        player_id = #{playerId,jdbcType=BIGINT},
+      </if>
+      <if test="openId != null" >
+        open_id = #{openId,jdbcType=VARCHAR},
+      </if>
+      <if test="voteNum != null" >
+        vote_num = #{voteNum,jdbcType=INTEGER},
+      </if>
+      <if test="stage != null" >
+        stage = #{stage,jdbcType=INTEGER},
+      </if>
+      <if test="stepName != null" >
+        step_name = #{stepName,jdbcType=VARCHAR},
+      </if>
+      <if test="mobile != null" >
+        mobile = #{mobile,jdbcType=VARCHAR},
+      </if>
+      <if test="createTime != null" >
+        create_time = #{createTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="ip != null" >
+        ip = #{ip,jdbcType=VARCHAR},
+      </if>
+    </set>
+    where vote_id = #{voteId,jdbcType=BIGINT}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.hichlink.hvp.common.entity.VoteInfo" >
+    update vote_info
+    set act_id = #{actId,jdbcType=VARCHAR},
+      player_id = #{playerId,jdbcType=BIGINT},
+      open_id = #{openId,jdbcType=VARCHAR},
+      vote_num = #{voteNum,jdbcType=INTEGER},
+      stage = #{stage,jdbcType=INTEGER},
+      step_name = #{stepName,jdbcType=VARCHAR},
+      mobile = #{mobile,jdbcType=VARCHAR},
+      create_time = #{createTime,jdbcType=TIMESTAMP},
+      ip = #{ip,jdbcType=VARCHAR}
+    where vote_id = #{voteId,jdbcType=BIGINT}
+  </update>
+</mapper>

@@ -1,0 +1,367 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.hichlink.hvp.common.dao.PlayerInfoMapper" >
+  <resultMap id="BaseResultMap" type="com.hichlink.hvp.common.entity.PlayerInfo" >
+    <id column="player_id" property="playerId" jdbcType="BIGINT" />
+    <result column="act_id" property="actId" jdbcType="VARCHAR" />
+    <result column="player_code" property="playerCode" jdbcType="VARCHAR" />
+    <result column="player_name" property="playerName" jdbcType="VARCHAR" />
+    <result column="head_img_id" property="headImgId" jdbcType="VARCHAR" />
+    <result column="head_img_url" property="headImgUrl" jdbcType="VARCHAR" />
+    <result column="pic_img_id" property="picImgId" jdbcType="VARCHAR" />
+    <result column="pic_img_url" property="picImgUrl" jdbcType="VARCHAR" />
+    <result column="summary" property="summary" jdbcType="VARCHAR" />
+    <result column="case_info" property="caseInfo" jdbcType="VARCHAR" />
+    <result column="bigarea_id" property="bigareaId" jdbcType="VARCHAR" />
+    <result column="bigarea_name" property="bigareaName" jdbcType="VARCHAR" />
+    <result column="office_id" property="officeId" jdbcType="VARCHAR" />
+    <result column="office_name" property="officeName" jdbcType="VARCHAR" />
+    <result column="stage" property="stage" jdbcType="INTEGER" />
+    <result column="is_upgrade" property="isUpgrade" jdbcType="INTEGER" />
+    <result column="stage_intro" property="stageIntro" jdbcType="VARCHAR" />
+    <result column="stage1_vote_num" property="stage1VoteNum" jdbcType="BIGINT" />
+    <result column="stage2_vote_num" property="stage2VoteNum" jdbcType="BIGINT" />
+    <result column="stage3_vote_num" property="stage3VoteNum" jdbcType="BIGINT" />
+    <result column="creator" property="creator" jdbcType="VARCHAR" />
+    <result column="create_time" property="createTime" jdbcType="TIMESTAMP" />
+    <result column="updator" property="updator" jdbcType="VARCHAR" />
+    <result column="update_time" property="updateTime" jdbcType="TIMESTAMP" />
+    <result column="remark" property="remark" jdbcType="VARCHAR" />
+    <result column="video_url" property="videoUrl" jdbcType="VARCHAR" />
+    <result column="status" property="status" jdbcType="INTEGER" />
+  </resultMap>
+  <sql id="Example_Where_Clause" >
+    <where >
+      <!--例子:<if test="params['name'] != null and  params['name'] != ''">and name=#{params.name}</if>-->
+    </where>
+  </sql>
+  <sql id="Base_Column_List" >
+    player_id, act_id, player_code, player_name, head_img_id, head_img_url, pic_img_id, 
+    pic_img_url, summary, case_info, bigarea_id, bigarea_name, office_id, office_name, 
+    stage, is_upgrade, stage_intro, stage1_vote_num, stage2_vote_num, stage3_vote_num, 
+    creator, create_time, updator, update_time, remark, video_url, status
+  </sql>
+  <select id="pageQuery" resultMap="BaseResultMap" parameterType="com.aspire.webbas.core.pagination.mybatis.pager.Page" >
+    select
+    <include refid="Base_Column_List" />
+    from player_info
+    <if test="params != null" >
+      <include refid="Example_Where_Clause" />
+    </if>
+  </select>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Long" >
+    select 
+    <include refid="Base_Column_List" />
+    from player_info
+    where player_id = #{playerId,jdbcType=BIGINT}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Long" >
+    delete from player_info
+    where player_id = #{playerId,jdbcType=BIGINT}
+  </delete>
+  <insert id="insert" parameterType="com.hichlink.hvp.common.entity.PlayerInfo" >
+    insert into player_info (player_id, act_id, player_code, 
+      player_name, head_img_id, head_img_url, 
+      pic_img_id, pic_img_url, summary, 
+      case_info, bigarea_id, bigarea_name, 
+      office_id, office_name, stage, 
+      is_upgrade, stage_intro, stage1_vote_num, 
+      stage2_vote_num, stage3_vote_num, creator, 
+      create_time, updator, update_time, 
+      remark, video_url, status
+      )
+    values (#{playerId,jdbcType=BIGINT}, #{actId,jdbcType=VARCHAR}, #{playerCode,jdbcType=VARCHAR}, 
+      #{playerName,jdbcType=VARCHAR}, #{headImgId,jdbcType=VARCHAR}, #{headImgUrl,jdbcType=VARCHAR}, 
+      #{picImgId,jdbcType=VARCHAR}, #{picImgUrl,jdbcType=VARCHAR}, #{summary,jdbcType=VARCHAR}, 
+      #{caseInfo,jdbcType=VARCHAR}, #{bigareaId,jdbcType=VARCHAR}, #{bigareaName,jdbcType=VARCHAR}, 
+      #{officeId,jdbcType=VARCHAR}, #{officeName,jdbcType=VARCHAR}, #{stage,jdbcType=INTEGER}, 
+      #{isUpgrade,jdbcType=INTEGER}, #{stageIntro,jdbcType=VARCHAR}, #{stage1VoteNum,jdbcType=BIGINT}, 
+      #{stage2VoteNum,jdbcType=BIGINT}, #{stage3VoteNum,jdbcType=BIGINT}, #{creator,jdbcType=VARCHAR}, 
+      #{createTime,jdbcType=TIMESTAMP}, #{updator,jdbcType=VARCHAR}, #{updateTime,jdbcType=TIMESTAMP}, 
+      #{remark,jdbcType=VARCHAR}, #{videoUrl,jdbcType=VARCHAR}, #{status,jdbcType=INTEGER}
+      )
+  </insert>
+  <insert id="insertSelective" parameterType="com.hichlink.hvp.common.entity.PlayerInfo" >
+    insert into player_info
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="playerId != null" >
+        player_id,
+      </if>
+      <if test="actId != null" >
+        act_id,
+      </if>
+      <if test="playerCode != null" >
+        player_code,
+      </if>
+      <if test="playerName != null" >
+        player_name,
+      </if>
+      <if test="headImgId != null" >
+        head_img_id,
+      </if>
+      <if test="headImgUrl != null" >
+        head_img_url,
+      </if>
+      <if test="picImgId != null" >
+        pic_img_id,
+      </if>
+      <if test="picImgUrl != null" >
+        pic_img_url,
+      </if>
+      <if test="summary != null" >
+        summary,
+      </if>
+      <if test="caseInfo != null" >
+        case_info,
+      </if>
+      <if test="bigareaId != null" >
+        bigarea_id,
+      </if>
+      <if test="bigareaName != null" >
+        bigarea_name,
+      </if>
+      <if test="officeId != null" >
+        office_id,
+      </if>
+      <if test="officeName != null" >
+        office_name,
+      </if>
+      <if test="stage != null" >
+        stage,
+      </if>
+      <if test="isUpgrade != null" >
+        is_upgrade,
+      </if>
+      <if test="stageIntro != null" >
+        stage_intro,
+      </if>
+      <if test="stage1VoteNum != null" >
+        stage1_vote_num,
+      </if>
+      <if test="stage2VoteNum != null" >
+        stage2_vote_num,
+      </if>
+      <if test="stage3VoteNum != null" >
+        stage3_vote_num,
+      </if>
+      <if test="creator != null" >
+        creator,
+      </if>
+      <if test="createTime != null" >
+        create_time,
+      </if>
+      <if test="updator != null" >
+        updator,
+      </if>
+      <if test="updateTime != null" >
+        update_time,
+      </if>
+      <if test="remark != null" >
+        remark,
+      </if>
+      <if test="videoUrl != null" >
+        video_url,
+      </if>
+      <if test="status != null" >
+        status,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="playerId != null" >
+        #{playerId,jdbcType=BIGINT},
+      </if>
+      <if test="actId != null" >
+        #{actId,jdbcType=VARCHAR},
+      </if>
+      <if test="playerCode != null" >
+        #{playerCode,jdbcType=VARCHAR},
+      </if>
+      <if test="playerName != null" >
+        #{playerName,jdbcType=VARCHAR},
+      </if>
+      <if test="headImgId != null" >
+        #{headImgId,jdbcType=VARCHAR},
+      </if>
+      <if test="headImgUrl != null" >
+        #{headImgUrl,jdbcType=VARCHAR},
+      </if>
+      <if test="picImgId != null" >
+        #{picImgId,jdbcType=VARCHAR},
+      </if>
+      <if test="picImgUrl != null" >
+        #{picImgUrl,jdbcType=VARCHAR},
+      </if>
+      <if test="summary != null" >
+        #{summary,jdbcType=VARCHAR},
+      </if>
+      <if test="caseInfo != null" >
+        #{caseInfo,jdbcType=VARCHAR},
+      </if>
+      <if test="bigareaId != null" >
+        #{bigareaId,jdbcType=VARCHAR},
+      </if>
+      <if test="bigareaName != null" >
+        #{bigareaName,jdbcType=VARCHAR},
+      </if>
+      <if test="officeId != null" >
+        #{officeId,jdbcType=VARCHAR},
+      </if>
+      <if test="officeName != null" >
+        #{officeName,jdbcType=VARCHAR},
+      </if>
+      <if test="stage != null" >
+        #{stage,jdbcType=INTEGER},
+      </if>
+      <if test="isUpgrade != null" >
+        #{isUpgrade,jdbcType=INTEGER},
+      </if>
+      <if test="stageIntro != null" >
+        #{stageIntro,jdbcType=VARCHAR},
+      </if>
+      <if test="stage1VoteNum != null" >
+        #{stage1VoteNum,jdbcType=BIGINT},
+      </if>
+      <if test="stage2VoteNum != null" >
+        #{stage2VoteNum,jdbcType=BIGINT},
+      </if>
+      <if test="stage3VoteNum != null" >
+        #{stage3VoteNum,jdbcType=BIGINT},
+      </if>
+      <if test="creator != null" >
+        #{creator,jdbcType=VARCHAR},
+      </if>
+      <if test="createTime != null" >
+        #{createTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="updator != null" >
+        #{updator,jdbcType=VARCHAR},
+      </if>
+      <if test="updateTime != null" >
+        #{updateTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="remark != null" >
+        #{remark,jdbcType=VARCHAR},
+      </if>
+      <if test="videoUrl != null" >
+        #{videoUrl,jdbcType=VARCHAR},
+      </if>
+      <if test="status != null" >
+        #{status,jdbcType=INTEGER},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.hichlink.hvp.common.entity.PlayerInfo" >
+    update player_info
+    <set >
+      <if test="actId != null" >
+        act_id = #{actId,jdbcType=VARCHAR},
+      </if>
+      <if test="playerCode != null" >
+        player_code = #{playerCode,jdbcType=VARCHAR},
+      </if>
+      <if test="playerName != null" >
+        player_name = #{playerName,jdbcType=VARCHAR},
+      </if>
+      <if test="headImgId != null" >
+        head_img_id = #{headImgId,jdbcType=VARCHAR},
+      </if>
+      <if test="headImgUrl != null" >
+        head_img_url = #{headImgUrl,jdbcType=VARCHAR},
+      </if>
+      <if test="picImgId != null" >
+        pic_img_id = #{picImgId,jdbcType=VARCHAR},
+      </if>
+      <if test="picImgUrl != null" >
+        pic_img_url = #{picImgUrl,jdbcType=VARCHAR},
+      </if>
+      <if test="summary != null" >
+        summary = #{summary,jdbcType=VARCHAR},
+      </if>
+      <if test="caseInfo != null" >
+        case_info = #{caseInfo,jdbcType=VARCHAR},
+      </if>
+      <if test="bigareaId != null" >
+        bigarea_id = #{bigareaId,jdbcType=VARCHAR},
+      </if>
+      <if test="bigareaName != null" >
+        bigarea_name = #{bigareaName,jdbcType=VARCHAR},
+      </if>
+      <if test="officeId != null" >
+        office_id = #{officeId,jdbcType=VARCHAR},
+      </if>
+      <if test="officeName != null" >
+        office_name = #{officeName,jdbcType=VARCHAR},
+      </if>
+      <if test="stage != null" >
+        stage = #{stage,jdbcType=INTEGER},
+      </if>
+      <if test="isUpgrade != null" >
+        is_upgrade = #{isUpgrade,jdbcType=INTEGER},
+      </if>
+      <if test="stageIntro != null" >
+        stage_intro = #{stageIntro,jdbcType=VARCHAR},
+      </if>
+      <if test="stage1VoteNum != null" >
+        stage1_vote_num = #{stage1VoteNum,jdbcType=BIGINT},
+      </if>
+      <if test="stage2VoteNum != null" >
+        stage2_vote_num = #{stage2VoteNum,jdbcType=BIGINT},
+      </if>
+      <if test="stage3VoteNum != null" >
+        stage3_vote_num = #{stage3VoteNum,jdbcType=BIGINT},
+      </if>
+      <if test="creator != null" >
+        creator = #{creator,jdbcType=VARCHAR},
+      </if>
+      <if test="createTime != null" >
+        create_time = #{createTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="updator != null" >
+        updator = #{updator,jdbcType=VARCHAR},
+      </if>
+      <if test="updateTime != null" >
+        update_time = #{updateTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="remark != null" >
+        remark = #{remark,jdbcType=VARCHAR},
+      </if>
+      <if test="videoUrl != null" >
+        video_url = #{videoUrl,jdbcType=VARCHAR},
+      </if>
+      <if test="status != null" >
+        status = #{status,jdbcType=INTEGER},
+      </if>
+    </set>
+    where player_id = #{playerId,jdbcType=BIGINT}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.hichlink.hvp.common.entity.PlayerInfo" >
+    update player_info
+    set act_id = #{actId,jdbcType=VARCHAR},
+      player_code = #{playerCode,jdbcType=VARCHAR},
+      player_name = #{playerName,jdbcType=VARCHAR},
+      head_img_id = #{headImgId,jdbcType=VARCHAR},
+      head_img_url = #{headImgUrl,jdbcType=VARCHAR},
+      pic_img_id = #{picImgId,jdbcType=VARCHAR},
+      pic_img_url = #{picImgUrl,jdbcType=VARCHAR},
+      summary = #{summary,jdbcType=VARCHAR},
+      case_info = #{caseInfo,jdbcType=VARCHAR},
+      bigarea_id = #{bigareaId,jdbcType=VARCHAR},
+      bigarea_name = #{bigareaName,jdbcType=VARCHAR},
+      office_id = #{officeId,jdbcType=VARCHAR},
+      office_name = #{officeName,jdbcType=VARCHAR},
+      stage = #{stage,jdbcType=INTEGER},
+      is_upgrade = #{isUpgrade,jdbcType=INTEGER},
+      stage_intro = #{stageIntro,jdbcType=VARCHAR},
+      stage1_vote_num = #{stage1VoteNum,jdbcType=BIGINT},
+      stage2_vote_num = #{stage2VoteNum,jdbcType=BIGINT},
+      stage3_vote_num = #{stage3VoteNum,jdbcType=BIGINT},
+      creator = #{creator,jdbcType=VARCHAR},
+      create_time = #{createTime,jdbcType=TIMESTAMP},
+      updator = #{updator,jdbcType=VARCHAR},
+      update_time = #{updateTime,jdbcType=TIMESTAMP},
+      remark = #{remark,jdbcType=VARCHAR},
+      video_url = #{videoUrl,jdbcType=VARCHAR},
+      status = #{status,jdbcType=INTEGER}
+    where player_id = #{playerId,jdbcType=BIGINT}
+  </update>
+</mapper>

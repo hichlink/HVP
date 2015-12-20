@@ -1,0 +1,190 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.hichlink.hvp.common.dao.StepManageMapper" >
+  <resultMap id="BaseResultMap" type="com.hichlink.hvp.common.entity.StepManage" >
+    <id column="step_id" property="stepId" jdbcType="BIGINT" />
+    <result column="act_id" property="actId" jdbcType="VARCHAR" />
+    <result column="step_no" property="stepNo" jdbcType="INTEGER" />
+    <result column="step_name" property="stepName" jdbcType="VARCHAR" />
+    <result column="step_desc" property="stepDesc" jdbcType="VARCHAR" />
+    <result column="step_sign" property="stepSign" jdbcType="INTEGER" />
+    <result column="start_time" property="startTime" jdbcType="TIMESTAMP" />
+    <result column="end_time" property="endTime" jdbcType="TIMESTAMP" />
+    <result column="creator" property="creator" jdbcType="VARCHAR" />
+    <result column="create_time" property="createTime" jdbcType="TIMESTAMP" />
+    <result column="updator" property="updator" jdbcType="VARCHAR" />
+    <result column="update_time" property="updateTime" jdbcType="TIMESTAMP" />
+  </resultMap>
+  <sql id="Example_Where_Clause" >
+    <where >
+      <!--例子:<if test="params['name'] != null and  params['name'] != ''">and name=#{params.name}</if>-->
+    </where>
+  </sql>
+  <sql id="Base_Column_List" >
+    step_id, act_id, step_no, step_name, step_desc, step_sign, start_time, end_time, 
+    creator, create_time, updator, update_time
+  </sql>
+  <select id="pageQuery" resultMap="BaseResultMap" parameterType="com.aspire.webbas.core.pagination.mybatis.pager.Page" >
+    select
+    <include refid="Base_Column_List" />
+    from step_manage
+    <if test="params != null" >
+      <include refid="Example_Where_Clause" />
+    </if>
+  </select>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Long" >
+    select 
+    <include refid="Base_Column_List" />
+    from step_manage
+    where step_id = #{stepId,jdbcType=BIGINT}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Long" >
+    delete from step_manage
+    where step_id = #{stepId,jdbcType=BIGINT}
+  </delete>
+  <insert id="insert" parameterType="com.hichlink.hvp.common.entity.StepManage" >
+    insert into step_manage (step_id, act_id, step_no, 
+      step_name, step_desc, step_sign, 
+      start_time, end_time, creator, 
+      create_time, updator, update_time
+      )
+    values (#{stepId,jdbcType=BIGINT}, #{actId,jdbcType=VARCHAR}, #{stepNo,jdbcType=INTEGER}, 
+      #{stepName,jdbcType=VARCHAR}, #{stepDesc,jdbcType=VARCHAR}, #{stepSign,jdbcType=INTEGER}, 
+      #{startTime,jdbcType=TIMESTAMP}, #{endTime,jdbcType=TIMESTAMP}, #{creator,jdbcType=VARCHAR}, 
+      #{createTime,jdbcType=TIMESTAMP}, #{updator,jdbcType=VARCHAR}, #{updateTime,jdbcType=TIMESTAMP}
+      )
+  </insert>
+  <insert id="insertSelective" parameterType="com.hichlink.hvp.common.entity.StepManage" >
+    insert into step_manage
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="stepId != null" >
+        step_id,
+      </if>
+      <if test="actId != null" >
+        act_id,
+      </if>
+      <if test="stepNo != null" >
+        step_no,
+      </if>
+      <if test="stepName != null" >
+        step_name,
+      </if>
+      <if test="stepDesc != null" >
+        step_desc,
+      </if>
+      <if test="stepSign != null" >
+        step_sign,
+      </if>
+      <if test="startTime != null" >
+        start_time,
+      </if>
+      <if test="endTime != null" >
+        end_time,
+      </if>
+      <if test="creator != null" >
+        creator,
+      </if>
+      <if test="createTime != null" >
+        create_time,
+      </if>
+      <if test="updator != null" >
+        updator,
+      </if>
+      <if test="updateTime != null" >
+        update_time,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="stepId != null" >
+        #{stepId,jdbcType=BIGINT},
+      </if>
+      <if test="actId != null" >
+        #{actId,jdbcType=VARCHAR},
+      </if>
+      <if test="stepNo != null" >
+        #{stepNo,jdbcType=INTEGER},
+      </if>
+      <if test="stepName != null" >
+        #{stepName,jdbcType=VARCHAR},
+      </if>
+      <if test="stepDesc != null" >
+        #{stepDesc,jdbcType=VARCHAR},
+      </if>
+      <if test="stepSign != null" >
+        #{stepSign,jdbcType=INTEGER},
+      </if>
+      <if test="startTime != null" >
+        #{startTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="endTime != null" >
+        #{endTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="creator != null" >
+        #{creator,jdbcType=VARCHAR},
+      </if>
+      <if test="createTime != null" >
+        #{createTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="updator != null" >
+        #{updator,jdbcType=VARCHAR},
+      </if>
+      <if test="updateTime != null" >
+        #{updateTime,jdbcType=TIMESTAMP},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.hichlink.hvp.common.entity.StepManage" >
+    update step_manage
+    <set >
+      <if test="actId != null" >
+        act_id = #{actId,jdbcType=VARCHAR},
+      </if>
+      <if test="stepNo != null" >
+        step_no = #{stepNo,jdbcType=INTEGER},
+      </if>
+      <if test="stepName != null" >
+        step_name = #{stepName,jdbcType=VARCHAR},
+      </if>
+      <if test="stepDesc != null" >
+        step_desc = #{stepDesc,jdbcType=VARCHAR},
+      </if>
+      <if test="stepSign != null" >
+        step_sign = #{stepSign,jdbcType=INTEGER},
+      </if>
+      <if test="startTime != null" >
+        start_time = #{startTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="endTime != null" >
+        end_time = #{endTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="creator != null" >
+        creator = #{creator,jdbcType=VARCHAR},
+      </if>
+      <if test="createTime != null" >
+        create_time = #{createTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="updator != null" >
+        updator = #{updator,jdbcType=VARCHAR},
+      </if>
+      <if test="updateTime != null" >
+        update_time = #{updateTime,jdbcType=TIMESTAMP},
+      </if>
+    </set>
+    where step_id = #{stepId,jdbcType=BIGINT}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.hichlink.hvp.common.entity.StepManage" >
+    update step_manage
+    set act_id = #{actId,jdbcType=VARCHAR},
+      step_no = #{stepNo,jdbcType=INTEGER},
+      step_name = #{stepName,jdbcType=VARCHAR},
+      step_desc = #{stepDesc,jdbcType=VARCHAR},
+      step_sign = #{stepSign,jdbcType=INTEGER},
+      start_time = #{startTime,jdbcType=TIMESTAMP},
+      end_time = #{endTime,jdbcType=TIMESTAMP},
+      creator = #{creator,jdbcType=VARCHAR},
+      create_time = #{createTime,jdbcType=TIMESTAMP},
+      updator = #{updator,jdbcType=VARCHAR},
+      update_time = #{updateTime,jdbcType=TIMESTAMP}
+    where step_id = #{stepId,jdbcType=BIGINT}
+  </update>
+</mapper>

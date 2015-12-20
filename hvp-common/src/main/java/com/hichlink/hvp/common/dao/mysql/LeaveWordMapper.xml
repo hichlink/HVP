@@ -1,0 +1,177 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.hichlink.hvp.common.dao.LeaveWordMapper" >
+  <resultMap id="BaseResultMap" type="com.hichlink.hvp.common.entity.LeaveWord" >
+    <id column="word_id" property="wordId" jdbcType="BIGINT" />
+    <result column="act_id" property="actId" jdbcType="VARCHAR" />
+    <result column="words" property="words" jdbcType="VARCHAR" />
+    <result column="open_id" property="openId" jdbcType="VARCHAR" />
+    <result column="player_id" property="playerId" jdbcType="BIGINT" />
+    <result column="create_time" property="createTime" jdbcType="TIMESTAMP" />
+    <result column="audit_status" property="auditStatus" jdbcType="INTEGER" />
+    <result column="reason" property="reason" jdbcType="VARCHAR" />
+    <result column="updator" property="updator" jdbcType="VARCHAR" />
+    <result column="update_time" property="updateTime" jdbcType="TIMESTAMP" />
+    <result column="ip" property="ip" jdbcType="VARCHAR" />
+  </resultMap>
+  <sql id="Example_Where_Clause" >
+    <where >
+      <!--例子:<if test="params['name'] != null and  params['name'] != ''">and name=#{params.name}</if>-->
+    </where>
+  </sql>
+  <sql id="Base_Column_List" >
+    word_id, act_id, words, open_id, player_id, create_time, audit_status, reason, updator, 
+    update_time, ip
+  </sql>
+  <select id="pageQuery" resultMap="BaseResultMap" parameterType="com.aspire.webbas.core.pagination.mybatis.pager.Page" >
+    select
+    <include refid="Base_Column_List" />
+    from leave_word
+    <if test="params != null" >
+      <include refid="Example_Where_Clause" />
+    </if>
+  </select>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Long" >
+    select 
+    <include refid="Base_Column_List" />
+    from leave_word
+    where word_id = #{wordId,jdbcType=BIGINT}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Long" >
+    delete from leave_word
+    where word_id = #{wordId,jdbcType=BIGINT}
+  </delete>
+  <insert id="insert" parameterType="com.hichlink.hvp.common.entity.LeaveWord" >
+    insert into leave_word (word_id, act_id, words, 
+      open_id, player_id, create_time, 
+      audit_status, reason, updator, 
+      update_time, ip)
+    values (#{wordId,jdbcType=BIGINT}, #{actId,jdbcType=VARCHAR}, #{words,jdbcType=VARCHAR}, 
+      #{openId,jdbcType=VARCHAR}, #{playerId,jdbcType=BIGINT}, #{createTime,jdbcType=TIMESTAMP}, 
+      #{auditStatus,jdbcType=INTEGER}, #{reason,jdbcType=VARCHAR}, #{updator,jdbcType=VARCHAR}, 
+      #{updateTime,jdbcType=TIMESTAMP}, #{ip,jdbcType=VARCHAR})
+  </insert>
+  <insert id="insertSelective" parameterType="com.hichlink.hvp.common.entity.LeaveWord" >
+    insert into leave_word
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="wordId != null" >
+        word_id,
+      </if>
+      <if test="actId != null" >
+        act_id,
+      </if>
+      <if test="words != null" >
+        words,
+      </if>
+      <if test="openId != null" >
+        open_id,
+      </if>
+      <if test="playerId != null" >
+        player_id,
+      </if>
+      <if test="createTime != null" >
+        create_time,
+      </if>
+      <if test="auditStatus != null" >
+        audit_status,
+      </if>
+      <if test="reason != null" >
+        reason,
+      </if>
+      <if test="updator != null" >
+        updator,
+      </if>
+      <if test="updateTime != null" >
+        update_time,
+      </if>
+      <if test="ip != null" >
+        ip,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="wordId != null" >
+        #{wordId,jdbcType=BIGINT},
+      </if>
+      <if test="actId != null" >
+        #{actId,jdbcType=VARCHAR},
+      </if>
+      <if test="words != null" >
+        #{words,jdbcType=VARCHAR},
+      </if>
+      <if test="openId != null" >
+        #{openId,jdbcType=VARCHAR},
+      </if>
+      <if test="playerId != null" >
+        #{playerId,jdbcType=BIGINT},
+      </if>
+      <if test="createTime != null" >
+        #{createTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="auditStatus != null" >
+        #{auditStatus,jdbcType=INTEGER},
+      </if>
+      <if test="reason != null" >
+        #{reason,jdbcType=VARCHAR},
+      </if>
+      <if test="updator != null" >
+        #{updator,jdbcType=VARCHAR},
+      </if>
+      <if test="updateTime != null" >
+        #{updateTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="ip != null" >
+        #{ip,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.hichlink.hvp.common.entity.LeaveWord" >
+    update leave_word
+    <set >
+      <if test="actId != null" >
+        act_id = #{actId,jdbcType=VARCHAR},
+      </if>
+      <if test="words != null" >
+        words = #{words,jdbcType=VARCHAR},
+      </if>
+      <if test="openId != null" >
+        open_id = #{openId,jdbcType=VARCHAR},
+      </if>
+      <if test="playerId != null" >
+        player_id = #{playerId,jdbcType=BIGINT},
+      </if>
+      <if test="createTime != null" >
+        create_time = #{createTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="auditStatus != null" >
+        audit_status = #{auditStatus,jdbcType=INTEGER},
+      </if>
+      <if test="reason != null" >
+        reason = #{reason,jdbcType=VARCHAR},
+      </if>
+      <if test="updator != null" >
+        updator = #{updator,jdbcType=VARCHAR},
+      </if>
+      <if test="updateTime != null" >
+        update_time = #{updateTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="ip != null" >
+        ip = #{ip,jdbcType=VARCHAR},
+      </if>
+    </set>
+    where word_id = #{wordId,jdbcType=BIGINT}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.hichlink.hvp.common.entity.LeaveWord" >
+    update leave_word
+    set act_id = #{actId,jdbcType=VARCHAR},
+      words = #{words,jdbcType=VARCHAR},
+      open_id = #{openId,jdbcType=VARCHAR},
+      player_id = #{playerId,jdbcType=BIGINT},
+      create_time = #{createTime,jdbcType=TIMESTAMP},
+      audit_status = #{auditStatus,jdbcType=INTEGER},
+      reason = #{reason,jdbcType=VARCHAR},
+      updator = #{updator,jdbcType=VARCHAR},
+      update_time = #{updateTime,jdbcType=TIMESTAMP},
+      ip = #{ip,jdbcType=VARCHAR}
+    where word_id = #{wordId,jdbcType=BIGINT}
+  </update>
+</mapper>
