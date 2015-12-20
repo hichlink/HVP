@@ -23,9 +23,17 @@
 
 	<repositories>
 		<repository>
+			<id>oschina-repos</id>
+			<name>oschina Repository</name>
+			<url>http://maven.oschina.net/content/groups/public/</url>
+			<snapshots>
+				<enabled>false</enabled>
+			</snapshots>
+	    </repository>
+		<repository>
 			<id>mvnrepository-repos</id>
 			<name>mvnrepository Repository</name>
-			<url>http://mvnrepository.com/</url>
+			<url>http://mvnrepository.com/content/groups/public/</url>
 			<snapshots>
 				<enabled>false</enabled>
 			</snapshots>
