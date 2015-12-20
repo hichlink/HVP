@@ -39,6 +39,22 @@
 								<p name="cateName" class="form-control-static"></p>
 							</div>
 						</div>
+												 										 										<div class="form-group">
+							<label class="col-sm-5 control-label no-padding-right text-right" for="creator">
+							创建者:
+							</label>
+							<div class="col-sm-7">
+								<p name="creator" class="form-control-static"></p>
+							</div>
+						</div>
+												 										 										<div class="form-group">
+							<label class="col-sm-5 control-label no-padding-right text-right" for="updator">
+							修改者:
+							</label>
+							<div class="col-sm-7">
+								<p name="updator" class="form-control-static"></p>
+							</div>
+						</div>
 												 														
 					
 				
@@ -59,6 +75,22 @@
 							</label>
 							<div class="col-sm-7">
 								<p name="remark" class="form-control-static"></p>
+							</div>
+						</div>
+																																		<div class="form-group">
+							<label class="col-sm-5 control-label no-padding-right text-right" for="createTime">
+							创建时间:
+							</label>
+							<div class="col-sm-7">
+								<p name="createTime" class="form-control-static"></p>
+							</div>
+						</div>
+																																		<div class="form-group">
+							<label class="col-sm-5 control-label no-padding-right text-right" for="updateTime">
+							修改时间:
+							</label>
+							<div class="col-sm-7">
+								<p name="updateTime" class="form-control-static"></p>
 							</div>
 						</div>
 																

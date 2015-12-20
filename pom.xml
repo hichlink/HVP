@@ -23,14 +23,6 @@
 
 	<repositories>
 		<repository>
-			<id>springsource-repos</id>
-			<name>SpringSource Repository</name>
-			<url>http://repository.jboss.org/maven2/</url>
-			<snapshots>
-				<enabled>false</enabled>
-			</snapshots>
-	    </repository>
-	    <repository>
 			<id>mvnrepository-repos</id>
 			<name>mvnrepository Repository</name>
 			<url>http://mvnrepository.com/</url>
@@ -38,6 +30,15 @@
 				<enabled>false</enabled>
 			</snapshots>
 	    </repository>
+		<repository>
+			<id>springsource-repos</id>
+			<name>SpringSource Repository</name>
+			<url>http://repository.jboss.org/maven2/</url>
+			<snapshots>
+				<enabled>false</enabled>
+			</snapshots>
+	    </repository>
+	    
 	    <repository>
 			<id>ibiblio-repos</id>
 			<name>ibiblio Repository</name>

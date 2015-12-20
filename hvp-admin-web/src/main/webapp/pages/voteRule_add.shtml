@@ -26,12 +26,12 @@
 			<div class="col-xs-6">
 				
 						 										 										<div class="form-group">
-							<label class="col-sm-3 control-label no-padding-right text-right" for="perVoteNum">
+							<label class="col-sm-3 control-label no-padding-right text-right" for="actId">
 																<span class="red">*</span>
-															每人投票数:
+															活动ID:
 							</label>
 							<div class="col-sm-6">
-								<input type="text" name="perVoteNum" id="perVoteNum" class="form-control input-sm" />
+								<input type="text" name="actId" id="actId" class="form-control input-sm" />
 							</div>
 						</div>
 												 										 										<div class="form-group">
@@ -44,44 +44,35 @@
 							</div>
 						</div>
 												 										 										<div class="form-group">
-							<label class="col-sm-3 control-label no-padding-right text-right" for="actId">
+							<label class="col-sm-3 control-label no-padding-right text-right" for="creator">
 																<span class="red">*</span>
-															活动ID:
+															创建者:
 							</label>
 							<div class="col-sm-6">
-								<input type="text" name="actId" id="actId" class="form-control input-sm" />
+								<input type="text" name="creator" id="creator" class="form-control input-sm" />
 							</div>
 						</div>
 												 										 										<div class="form-group">
-							<label class="col-sm-3 control-label no-padding-right text-right" for="createTime">
-																<span class="red">*</span>
-															创建时间:
+							<label class="col-sm-3 control-label no-padding-right text-right" for="updator">
+															修改者:
 							</label>
 							<div class="col-sm-6">
-								<input type="text" name="createTime" id="createTime" class="form-control input-sm" />
+								<input type="text" name="updator" id="updator" class="form-control input-sm" />
 							</div>
 						</div>
-												 										 										<div class="form-group">
-							<label class="col-sm-3 control-label no-padding-right text-right" for="updateTime">
-															修改时间:
-							</label>
-							<div class="col-sm-6">
-								<input type="text" name="updateTime" id="updateTime" class="form-control input-sm" />
-							</div>
-						</div>
-																
+												 														
 					
 				
 			</div>
 			<div class="col-xs-6">
 				
 																																							<div class="form-group">
-							<label class="col-sm-3 control-label no-padding-right text-right" for="oneDayVoteNum">
+							<label class="col-sm-3 control-label no-padding-right text-right" for="perVoteNum">
 																<span class="red">*</span>
-															一天投票数:
+															每人投票数:
 							</label>
 							<div class="col-sm-6">
-								<input type="text" name="oneDayVoteNum" id="oneDayVoteNum" class="form-control input-sm" />
+								<input type="text" name="perVoteNum" id="perVoteNum" class="form-control input-sm" />
 							</div>
 						</div>
 																																		<div class="form-group">
@@ -94,23 +85,23 @@
 							</div>
 						</div>
 																																		<div class="form-group">
-							<label class="col-sm-3 control-label no-padding-right text-right" for="creator">
+							<label class="col-sm-3 control-label no-padding-right text-right" for="createTime">
 																<span class="red">*</span>
-															创建者:
+															创建时间:
 							</label>
 							<div class="col-sm-6">
-								<input type="text" name="creator" id="creator" class="form-control input-sm" />
+								<input type="text" name="createTime" id="createTime" class="form-control input-sm" />
 							</div>
 						</div>
 																																		<div class="form-group">
-							<label class="col-sm-3 control-label no-padding-right text-right" for="updator">
-															修改者:
+							<label class="col-sm-3 control-label no-padding-right text-right" for="updateTime">
+															修改时间:
 							</label>
 							<div class="col-sm-6">
-								<input type="text" name="updator" id="updator" class="form-control input-sm" />
+								<input type="text" name="updateTime" id="updateTime" class="form-control input-sm" />
 							</div>
 						</div>
-																											
+																
 					
 				
 			</div>
@@ -149,10 +140,10 @@
 	$(function(){
 		var add_validator = $('#add-form').validate({
 					rules: {
-							 						 					 										'perVoteNum' : {
+							 						 					 										'actId' : {
 	 						 					required:true,
-	 						 					maxlength: 11
-					 },	 				 	 					 										'oneDayVoteNum' : {
+	 						 					maxlength: 20
+					 },	 				 	 					 										'perVoteNum' : {
 	 						 					required:true,
 	 						 					maxlength: 11
 					 },	 				 	 					 										'voteRatio' : {
@@ -161,9 +152,6 @@
 					 },	 				 	 					 										'isRepeateVote' : {
 	 						 					required:true,
 	 						 					maxlength: 11
-					 },	 				 	 					 										'actId' : {
-	 						 					required:true,
-	 						 					maxlength: 20
 					 },	 				 	 					 										'creator' : {
 	 						 					required:true,
 	 						 					maxlength: 64

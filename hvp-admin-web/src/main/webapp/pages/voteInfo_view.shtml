@@ -32,38 +32,30 @@
 							</div>
 						</div>
 												 										 										<div class="form-group">
-							<label class="col-sm-5 control-label no-padding-right text-right" for="openId">
-							微信OpenId:
+							<label class="col-sm-5 control-label no-padding-right text-right" for="voteNum">
+							票数:
 							</label>
 							<div class="col-sm-7">
-								<p name="openId" class="form-control-static"></p>
+								<p name="voteNum" class="form-control-static"></p>
 							</div>
 						</div>
 												 										 										<div class="form-group">
-							<label class="col-sm-5 control-label no-padding-right text-right" for="stage">
-							当前所处阶段:
+							<label class="col-sm-5 control-label no-padding-right text-right" for="stepName">
+							阶段名称:
 							</label>
 							<div class="col-sm-7">
-								<p name="stage" class="form-control-static"></p>
+								<p name="stepName" class="form-control-static"></p>
 							</div>
 						</div>
 												 										 										<div class="form-group">
-							<label class="col-sm-5 control-label no-padding-right text-right" for="mobile">
-							手机号码:
+							<label class="col-sm-5 control-label no-padding-right text-right" for="createTime">
+							创建时间:
 							</label>
 							<div class="col-sm-7">
-								<p name="mobile" class="form-control-static"></p>
+								<p name="createTime" class="form-control-static"></p>
 							</div>
 						</div>
-												 										 										<div class="form-group">
-							<label class="col-sm-5 control-label no-padding-right text-right" for="ip">
-							评论者IP:
-							</label>
-							<div class="col-sm-7">
-								<p name="ip" class="form-control-static"></p>
-							</div>
-						</div>
-																
+												 														
 					
 				
 			</div>
@@ -78,30 +70,30 @@
 							</div>
 						</div>
 																																		<div class="form-group">
-							<label class="col-sm-5 control-label no-padding-right text-right" for="voteNum">
-							票数:
+							<label class="col-sm-5 control-label no-padding-right text-right" for="stage">
+							当前所处阶段:
 							</label>
 							<div class="col-sm-7">
-								<p name="voteNum" class="form-control-static"></p>
+								<p name="stage" class="form-control-static"></p>
 							</div>
 						</div>
 																																		<div class="form-group">
-							<label class="col-sm-5 control-label no-padding-right text-right" for="stepName">
-							阶段名称:
+							<label class="col-sm-5 control-label no-padding-right text-right" for="mobile">
+							手机号码:
 							</label>
 							<div class="col-sm-7">
-								<p name="stepName" class="form-control-static"></p>
+								<p name="mobile" class="form-control-static"></p>
 							</div>
 						</div>
 																																		<div class="form-group">
-							<label class="col-sm-5 control-label no-padding-right text-right" for="createTime">
-							创建时间:
+							<label class="col-sm-5 control-label no-padding-right text-right" for="ip">
+							评论者IP:
 							</label>
 							<div class="col-sm-7">
-								<p name="createTime" class="form-control-static"></p>
+								<p name="ip" class="form-control-static"></p>
 							</div>
 						</div>
-																											
+																
 					
 				
 			</div>

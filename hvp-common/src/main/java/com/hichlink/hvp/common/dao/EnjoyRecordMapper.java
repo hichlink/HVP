@@ -1,4 +1,4 @@
-/*** Auto generator by codegenerator 2015-12-19 23:54:15*/
+/*** Auto generator by codegenerator 2015-12-20 22:13:43*/
 package com.hichlink.hvp.common.dao;
 
 import com.aspire.webbas.core.pagination.mybatis.pager.Page;

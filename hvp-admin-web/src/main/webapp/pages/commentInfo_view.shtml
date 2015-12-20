@@ -40,30 +40,30 @@
 							</div>
 						</div>
 												 										 										<div class="form-group">
-							<label class="col-sm-5 control-label no-padding-right text-right" for="createTime">
-							创建时间:
+							<label class="col-sm-5 control-label no-padding-right text-right" for="auditStatus">
+							审核状态 0:审核中 1:审核通过 2:审核失败:
 							</label>
 							<div class="col-sm-7">
-								<p name="createTime" class="form-control-static"></p>
+								<p name="auditStatus" class="form-control-static"></p>
 							</div>
 						</div>
 												 										 										<div class="form-group">
-							<label class="col-sm-5 control-label no-padding-right text-right" for="reason">
-							原因:
+							<label class="col-sm-5 control-label no-padding-right text-right" for="updator">
+							修改者:
 							</label>
 							<div class="col-sm-7">
-								<p name="reason" class="form-control-static"></p>
+								<p name="updator" class="form-control-static"></p>
 							</div>
 						</div>
 												 										 										<div class="form-group">
-							<label class="col-sm-5 control-label no-padding-right text-right" for="updateTime">
-							修改时间:
+							<label class="col-sm-5 control-label no-padding-right text-right" for="ip">
+							评论者IP:
 							</label>
 							<div class="col-sm-7">
-								<p name="updateTime" class="form-control-static"></p>
+								<p name="ip" class="form-control-static"></p>
 							</div>
 						</div>
-												 														
+																
 					
 				
 			</div>
@@ -78,38 +78,30 @@
 							</div>
 						</div>
 																																		<div class="form-group">
-							<label class="col-sm-5 control-label no-padding-right text-right" for="openId">
-							微信OpenId:
+							<label class="col-sm-5 control-label no-padding-right text-right" for="createTime">
+							创建时间:
 							</label>
 							<div class="col-sm-7">
-								<p name="openId" class="form-control-static"></p>
+								<p name="createTime" class="form-control-static"></p>
 							</div>
 						</div>
 																																		<div class="form-group">
-							<label class="col-sm-5 control-label no-padding-right text-right" for="auditStatus">
-							审核状态 0:审核中 1:审核通过 2:审核失败:
+							<label class="col-sm-5 control-label no-padding-right text-right" for="reason">
+							原因:
 							</label>
 							<div class="col-sm-7">
-								<p name="auditStatus" class="form-control-static"></p>
+								<p name="reason" class="form-control-static"></p>
 							</div>
 						</div>
 																																		<div class="form-group">
-							<label class="col-sm-5 control-label no-padding-right text-right" for="updator">
-							修改者:
+							<label class="col-sm-5 control-label no-padding-right text-right" for="updateTime">
+							修改时间:
 							</label>
 							<div class="col-sm-7">
-								<p name="updator" class="form-control-static"></p>
+								<p name="updateTime" class="form-control-static"></p>
 							</div>
 						</div>
-																																		<div class="form-group">
-							<label class="col-sm-5 control-label no-padding-right text-right" for="ip">
-							评论者IP:
-							</label>
-							<div class="col-sm-7">
-								<p name="ip" class="form-control-static"></p>
-							</div>
-						</div>
-																
+																											
 					
 				
 			</div>

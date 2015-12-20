@@ -1,4 +1,4 @@
-/*** Auto generator by codegenerator 2015-12-19 23:54:20*/
+/*** Auto generator by codegenerator 2015-12-20 22:14:08*/
 package com.hichlink.hvp.common.entity;
 
 import java.util.Date;
@@ -23,11 +23,6 @@ public class ViewRecord {
     来源ID
      */
     private String sourceId;
-
-    /**
-    微信OpenId
-     */
-    private String openId;
 
     /**
     阅读者IP
@@ -85,18 +80,6 @@ public class ViewRecord {
 
     public void setSourceId(String sourceId) {
         this.sourceId = sourceId == null ? null : sourceId.trim();
-    }
-
-    /**
-    微信OpenId
-     * @return the value of view_record.open_id
-     */
-    public String getOpenId() {
-        return openId;
-    }
-
-    public void setOpenId(String openId) {
-        this.openId = openId == null ? null : openId.trim();
     }
 
     /**

@@ -3,7 +3,7 @@
 <head>
 	<meta charset="utf-8" />
 	<!--#include virtual="/root.jsp"  -->
-	<title>voteInfo</title>
+	<title>smsVerify</title>
 	<!--#include virtual="/include.html"  -->
 </head>
 <body>
@@ -27,29 +27,29 @@
                                     <div class="row">
 																																								                                        <div class="col-xs-4">
                                             <span>
-                                            	<label class="col-xs-12 col-sm-3">活动ID：</label>
+                                            	<label class="col-xs-12 col-sm-3">手机号码：</label>
 												<div class="input-group col-xs-12 col-sm-9">
-                                                    <input name="params['actId']" class="form-control search-query">
+                                                    <input name="params['mobile']" class="form-control search-query">
                                                 </div>
                                             </span> 
                                         </div>
 																														                                        <div class="col-xs-4">
                                             <span>
-                                            	<label class="col-xs-12 col-sm-3">选手ID：</label>
+                                            	<label class="col-xs-12 col-sm-3">验证码：</label>
 												<div class="input-group col-xs-12 col-sm-9">
-                                                    <input name="params['playerId']" class="form-control search-query">
+                                                    <input name="params['verifyCode']" class="form-control search-query">
                                                 </div>
                                             </span> 
                                         </div>
 																														                                        <div class="col-xs-4">
                                             <span>
-                                            	<label class="col-xs-12 col-sm-3">票数：</label>
+                                            	<label class="col-xs-12 col-sm-3">过期时间：</label>
 												<div class="input-group col-xs-12 col-sm-9">
-                                                    <input name="params['voteNum']" class="form-control search-query">
+                                                    <input name="params['expTime']" class="form-control search-query">
                                                 </div>
                                             </span> 
                                         </div>
-																																																																																																																																</div>
+																																																																																								</div>
 							</div>
 						</div>   
                         <div class="bs_btn">
@@ -73,50 +73,46 @@
 	<!--#include virtual="/include_footer.html"  -->
 
 	<script type="text/javascript">
-	var list_url  = ctxPaths+ '/voteInfo/query.ajax';
-	var delete_url   = ctxPaths+ '/voteInfo/delete.ajax';
+	var list_url  = ctxPaths+ '/smsVerify/query.ajax';
+	var delete_url   = ctxPaths+ '/smsVerify/delete.ajax';
 	var grid_selector = "#grid-table";
 	var pager_selector = "#grid-pager";
 	$(function($) {
 				jqGrid_init($(grid_selector),pager_selector,{
 					url: list_url,
 					sortable : true,
-																									sortname : 'actId',
-																																																																																					sortorder:'desc',
+																									sortname : 'mobile',
+																																																																	sortorder:'desc',
 					colNames:[
-										'投票ID',
-										'活动ID',
-										'选手ID',
-										'票数',
-										'当前所处阶段',
-										'阶段名称',
+										'短信验证码ID',
 										'手机号码',
-										'创建时间',
-										'评论者IP',
+										'验证码',
+										'过期时间',
+										'是否有效 0:无效 1:有效',
+										'类型 1:投票',
+										'录入时间',
 										''
 					],
 					colModel:[
-												   					{name:'voteId',index:'voteId', hidden:true},
-						   					   						   												{name:'actId',index:'actId', sortable:true,sortname : 'act_id',width:100,formatter:formatName},
-													   					   						   												{name:'playerId',index:'playerId', sortable:true,sortname : 'player_id',width:100},
-													   					   						   												{name:'voteNum',index:'voteNum', sortable:true,sortname : 'vote_num',width:100},
-													   					   						   												{name:'stage',index:'stage', sortable:true,sortname : 'stage',width:100},
-													   					   						   												{name:'stepName',index:'stepName', sortable:true,sortname : 'step_name',width:100},
-													   					   						   												{name:'mobile',index:'mobile', sortable:true,sortname : 'mobile',width:100},
-													   					   						   												{name:'createTime',index:'createTime', sortable:true,sortname : 'create_time',width:100},
-													   					   						   												{name:'ip',index:'ip', sortable:true,sortname : 'ip',width:100},
+												   					{name:'smsId',index:'smsId', hidden:true},
+						   					   						   												{name:'mobile',index:'mobile', sortable:true,sortname : 'mobile',width:100,formatter:formatName},
+													   					   						   												{name:'verifyCode',index:'verifyCode', sortable:true,sortname : 'verify_code',width:100},
+													   					   						   												{name:'expTime',index:'expTime', sortable:true,sortname : 'exp_time',width:100},
+													   					   						   												{name:'isValid',index:'isValid', sortable:true,sortname : 'is_valid',width:100},
+													   					   						   												{name:'smsType',index:'smsType', sortable:true,sortname : 'sms_type',width:100},
+													   					   						   												{name:'inputTime',index:'inputTime', sortable:true,sortname : 'input_time',width:100},
 													   					   					{name:'myac',index:'', width:120, fixed:true, sortable:false, resize:false,formatter:actionButtons}					
 					]
 				});
 				function formatName(cellvalue, options, rowObject){
-					return '<a href="javascript:;" onclick="viewEvent(\''+rowObject['voteId']+'\')">' + cellvalue + '</a>';
+					return '<a href="javascript:;" onclick="viewEvent(\''+rowObject['smsId']+'\')">' + cellvalue + '</a>';
 				}
 				function actionButtons(cellvalue, options, rowObject){
 					return '<div >' + 
-								'<button onclick=\"editEvent('+rowObject['voteId']+')\" class=\"btn btn-xs btn-info\" data-rel=\"tooltip\" title=\"编辑\" >' +
+								'<button onclick=\"editEvent('+rowObject['smsId']+')\" class=\"btn btn-xs btn-info\" data-rel=\"tooltip\" title=\"编辑\" >' +
 									'<i class=\"ace-icon fa fa-pencil bigger-120\"></i>' +
 								'</button>' + 
-								'<button onclick=\"deleteEvent('+rowObject['voteId']+')\" class=\"btn btn-xs btn-danger\" data-rel=\"tooltip\" title=\"删除\" >' +
+								'<button onclick=\"deleteEvent('+rowObject['smsId']+')\" class=\"btn btn-xs btn-danger\" data-rel=\"tooltip\" title=\"删除\" >' +
 									'<i class=\"ace-icon fa fa-trash-o bigger-120\"></i>' +
 								'</button>'  + 
 							'</div>';
@@ -125,15 +121,15 @@
 			});
 
 			function editEvent(id){
-				window.location.href = ctxPaths+'/pages/voteInfo_add.shtml?voteId=' + id;
+				window.location.href = ctxPaths+'/pages/smsVerify_add.shtml?smsId=' + id;
 			};
 			function viewEvent(id){
-				window.location.href = ctxPaths+'/pages/voteInfo_view.shtml?voteId=' + id;
+				window.location.href = ctxPaths+'/pages/smsVerify_view.shtml?smsId=' + id;
 			};
 			function deleteEvent(id){
 				Q_Confirm("是否要删除？",function(result) {
 					if(result){
-						$.ajaxSubmit(delete_url,{'voteId' : id}, function(data){
+						$.ajaxSubmit(delete_url,{'smsId' : id}, function(data){
 							$(grid_selector).jqGrid('setGridParam',{page:1}).trigger("reloadGrid");
 						});
 					}
@@ -142,29 +138,24 @@
 			
 			add_validator = $('#add-form').validate({
 					rules: {
-							 						 					 										'actId' : {
-	 						 					required:true,
-	 						 					maxlength: 20
-					 },	 				 	 					 										'playerId' : {
-	 						 					required:true,
-	 						 					maxlength: 20
-					 },	 				 	 					 										'voteNum' : {
-	 						 					required:true,
-	 						 					maxlength: 11
-					 },	 				 	 					 										'stage' : {
-	 						 					required:true,
-	 						 					maxlength: 11
-					 },	 				 	 					 										'stepName' : {
+							 						 					 										'mobile' : {
 	 						 					required:true,
 	 						 					maxlength: 32
-					 },	 				 	 					 										'mobile' : {
+					 },	 				 	 					 										'verifyCode' : {
 	 						 					required:true,
-	 						 					maxlength: 32
-					 },	 				 	 					 										'createTime' : {
+	 						 					maxlength: 10
+					 },	 				 	 					 										'expTime' : {
 	 						 					required:true,
 	 						 					maxlength: 0
-					 },	 				 	 					 										'ip' : {
-	 						 					maxlength: 64
+					 },	 				 	 					 										'isValid' : {
+	 						 					required:true,
+	 						 					maxlength: 11
+					 },	 				 	 					 										'smsType' : {
+	 						 					required:true,
+	 						 					maxlength: 11
+					 },	 				 	 					 										'inputTime' : {
+	 						 					required:true,
+	 						 					maxlength: 0
 					 }	 				 	 									},
 					submitHandler: function (form) {
 						$.ajaxSubmit(update_url,$(form).serializeJson(),function(data){
@@ -180,7 +171,7 @@
 			});
 			
 			$('#addBtn').on('click', function(){
-				window.location.href = ctxPaths+'/pages/voteInfo_add.shtml';
+				window.location.href = ctxPaths+'/pages/smsVerify_add.shtml';
 			});
 			
 			$('#seachBtn').on('click', function(){

@@ -3,7 +3,7 @@
 <head>
 	<meta charset="utf-8" />
 	<!--#include virtual="/root.jsp"  -->
-	<title>viewRecord</title>
+	<title>smsVerify</title>
 	<!--#include virtual="/include.html"  -->
 </head>
 <body>
@@ -12,7 +12,7 @@
 		<div class="table-responsive">
 			<div class="page-header">
 			<h1>
-				viewRecord
+				smsVerify
 				<small> <i class="ace-icon fa fa-angle-double-right"></i>
 					详情
 				</small>
@@ -24,52 +24,60 @@
 			<div class="col-xs-6">
 				
 						 										 										<div class="form-group">
-							<label class="col-sm-5 control-label no-padding-right text-right" for="actId">
-							活动ID:
+							<label class="col-sm-5 control-label no-padding-right text-right" for="mobile">
+							手机号码:
 							</label>
 							<div class="col-sm-7">
-								<p name="actId" class="form-control-static"></p>
+								<p name="mobile" class="form-control-static"></p>
 							</div>
 						</div>
 												 										 										<div class="form-group">
-							<label class="col-sm-5 control-label no-padding-right text-right" for="sourceId">
-							来源ID:
+							<label class="col-sm-5 control-label no-padding-right text-right" for="expTime">
+							过期时间:
 							</label>
 							<div class="col-sm-7">
-								<p name="sourceId" class="form-control-static"></p>
+								<p name="expTime" class="form-control-static"></p>
 							</div>
 						</div>
 												 										 										<div class="form-group">
-							<label class="col-sm-5 control-label no-padding-right text-right" for="createTime">
-							创建时间:
+							<label class="col-sm-5 control-label no-padding-right text-right" for="smsType">
+							类型 1:投票:
 							</label>
 							<div class="col-sm-7">
-								<p name="createTime" class="form-control-static"></p>
+								<p name="smsType" class="form-control-static"></p>
 							</div>
 						</div>
-																
+												 														
 					
 				
 			</div>
 			<div class="col-xs-6">
 				
 																																							<div class="form-group">
-							<label class="col-sm-5 control-label no-padding-right text-right" for="type">
-							类型 1:选手 2:资读:
+							<label class="col-sm-5 control-label no-padding-right text-right" for="verifyCode">
+							验证码:
 							</label>
 							<div class="col-sm-7">
-								<p name="type" class="form-control-static"></p>
+								<p name="verifyCode" class="form-control-static"></p>
 							</div>
 						</div>
 																																		<div class="form-group">
-							<label class="col-sm-5 control-label no-padding-right text-right" for="ip">
-							阅读者IP:
+							<label class="col-sm-5 control-label no-padding-right text-right" for="isValid">
+							是否有效 0:无效 1:有效:
 							</label>
 							<div class="col-sm-7">
-								<p name="ip" class="form-control-static"></p>
+								<p name="isValid" class="form-control-static"></p>
 							</div>
 						</div>
-																											
+																																		<div class="form-group">
+							<label class="col-sm-5 control-label no-padding-right text-right" for="inputTime">
+							录入时间:
+							</label>
+							<div class="col-sm-7">
+								<p name="inputTime" class="form-control-static"></p>
+							</div>
+						</div>
+																
 					
 				
 			</div>
@@ -92,11 +100,11 @@
 	<!--#include virtual="/include_footer.html"  -->
 
 	<script type="text/javascript">
-	var view_url 	 = ctxPaths+ '/viewRecord/get.ajax';
-	var pkId = getP('recordId');
+	var view_url 	 = ctxPaths+ '/smsVerify/get.ajax';
+	var pkId = getP('smsId');
 	$(function(){
 		if (pkId){
-			$.ajaxSubmit(view_url, {'recordId':pkId}, function(rtn) {
+			$.ajaxSubmit(view_url, {'smsId':pkId}, function(rtn) {
 				if (rtn.success) {
 					$.dataInput($('.form-control-static'),rtn.data);
 				} else {

@@ -1,4 +1,4 @@
-/*** Auto generator by codegenerator 2015-12-19 23:55:14*/
+/*** Auto generator by codegenerator 2015-12-20 22:14:04*/
 package com.hichlink.hvp.common.entity;
 
 import java.util.Date;
@@ -43,6 +43,11 @@ public class StepManage {
     结束时间
      */
     private Date endTime;
+
+    /**
+    是否允许投票 0:否 1:是
+     */
+    private Integer isVote;
 
     /**
     创建者
@@ -158,6 +163,18 @@ public class StepManage {
 
     public void setEndTime(Date endTime) {
         this.endTime = endTime;
+    }
+
+    /**
+    是否允许投票 0:否 1:是
+     * @return the value of step_manage.is_vote
+     */
+    public Integer getIsVote() {
+        return isVote;
+    }
+
+    public void setIsVote(Integer isVote) {
+        this.isVote = isVote;
     }
 
     /**

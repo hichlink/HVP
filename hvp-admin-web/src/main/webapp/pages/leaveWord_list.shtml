@@ -43,13 +43,13 @@
                                         </div>
 																														                                        <div class="col-xs-4">
                                             <span>
-                                            	<label class="col-xs-12 col-sm-3">微信OpenId：</label>
+                                            	<label class="col-xs-12 col-sm-3">选手ID：</label>
 												<div class="input-group col-xs-12 col-sm-9">
-                                                    <input name="params['openId']" class="form-control search-query">
+                                                    <input name="params['playerId']" class="form-control search-query">
                                                 </div>
                                             </span> 
                                         </div>
-																																																																																																																																																																								</div>
+																																																																																																																																																				</div>
 							</div>
 						</div>   
                         <div class="bs_btn">
@@ -82,12 +82,11 @@
 					url: list_url,
 					sortable : true,
 																									sortname : 'actId',
-																																																																																																									sortorder:'desc',
+																																																																																															sortorder:'desc',
 					colNames:[
 										'留言ID',
 										'活动ID',
 										'留言信息',
-										'微信OpenId',
 										'选手ID',
 										'创建时间',
 										'审核状态 0:审核中 1:审核通过 2:审核失败',
@@ -101,7 +100,6 @@
 												   					{name:'wordId',index:'wordId', hidden:true},
 						   					   						   												{name:'actId',index:'actId', sortable:true,sortname : 'act_id',width:100,formatter:formatName},
 													   					   						   												{name:'words',index:'words', sortable:true,sortname : 'words',width:100},
-													   					   						   												{name:'openId',index:'openId', sortable:true,sortname : 'open_id',width:100},
 													   					   						   												{name:'playerId',index:'playerId', sortable:true,sortname : 'player_id',width:100},
 													   					   						   												{name:'createTime',index:'createTime', sortable:true,sortname : 'create_time',width:100},
 													   					   						   												{name:'auditStatus',index:'auditStatus', sortable:true,sortname : 'audit_status',width:100},
@@ -152,9 +150,6 @@
 					 },	 				 	 					 										'words' : {
 	 						 					required:true,
 	 						 					maxlength: 10000
-					 },	 				 	 					 										'openId' : {
-	 						 					required:true,
-	 						 					maxlength: 64
 					 },	 				 	 					 										'playerId' : {
 	 						 					required:true,
 	 						 					maxlength: 20

@@ -49,7 +49,7 @@
                                                 </div>
                                             </span> 
                                         </div>
-																																																																																																																																																																																												</div>
+																																																																																																																																																																																																																</div>
 							</div>
 						</div>   
                         <div class="bs_btn">
@@ -82,7 +82,7 @@
 					url: list_url,
 					sortable : true,
 																									sortname : 'actId',
-																																																																																																																			sortorder:'desc',
+																																																																																																																													sortorder:'desc',
 					colNames:[
 										'阶段ID',
 										'活动ID',
@@ -92,6 +92,7 @@
 										'阶段标识 0:非当前阶段 1:当前阶段',
 										'开始时间',
 										'结束时间',
+										'是否允许投票 0:否 1:是',
 										'创建者',
 										'创建时间',
 										'修改者',
@@ -107,6 +108,7 @@
 													   					   						   												{name:'stepSign',index:'stepSign', sortable:true,sortname : 'step_sign',width:100},
 													   					   						   												{name:'startTime',index:'startTime', sortable:true,sortname : 'start_time',width:100},
 													   					   						   												{name:'endTime',index:'endTime', sortable:true,sortname : 'end_time',width:100},
+													   					   						   												{name:'isVote',index:'isVote', sortable:true,sortname : 'is_vote',width:100},
 													   					   						   												{name:'creator',index:'creator', sortable:true,sortname : 'creator',width:100},
 													   					   						   												{name:'createTime',index:'createTime', sortable:true,sortname : 'create_time',width:100},
 													   					   						   												{name:'updator',index:'updator', sortable:true,sortname : 'updator',width:100},
@@ -166,6 +168,9 @@
 	 						 					maxlength: 0
 					 },	 				 	 					 										'endTime' : {
 	 						 					maxlength: 0
+					 },	 				 	 					 										'isVote' : {
+	 						 					required:true,
+	 						 					maxlength: 11
 					 },	 				 	 					 										'creator' : {
 	 						 					required:true,
 	 						 					maxlength: 64

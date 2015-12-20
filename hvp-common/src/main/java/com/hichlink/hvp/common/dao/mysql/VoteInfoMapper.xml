@@ -5,7 +5,6 @@
     <id column="vote_id" property="voteId" jdbcType="BIGINT" />
     <result column="act_id" property="actId" jdbcType="VARCHAR" />
     <result column="player_id" property="playerId" jdbcType="BIGINT" />
-    <result column="open_id" property="openId" jdbcType="VARCHAR" />
     <result column="vote_num" property="voteNum" jdbcType="INTEGER" />
     <result column="stage" property="stage" jdbcType="INTEGER" />
     <result column="step_name" property="stepName" jdbcType="VARCHAR" />
@@ -19,8 +18,7 @@
     </where>
   </sql>
   <sql id="Base_Column_List" >
-    vote_id, act_id, player_id, open_id, vote_num, stage, step_name, mobile, create_time, 
-    ip
+    vote_id, act_id, player_id, vote_num, stage, step_name, mobile, create_time, ip
   </sql>
   <select id="pageQuery" resultMap="BaseResultMap" parameterType="com.aspire.webbas.core.pagination.mybatis.pager.Page" >
     select
@@ -42,13 +40,13 @@
   </delete>
   <insert id="insert" parameterType="com.hichlink.hvp.common.entity.VoteInfo" >
     insert into vote_info (vote_id, act_id, player_id, 
-      open_id, vote_num, stage, 
-      step_name, mobile, create_time, 
-      ip)
+      vote_num, stage, step_name, 
+      mobile, create_time, ip
+      )
     values (#{voteId,jdbcType=BIGINT}, #{actId,jdbcType=VARCHAR}, #{playerId,jdbcType=BIGINT}, 
-      #{openId,jdbcType=VARCHAR}, #{voteNum,jdbcType=INTEGER}, #{stage,jdbcType=INTEGER}, 
-      #{stepName,jdbcType=VARCHAR}, #{mobile,jdbcType=VARCHAR}, #{createTime,jdbcType=TIMESTAMP}, 
-      #{ip,jdbcType=VARCHAR})
+      #{voteNum,jdbcType=INTEGER}, #{stage,jdbcType=INTEGER}, #{stepName,jdbcType=VARCHAR}, 
+      #{mobile,jdbcType=VARCHAR}, #{createTime,jdbcType=TIMESTAMP}, #{ip,jdbcType=VARCHAR}
+      )
   </insert>
   <insert id="insertSelective" parameterType="com.hichlink.hvp.common.entity.VoteInfo" >
     insert into vote_info
@@ -61,9 +59,6 @@
       </if>
       <if test="playerId != null" >
         player_id,
-      </if>
-      <if test="openId != null" >
-        open_id,
       </if>
       <if test="voteNum != null" >
         vote_num,
@@ -94,9 +89,6 @@
       <if test="playerId != null" >
         #{playerId,jdbcType=BIGINT},
       </if>
-      <if test="openId != null" >
-        #{openId,jdbcType=VARCHAR},
-      </if>
       <if test="voteNum != null" >
         #{voteNum,jdbcType=INTEGER},
       </if>
@@ -126,9 +118,6 @@
       <if test="playerId != null" >
         player_id = #{playerId,jdbcType=BIGINT},
       </if>
-      <if test="openId != null" >
-        open_id = #{openId,jdbcType=VARCHAR},
-      </if>
       <if test="voteNum != null" >
         vote_num = #{voteNum,jdbcType=INTEGER},
       </if>
@@ -154,7 +143,6 @@
     update vote_info
     set act_id = #{actId,jdbcType=VARCHAR},
       player_id = #{playerId,jdbcType=BIGINT},
-      open_id = #{openId,jdbcType=VARCHAR},
       vote_num = #{voteNum,jdbcType=INTEGER},
       stage = #{stage,jdbcType=INTEGER},
       step_name = #{stepName,jdbcType=VARCHAR},

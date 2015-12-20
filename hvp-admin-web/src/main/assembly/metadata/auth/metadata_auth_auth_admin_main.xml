@@ -4,30 +4,167 @@
 	<!-- 资源分类－第一级 -->
 	<resource-category key="manager" orderKey="2000"
 		name="投票管理系统" desc="投票管理系统">
-		<resource-category key="auth_partner_manager" name="阶段管理"
-			desc="合作伙伴管理">
-			<resource key="auth_partner_manager_activityOverview" name="流量下发监控"
-				desc="合作伙伴列表">
-				<operation key="get" name="流量下发监控" desc="流量下发监控">
-					<address name="流量下发监控" url="/pages/activityOverview.shtml" />
-					<address name="看板内容" url="/businessBoard/initReportForm.ajax" />
-					<address name="top5数据" url="/businessBoard/initData.ajax" />
+		<resource-category key="vote_manager" name="投票配置"
+			desc="投票配置">
+			<resource key="act_manage" name="活动管理"
+				desc="活动管理">
+				<operation key="query" name="列表" desc="列表">
+					<address name="页面" url="/pages/actInfo_list.shtml" />
+					<address name="请求" url="/actInfo/query.ajax" />
+					<address name="页面" url="/pages/actInfo_view.shtml" />
+					<address name="请求" url="/actInfo/get.ajax" />
+				</operation>
+				<operation key="add" name="新增" desc="新增">
+					<address name="页面" url="/pages/actInfo_add.shtml" />
+					<address name="请求" url="/actInfo/add.ajax" />
+					<address name="请求" url="/actInfo/get.ajax" />
+				</operation>
+				<operation key="del" name="删除" desc="删除">
+					<address name="请求" url="/actInfo/delete.ajax" />
 				</operation>
 			</resource>
-			<resource key="auth_partner_manager_list" name="合作伙伴列表"
-				desc="合作伙伴列表">
+			
+			<resource key="step_conf" name="阶段配置"
+				desc="阶段配置">
 				<operation key="query" name="列表" desc="列表">
-					<address name="合作伙伴列表" url="/pages/partnerInfo_list.shtml" />
-					<address name="查询请求" url="/partnerInfo/query.ajax" />
+					<address name="页面" url="/pages/stepManage_list.shtml" />
+					<address name="请求" url="/stepManage/query.ajax" />
+					<address name="页面" url="/pages/stepManage_view.shtml" />
+					<address name="请求" url="/stepManage/get.ajax" />
 				</operation>
-				<operation key="detail" name="详情" desc="详情">
-					<address name="合作伙伴列表" url="/pages/partnerInfo_view.shtml" />
-					<address name="查询请求" url="/partnerInfo/get.ajax" />
-					<address name="初始化账户信息" url="/partnerInfo/initBalance.ajax" />
-					<address name="初始化产品协议订单历史记录" url="/orderDealRecord/getOrderDealRecord.ajax" />
-					<address name="下载" url="/orderDealRecord/download.ajax" />
+				<operation key="add" name="新增" desc="新增">
+					<address name="页面" url="/pages/stepManage_add.shtml" />
+					<address name="请求" url="/stepManage/add.ajax" />
+					<address name="请求" url="/stepManage/get.ajax" />
 				</operation>
+				<operation key="del" name="删除" desc="删除">
+					<address name="请求" url="/stepManage/delete.ajax" />
+				</operation>
+				<operation key="manage" name="阶段管理" desc="阶段管理">
+					<address name="请求" url="/stepManage/manage.ajax" />
+					<address name="页面" url="/pages/stepManage_conf.shtml" />
+				</operation>
+			</resource>
 
+			<resource key="player_manage" name="参赛者配置"
+				desc="参赛者配置">
+				<operation key="query" name="列表" desc="列表">
+					<address name="页面" url="/pages/playerInfo_list.shtml" />
+					<address name="请求" url="/playerInfo/query.ajax" />
+					<address name="页面" url="/pages/playerInfo_view.shtml" />
+					<address name="请求" url="/playerInfo/get.ajax" />
+				</operation>
+				<operation key="add" name="新增" desc="新增">
+					<address name="页面" url="/pages/playerInfo_add.shtml" />
+					<address name="请求" url="/playerInfo/add.ajax" />
+					<address name="请求" url="/playerInfo/get.ajax" />
+				</operation>
+				<operation key="del" name="删除" desc="删除">
+					<address name="请求" url="/playerInfo/delete.ajax" />
+				</operation>
+				<operation key="stage" name="参赛者晋级" desc="参赛者晋级">
+					<address name="请求" url="/playerInfo/stage.ajax" />
+				</operation>
+			</resource>
+
+		</resource-category>
+		<resource-category key="info_conf" name="资讯配置"
+			desc="资讯配置">
+			<resource key="info_cate_manage" name="资讯分类管理"
+				desc="资讯分类管理">
+				<operation key="query" name="列表" desc="列表">
+					<address name="页面" url="/pages/infoCate_list.shtml" />
+					<address name="请求" url="/infoCate/query.ajax" />
+					<address name="页面" url="/pages/infoCate_view.shtml" />
+					<address name="请求" url="/infoCate/get.ajax" />
+				</operation>
+				<operation key="add" name="新增" desc="新增">
+					<address name="页面" url="/pages/infoCate_add.shtml" />
+					<address name="请求" url="/infoCate/add.ajax" />
+					<address name="请求" url="/infoCate/get.ajax" />
+				</operation>
+				<operation key="del" name="删除" desc="删除">
+					<address name="请求" url="/infoCate/delete.ajax" />
+				</operation>
+			</resource>
+			<resource key="battle_info_manage" name="资讯录入管理"
+				desc="资讯录入管理">
+				<operation key="query" name="列表" desc="列表">
+					<address name="页面" url="/pages/battleInfo_list.shtml" />
+					<address name="请求" url="/battleInfo/query.ajax" />
+					<address name="页面" url="/pages/battleInfo_view.shtml" />
+					<address name="请求" url="/battleInfo/get.ajax" />
+				</operation>
+				<operation key="add" name="新增" desc="新增">
+					<address name="页面" url="/pages/battleInfo_add.shtml" />
+					<address name="请求" url="/battleInfo/add.ajax" />
+					<address name="请求" url="/battleInfo/get.ajax" />
+				</operation>
+				<operation key="del" name="删除" desc="删除">
+					<address name="请求" url="/battleInfo/delete.ajax" />
+				</operation>
+			</resource>
+		</resource-category>
+		<resource-category key="info_stat" name="信息统计"
+			desc="信息统计">
+			<resource key="vote_detail" name="投票信息"
+				desc="投票信息">
+				<operation key="query" name="投票信息列表" desc="投票信息列表">
+					<address name="页面" url="/pages/voteInfo_list.shtml" />
+					<address name="请求" url="/voteInfo/query.ajax" />
+					<address name="页面" url="/pages/voteInfo_view.shtml" />
+					<address name="请求" url="/voteInfo/get.ajax" />
+				</operation>
+			</resource>
+			<resource key="leave_word" name="留言信息"
+				desc="留言信息">
+				<operation key="query" name="列表" desc="列表">
+					<address name="页面" url="/pages/leaveWord_list.shtml" />
+					<address name="请求" url="/leaveWord/query.ajax" />
+					<address name="页面" url="/pages/leaveWord_view.shtml" />
+					<address name="请求" url="/leaveWord/get.ajax" />
+				</operation>
+				<operation key="del" name="删除" desc="删除">
+					<address name="请求" url="/leaveWord/delete.ajax" />
+				</operation>
+				<operation key="audit" name="审核" desc="审核">
+					<address name="请求" url="/leaveWord/audit.ajax" />
+				</operation>
+			</resource>
+			<resource key="comment_info" name="评论信息"
+				desc="评论信息">
+				<operation key="query" name="列表" desc="列表">
+					<address name="页面" url="/pages/commentInfo_list.shtml" />
+					<address name="请求" url="/commentInfo/query.ajax" />
+					<address name="页面" url="/pages/commentInfo_view.shtml" />
+					<address name="请求" url="/commentInfo/get.ajax" />
+				</operation>
+				<operation key="del" name="删除" desc="删除">
+					<address name="请求" url="/commentInfo/delete.ajax" />
+				</operation>
+				<operation key="audit" name="审核" desc="审核">
+					<address name="请求" url="/commentInfo/audit.ajax" />
+				</operation>
+			</resource>
+		</resource-category>
+		<resource-category key="sys_conf" name="参数配置"
+			desc="参数配置">
+			<resource key="vote_rule" name="投票规则"
+				desc="投票规则">
+				<operation key="query" name="列表" desc="列表">
+					<address name="页面" url="/pages/voteRule_list.shtml" />
+					<address name="请求" url="/voteRule/query.ajax" />
+					<address name="页面" url="/pages/voteRule_view.shtml" />
+					<address name="请求" url="/voteRule/get.ajax" />
+				</operation>
+				<operation key="add" name="新增" desc="新增">
+					<address name="页面" url="/pages/wxAccessConf_add.shtml" />
+					<address name="请求" url="/voteRule/add.ajax" />
+					<address name="请求" url="/voteRule/get.ajax" />
+				</operation>
+				<operation key="del" name="删除" desc="删除">
+					<address name="请求" url="/voteRule/delete.ajax" />
+				</operation>
 			</resource>
 		</resource-category>
 

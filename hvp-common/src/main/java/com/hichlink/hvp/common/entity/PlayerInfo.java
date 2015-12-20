@@ -1,4 +1,4 @@
-/*** Auto generator by codegenerator 2015-12-19 22:45:59*/
+/*** Auto generator by codegenerator 2015-12-20 22:13:55*/
 package com.hichlink.hvp.common.entity;
 
 import java.util.Date;

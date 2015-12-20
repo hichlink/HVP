@@ -10,6 +10,7 @@
     <result column="step_sign" property="stepSign" jdbcType="INTEGER" />
     <result column="start_time" property="startTime" jdbcType="TIMESTAMP" />
     <result column="end_time" property="endTime" jdbcType="TIMESTAMP" />
+    <result column="is_vote" property="isVote" jdbcType="INTEGER" />
     <result column="creator" property="creator" jdbcType="VARCHAR" />
     <result column="create_time" property="createTime" jdbcType="TIMESTAMP" />
     <result column="updator" property="updator" jdbcType="VARCHAR" />
@@ -22,7 +23,7 @@
   </sql>
   <sql id="Base_Column_List" >
     step_id, act_id, step_no, step_name, step_desc, step_sign, start_time, end_time, 
-    creator, create_time, updator, update_time
+    is_vote, creator, create_time, updator, update_time
   </sql>
   <select id="pageQuery" resultMap="BaseResultMap" parameterType="com.aspire.webbas.core.pagination.mybatis.pager.Page" >
     select
@@ -45,14 +46,14 @@
   <insert id="insert" parameterType="com.hichlink.hvp.common.entity.StepManage" >
     insert into step_manage (step_id, act_id, step_no, 
       step_name, step_desc, step_sign, 
-      start_time, end_time, creator, 
-      create_time, updator, update_time
-      )
+      start_time, end_time, is_vote, 
+      creator, create_time, updator, 
+      update_time)
     values (#{stepId,jdbcType=BIGINT}, #{actId,jdbcType=VARCHAR}, #{stepNo,jdbcType=INTEGER}, 
       #{stepName,jdbcType=VARCHAR}, #{stepDesc,jdbcType=VARCHAR}, #{stepSign,jdbcType=INTEGER}, 
-      #{startTime,jdbcType=TIMESTAMP}, #{endTime,jdbcType=TIMESTAMP}, #{creator,jdbcType=VARCHAR}, 
-      #{createTime,jdbcType=TIMESTAMP}, #{updator,jdbcType=VARCHAR}, #{updateTime,jdbcType=TIMESTAMP}
-      )
+      #{startTime,jdbcType=TIMESTAMP}, #{endTime,jdbcType=TIMESTAMP}, #{isVote,jdbcType=INTEGER}, 
+      #{creator,jdbcType=VARCHAR}, #{createTime,jdbcType=TIMESTAMP}, #{updator,jdbcType=VARCHAR}, 
+      #{updateTime,jdbcType=TIMESTAMP})
   </insert>
   <insert id="insertSelective" parameterType="com.hichlink.hvp.common.entity.StepManage" >
     insert into step_manage
@@ -80,6 +81,9 @@
       </if>
       <if test="endTime != null" >
         end_time,
+      </if>
+      <if test="isVote != null" >
+        is_vote,
       </if>
       <if test="creator != null" >
         creator,
@@ -119,6 +123,9 @@
       <if test="endTime != null" >
         #{endTime,jdbcType=TIMESTAMP},
       </if>
+      <if test="isVote != null" >
+        #{isVote,jdbcType=INTEGER},
+      </if>
       <if test="creator != null" >
         #{creator,jdbcType=VARCHAR},
       </if>
@@ -157,6 +164,9 @@
       <if test="endTime != null" >
         end_time = #{endTime,jdbcType=TIMESTAMP},
       </if>
+      <if test="isVote != null" >
+        is_vote = #{isVote,jdbcType=INTEGER},
+      </if>
       <if test="creator != null" >
         creator = #{creator,jdbcType=VARCHAR},
       </if>
@@ -181,6 +191,7 @@
       step_sign = #{stepSign,jdbcType=INTEGER},
       start_time = #{startTime,jdbcType=TIMESTAMP},
       end_time = #{endTime,jdbcType=TIMESTAMP},
+      is_vote = #{isVote,jdbcType=INTEGER},
       creator = #{creator,jdbcType=VARCHAR},
       create_time = #{createTime,jdbcType=TIMESTAMP},
       updator = #{updator,jdbcType=VARCHAR},

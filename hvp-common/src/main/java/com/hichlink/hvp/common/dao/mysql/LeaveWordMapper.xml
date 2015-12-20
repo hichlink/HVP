@@ -5,7 +5,6 @@
     <id column="word_id" property="wordId" jdbcType="BIGINT" />
     <result column="act_id" property="actId" jdbcType="VARCHAR" />
     <result column="words" property="words" jdbcType="VARCHAR" />
-    <result column="open_id" property="openId" jdbcType="VARCHAR" />
     <result column="player_id" property="playerId" jdbcType="BIGINT" />
     <result column="create_time" property="createTime" jdbcType="TIMESTAMP" />
     <result column="audit_status" property="auditStatus" jdbcType="INTEGER" />
@@ -20,8 +19,8 @@
     </where>
   </sql>
   <sql id="Base_Column_List" >
-    word_id, act_id, words, open_id, player_id, create_time, audit_status, reason, updator, 
-    update_time, ip
+    word_id, act_id, words, player_id, create_time, audit_status, reason, updator, update_time, 
+    ip
   </sql>
   <select id="pageQuery" resultMap="BaseResultMap" parameterType="com.aspire.webbas.core.pagination.mybatis.pager.Page" >
     select
@@ -43,13 +42,13 @@
   </delete>
   <insert id="insert" parameterType="com.hichlink.hvp.common.entity.LeaveWord" >
     insert into leave_word (word_id, act_id, words, 
-      open_id, player_id, create_time, 
-      audit_status, reason, updator, 
-      update_time, ip)
+      player_id, create_time, audit_status, 
+      reason, updator, update_time, 
+      ip)
     values (#{wordId,jdbcType=BIGINT}, #{actId,jdbcType=VARCHAR}, #{words,jdbcType=VARCHAR}, 
-      #{openId,jdbcType=VARCHAR}, #{playerId,jdbcType=BIGINT}, #{createTime,jdbcType=TIMESTAMP}, 
-      #{auditStatus,jdbcType=INTEGER}, #{reason,jdbcType=VARCHAR}, #{updator,jdbcType=VARCHAR}, 
-      #{updateTime,jdbcType=TIMESTAMP}, #{ip,jdbcType=VARCHAR})
+      #{playerId,jdbcType=BIGINT}, #{createTime,jdbcType=TIMESTAMP}, #{auditStatus,jdbcType=INTEGER}, 
+      #{reason,jdbcType=VARCHAR}, #{updator,jdbcType=VARCHAR}, #{updateTime,jdbcType=TIMESTAMP}, 
+      #{ip,jdbcType=VARCHAR})
   </insert>
   <insert id="insertSelective" parameterType="com.hichlink.hvp.common.entity.LeaveWord" >
     insert into leave_word
@@ -62,9 +61,6 @@
       </if>
       <if test="words != null" >
         words,
-      </if>
-      <if test="openId != null" >
-        open_id,
       </if>
       <if test="playerId != null" >
         player_id,
@@ -98,9 +94,6 @@
       <if test="words != null" >
         #{words,jdbcType=VARCHAR},
       </if>
-      <if test="openId != null" >
-        #{openId,jdbcType=VARCHAR},
-      </if>
       <if test="playerId != null" >
         #{playerId,jdbcType=BIGINT},
       </if>
@@ -133,9 +126,6 @@
       <if test="words != null" >
         words = #{words,jdbcType=VARCHAR},
       </if>
-      <if test="openId != null" >
-        open_id = #{openId,jdbcType=VARCHAR},
-      </if>
       <if test="playerId != null" >
         player_id = #{playerId,jdbcType=BIGINT},
       </if>
@@ -164,7 +154,6 @@
     update leave_word
     set act_id = #{actId,jdbcType=VARCHAR},
       words = #{words,jdbcType=VARCHAR},
-      open_id = #{openId,jdbcType=VARCHAR},
       player_id = #{playerId,jdbcType=BIGINT},
       create_time = #{createTime,jdbcType=TIMESTAMP},
       audit_status = #{auditStatus,jdbcType=INTEGER},

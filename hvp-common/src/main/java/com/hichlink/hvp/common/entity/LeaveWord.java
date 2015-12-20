@@ -1,4 +1,4 @@
-/*** Auto generator by codegenerator 2015-12-19 23:53:50*/
+/*** Auto generator by codegenerator 2015-12-20 22:13:51*/
 package com.hichlink.hvp.common.entity;
 
 import java.util.Date;
@@ -18,11 +18,6 @@ public class LeaveWord {
     留言信息
      */
     private String words;
-
-    /**
-    微信OpenId
-     */
-    private String openId;
 
     /**
     选手ID
@@ -93,18 +88,6 @@ public class LeaveWord {
 
     public void setWords(String words) {
         this.words = words == null ? null : words.trim();
-    }
-
-    /**
-    微信OpenId
-     * @return the value of leave_word.open_id
-     */
-    public String getOpenId() {
-        return openId;
-    }
-
-    public void setOpenId(String openId) {
-        this.openId = openId == null ? null : openId.trim();
     }
 
     /**

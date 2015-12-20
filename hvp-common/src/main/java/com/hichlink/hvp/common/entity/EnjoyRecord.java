@@ -1,4 +1,4 @@
-/*** Auto generator by codegenerator 2015-12-19 23:54:15*/
+/*** Auto generator by codegenerator 2015-12-20 22:13:43*/
 package com.hichlink.hvp.common.entity;
 
 import java.util.Date;
@@ -33,11 +33,6 @@ public class EnjoyRecord {
     创建时间
      */
     private Date createTime;
-
-    /**
-    微信OpenId
-     */
-    private String openId;
 
     /**
     
@@ -109,17 +104,5 @@ public class EnjoyRecord {
 
     public void setCreateTime(Date createTime) {
         this.createTime = createTime;
-    }
-
-    /**
-    微信OpenId
-     * @return the value of enjoy_record.open_id
-     */
-    public String getOpenId() {
-        return openId;
-    }
-
-    public void setOpenId(String openId) {
-        this.openId = openId == null ? null : openId.trim();
     }
 }

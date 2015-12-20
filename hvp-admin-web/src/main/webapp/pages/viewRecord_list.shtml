@@ -49,7 +49,7 @@
                                                 </div>
                                             </span> 
                                         </div>
-																																																																																								</div>
+																																																																				</div>
 							</div>
 						</div>   
                         <div class="bs_btn">
@@ -82,13 +82,12 @@
 					url: list_url,
 					sortable : true,
 																									sortname : 'actId',
-																																																																	sortorder:'desc',
+																																																							sortorder:'desc',
 					colNames:[
 										'记录ID',
 										'活动ID',
 										'类型 1:选手 2:资读',
 										'来源ID',
-										'微信OpenId',
 										'阅读者IP',
 										'创建时间',
 										''
@@ -98,7 +97,6 @@
 						   					   						   												{name:'actId',index:'actId', sortable:true,sortname : 'act_id',width:100,formatter:formatName},
 													   					   						   												{name:'type',index:'type', sortable:true,sortname : 'type',width:100},
 													   					   						   												{name:'sourceId',index:'sourceId', sortable:true,sortname : 'source_id',width:100},
-													   					   						   												{name:'openId',index:'openId', sortable:true,sortname : 'open_id',width:100},
 													   					   						   												{name:'ip',index:'ip', sortable:true,sortname : 'ip',width:100},
 													   					   						   												{name:'createTime',index:'createTime', sortable:true,sortname : 'create_time',width:100},
 													   					   					{name:'myac',index:'', width:120, fixed:true, sortable:false, resize:false,formatter:actionButtons}					
@@ -144,9 +142,6 @@
 					 },	 				 	 					 										'type' : {
 	 						 					maxlength: 11
 					 },	 				 	 					 										'sourceId' : {
-	 						 					required:true,
-	 						 					maxlength: 64
-					 },	 				 	 					 										'openId' : {
 	 						 					required:true,
 	 						 					maxlength: 64
 					 },	 				 	 					 										'ip' : {

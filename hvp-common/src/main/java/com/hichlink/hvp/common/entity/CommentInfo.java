@@ -1,4 +1,4 @@
-/*** Auto generator by codegenerator 2015-12-19 23:54:00*/
+/*** Auto generator by codegenerator 2015-12-20 22:13:39*/
 package com.hichlink.hvp.common.entity;
 
 import java.util.Date;
@@ -23,11 +23,6 @@ public class CommentInfo {
     资讯ID
      */
     private Long infoId;
-
-    /**
-    微信OpenId
-     */
-    private String openId;
 
     /**
     创建时间
@@ -105,18 +100,6 @@ public class CommentInfo {
 
     public void setInfoId(Long infoId) {
         this.infoId = infoId;
-    }
-
-    /**
-    微信OpenId
-     * @return the value of comment_info.open_id
-     */
-    public String getOpenId() {
-        return openId;
-    }
-
-    public void setOpenId(String openId) {
-        this.openId = openId == null ? null : openId.trim();
     }
 
     /**

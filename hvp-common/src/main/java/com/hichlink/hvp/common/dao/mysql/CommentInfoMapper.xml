@@ -6,7 +6,6 @@
     <result column="act_id" property="actId" jdbcType="VARCHAR" />
     <result column="words" property="words" jdbcType="VARCHAR" />
     <result column="info_id" property="infoId" jdbcType="BIGINT" />
-    <result column="open_id" property="openId" jdbcType="VARCHAR" />
     <result column="create_time" property="createTime" jdbcType="TIMESTAMP" />
     <result column="audit_status" property="auditStatus" jdbcType="INTEGER" />
     <result column="reason" property="reason" jdbcType="VARCHAR" />
@@ -20,8 +19,8 @@
     </where>
   </sql>
   <sql id="Base_Column_List" >
-    comment_id, act_id, words, info_id, open_id, create_time, audit_status, reason, updator, 
-    update_time, ip
+    comment_id, act_id, words, info_id, create_time, audit_status, reason, updator, update_time, 
+    ip
   </sql>
   <select id="pageQuery" resultMap="BaseResultMap" parameterType="com.aspire.webbas.core.pagination.mybatis.pager.Page" >
     select
@@ -43,13 +42,13 @@
   </delete>
   <insert id="insert" parameterType="com.hichlink.hvp.common.entity.CommentInfo" >
     insert into comment_info (comment_id, act_id, words, 
-      info_id, open_id, create_time, 
-      audit_status, reason, updator, 
-      update_time, ip)
+      info_id, create_time, audit_status, 
+      reason, updator, update_time, 
+      ip)
     values (#{commentId,jdbcType=BIGINT}, #{actId,jdbcType=VARCHAR}, #{words,jdbcType=VARCHAR}, 
-      #{infoId,jdbcType=BIGINT}, #{openId,jdbcType=VARCHAR}, #{createTime,jdbcType=TIMESTAMP}, 
-      #{auditStatus,jdbcType=INTEGER}, #{reason,jdbcType=VARCHAR}, #{updator,jdbcType=VARCHAR}, 
-      #{updateTime,jdbcType=TIMESTAMP}, #{ip,jdbcType=VARCHAR})
+      #{infoId,jdbcType=BIGINT}, #{createTime,jdbcType=TIMESTAMP}, #{auditStatus,jdbcType=INTEGER}, 
+      #{reason,jdbcType=VARCHAR}, #{updator,jdbcType=VARCHAR}, #{updateTime,jdbcType=TIMESTAMP}, 
+      #{ip,jdbcType=VARCHAR})
   </insert>
   <insert id="insertSelective" parameterType="com.hichlink.hvp.common.entity.CommentInfo" >
     insert into comment_info
@@ -65,9 +64,6 @@
       </if>
       <if test="infoId != null" >
         info_id,
-      </if>
-      <if test="openId != null" >
-        open_id,
       </if>
       <if test="createTime != null" >
         create_time,
@@ -101,9 +97,6 @@
       <if test="infoId != null" >
         #{infoId,jdbcType=BIGINT},
       </if>
-      <if test="openId != null" >
-        #{openId,jdbcType=VARCHAR},
-      </if>
       <if test="createTime != null" >
         #{createTime,jdbcType=TIMESTAMP},
       </if>
@@ -136,9 +129,6 @@
       <if test="infoId != null" >
         info_id = #{infoId,jdbcType=BIGINT},
       </if>
-      <if test="openId != null" >
-        open_id = #{openId,jdbcType=VARCHAR},
-      </if>
       <if test="createTime != null" >
         create_time = #{createTime,jdbcType=TIMESTAMP},
       </if>
@@ -165,7 +155,6 @@
     set act_id = #{actId,jdbcType=VARCHAR},
       words = #{words,jdbcType=VARCHAR},
       info_id = #{infoId,jdbcType=BIGINT},
-      open_id = #{openId,jdbcType=VARCHAR},
       create_time = #{createTime,jdbcType=TIMESTAMP},
       audit_status = #{auditStatus,jdbcType=INTEGER},
       reason = #{reason,jdbcType=VARCHAR},

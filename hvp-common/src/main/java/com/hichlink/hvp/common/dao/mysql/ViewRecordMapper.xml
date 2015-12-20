@@ -6,7 +6,6 @@
     <result column="act_id" property="actId" jdbcType="VARCHAR" />
     <result column="type" property="type" jdbcType="INTEGER" />
     <result column="source_id" property="sourceId" jdbcType="VARCHAR" />
-    <result column="open_id" property="openId" jdbcType="VARCHAR" />
     <result column="ip" property="ip" jdbcType="VARCHAR" />
     <result column="create_time" property="createTime" jdbcType="TIMESTAMP" />
   </resultMap>
@@ -16,7 +15,7 @@
     </where>
   </sql>
   <sql id="Base_Column_List" >
-    record_id, act_id, type, source_id, open_id, ip, create_time
+    record_id, act_id, type, source_id, ip, create_time
   </sql>
   <select id="pageQuery" resultMap="BaseResultMap" parameterType="com.aspire.webbas.core.pagination.mybatis.pager.Page" >
     select
@@ -38,11 +37,11 @@
   </delete>
   <insert id="insert" parameterType="com.hichlink.hvp.common.entity.ViewRecord" >
     insert into view_record (record_id, act_id, type, 
-      source_id, open_id, ip, 
-      create_time)
+      source_id, ip, create_time
+      )
     values (#{recordId,jdbcType=BIGINT}, #{actId,jdbcType=VARCHAR}, #{type,jdbcType=INTEGER}, 
-      #{sourceId,jdbcType=VARCHAR}, #{openId,jdbcType=VARCHAR}, #{ip,jdbcType=VARCHAR}, 
-      #{createTime,jdbcType=TIMESTAMP})
+      #{sourceId,jdbcType=VARCHAR}, #{ip,jdbcType=VARCHAR}, #{createTime,jdbcType=TIMESTAMP}
+      )
   </insert>
   <insert id="insertSelective" parameterType="com.hichlink.hvp.common.entity.ViewRecord" >
     insert into view_record
@@ -58,9 +57,6 @@
       </if>
       <if test="sourceId != null" >
         source_id,
-      </if>
-      <if test="openId != null" >
-        open_id,
       </if>
       <if test="ip != null" >
         ip,
@@ -82,9 +78,6 @@
       <if test="sourceId != null" >
         #{sourceId,jdbcType=VARCHAR},
       </if>
-      <if test="openId != null" >
-        #{openId,jdbcType=VARCHAR},
-      </if>
       <if test="ip != null" >
         #{ip,jdbcType=VARCHAR},
       </if>
@@ -105,9 +98,6 @@
       <if test="sourceId != null" >
         source_id = #{sourceId,jdbcType=VARCHAR},
       </if>
-      <if test="openId != null" >
-        open_id = #{openId,jdbcType=VARCHAR},
-      </if>
       <if test="ip != null" >
         ip = #{ip,jdbcType=VARCHAR},
       </if>
@@ -122,7 +112,6 @@
     set act_id = #{actId,jdbcType=VARCHAR},
       type = #{type,jdbcType=INTEGER},
       source_id = #{sourceId,jdbcType=VARCHAR},
-      open_id = #{openId,jdbcType=VARCHAR},
       ip = #{ip,jdbcType=VARCHAR},
       create_time = #{createTime,jdbcType=TIMESTAMP}
     where record_id = #{recordId,jdbcType=BIGINT}

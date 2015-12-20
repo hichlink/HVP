@@ -44,14 +44,15 @@
 							</div>
 						</div>
 												 										 										<div class="form-group">
-							<label class="col-sm-3 control-label no-padding-right text-right" for="ip">
-															阅读者IP:
+							<label class="col-sm-3 control-label no-padding-right text-right" for="createTime">
+																<span class="red">*</span>
+															创建时间:
 							</label>
 							<div class="col-sm-6">
-								<input type="text" name="ip" id="ip" class="form-control input-sm" />
+								<input type="text" name="createTime" id="createTime" class="form-control input-sm" />
 							</div>
 						</div>
-												 														
+																
 					
 				
 			</div>
@@ -66,24 +67,14 @@
 							</div>
 						</div>
 																																		<div class="form-group">
-							<label class="col-sm-3 control-label no-padding-right text-right" for="openId">
-																<span class="red">*</span>
-															微信OpenId:
+							<label class="col-sm-3 control-label no-padding-right text-right" for="ip">
+															阅读者IP:
 							</label>
 							<div class="col-sm-6">
-								<input type="text" name="openId" id="openId" class="form-control input-sm" />
+								<input type="text" name="ip" id="ip" class="form-control input-sm" />
 							</div>
 						</div>
-																																		<div class="form-group">
-							<label class="col-sm-3 control-label no-padding-right text-right" for="createTime">
-																<span class="red">*</span>
-															创建时间:
-							</label>
-							<div class="col-sm-6">
-								<input type="text" name="createTime" id="createTime" class="form-control input-sm" />
-							</div>
-						</div>
-																
+																											
 					
 				
 			</div>
@@ -128,9 +119,6 @@
 					 },	 				 	 					 										'type' : {
 	 						 					maxlength: 11
 					 },	 				 	 					 										'sourceId' : {
-	 						 					required:true,
-	 						 					maxlength: 64
-					 },	 				 	 					 										'openId' : {
 	 						 					required:true,
 	 						 					maxlength: 64
 					 },	 				 	 					 										'ip' : {

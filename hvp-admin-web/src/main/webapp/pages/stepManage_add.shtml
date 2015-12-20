@@ -61,23 +61,23 @@
 							</div>
 						</div>
 												 										 										<div class="form-group">
-							<label class="col-sm-3 control-label no-padding-right text-right" for="createTime">
+							<label class="col-sm-3 control-label no-padding-right text-right" for="creator">
 																<span class="red">*</span>
-															创建时间:
+															创建者:
 							</label>
 							<div class="col-sm-6">
-								<input type="text" name="createTime" id="createTime" class="form-control input-sm" />
+								<input type="text" name="creator" id="creator" class="form-control input-sm" />
 							</div>
 						</div>
 												 										 										<div class="form-group">
-							<label class="col-sm-3 control-label no-padding-right text-right" for="updateTime">
-															修改时间:
+							<label class="col-sm-3 control-label no-padding-right text-right" for="updator">
+															修改者:
 							</label>
 							<div class="col-sm-6">
-								<input type="text" name="updateTime" id="updateTime" class="form-control input-sm" />
+								<input type="text" name="updator" id="updator" class="form-control input-sm" />
 							</div>
 						</div>
-																
+												 														
 					
 				
 			</div>
@@ -109,23 +109,32 @@
 							</div>
 						</div>
 																																		<div class="form-group">
-							<label class="col-sm-3 control-label no-padding-right text-right" for="creator">
+							<label class="col-sm-3 control-label no-padding-right text-right" for="isVote">
 																<span class="red">*</span>
-															创建者:
+															是否允许投票 0:否 1:是:
 							</label>
 							<div class="col-sm-6">
-								<input type="text" name="creator" id="creator" class="form-control input-sm" />
+								<input type="text" name="isVote" id="isVote" class="form-control input-sm" />
 							</div>
 						</div>
 																																		<div class="form-group">
-							<label class="col-sm-3 control-label no-padding-right text-right" for="updator">
-															修改者:
+							<label class="col-sm-3 control-label no-padding-right text-right" for="createTime">
+																<span class="red">*</span>
+															创建时间:
 							</label>
 							<div class="col-sm-6">
-								<input type="text" name="updator" id="updator" class="form-control input-sm" />
+								<input type="text" name="createTime" id="createTime" class="form-control input-sm" />
 							</div>
 						</div>
-																											
+																																		<div class="form-group">
+							<label class="col-sm-3 control-label no-padding-right text-right" for="updateTime">
+															修改时间:
+							</label>
+							<div class="col-sm-6">
+								<input type="text" name="updateTime" id="updateTime" class="form-control input-sm" />
+							</div>
+						</div>
+																
 					
 				
 			</div>
@@ -182,6 +191,9 @@
 	 						 					maxlength: 0
 					 },	 				 	 					 										'endTime' : {
 	 						 					maxlength: 0
+					 },	 				 	 					 										'isVote' : {
+	 						 					required:true,
+	 						 					maxlength: 11
 					 },	 				 	 					 										'creator' : {
 	 						 					required:true,
 	 						 					maxlength: 64

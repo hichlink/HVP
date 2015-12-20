@@ -15,13 +15,13 @@ import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.RequestParam;
 import com.aspire.webbas.core.pagination.mybatis.pager.Page;
 import com.aspire.webbas.core.web.BaseController;
-import com.hichlink.hvp.common.entity.EnjoyRecord;
-import com.hichlink.hvp.common.service.EnjoyRecordService;
+import com.hichlink.hvp.common.entity.SmsVerify;
+import com.hichlink.hvp.common.service.SmsVerifyService;
 
 
 /**
  * 
- * <b>Title：</b>EnjoyRecordController.java<br/>
+ * <b>Title：</b>SmsVerifyController.java<br/>
  * <b>Description：</b> <br/>
  * <b>@author： </b>oceanzhuang<br/>
  * <b>@date：</b>2015-12-20 22:13:30<br/>
@@ -29,48 +29,48 @@ import com.hichlink.hvp.common.service.EnjoyRecordService;
  * 
  */
 @Controller
-@RequestMapping("/enjoyRecord")
-public class EnjoyRecordController extends BaseController{
-	private static final Logger LOG = LoggerFactory.getLogger(EnjoyRecordController.class);
+@RequestMapping("/smsVerify")
+public class SmsVerifyController extends BaseController{
+	private static final Logger LOG = LoggerFactory.getLogger(SmsVerifyController.class);
     @Autowired
-    @Qualifier("enjoyRecordService")
-    private EnjoyRecordService enjoyRecordService;
+    @Qualifier("smsVerifyService")
+    private SmsVerifyService smsVerifyService;
     
     @RequestMapping(value = "/query.ajax")
 	@ResponseBody
-	 public Map<String, Object> pageQuery(Page<EnjoyRecord> page) {
-	    Page<EnjoyRecord> list = enjoyRecordService.pageQuery(page);
+	 public Map<String, Object> pageQuery(Page<SmsVerify> page) {
+	    Page<SmsVerify> list = smsVerifyService.pageQuery(page);
 	    return super.page(list);
     }
          @RequestMapping(value = "/add.ajax", method = RequestMethod.POST)
 	@ResponseBody
-	public Map<String, Object> add(@ModelAttribute("enjoyRecord") EnjoyRecord data) {
-    	enjoyRecordService.saveAndUpdate(data);
+	public Map<String, Object> add(@ModelAttribute("smsVerify") SmsVerify data) {
+    	smsVerifyService.saveAndUpdate(data);
 		return super.success("新增成功");
     }
    
     @RequestMapping(value = "/delete.ajax")
 	@ResponseBody
-	 public Map<String, Object> delete(Long recordId) {
-    		enjoyRecordService.delete(recordId);
+	 public Map<String, Object> delete(Long smsId) {
+    		smsVerifyService.delete(smsId);
 			return super.success("删除成功");
 	  }
 	 @RequestMapping(value = "/get.ajax")
 	 @ResponseBody
-	 public Map<String, Object> get(Long recordId) {
-		 	EnjoyRecord data = enjoyRecordService.get(recordId);
+	 public Map<String, Object> get(Long smsId) {
+		 	SmsVerify data = smsVerifyService.get(smsId);
 			return super.success(data);
 	    }
 	    /**
 	    *	更新的时候需额外传递updId,值跟主键值一样,被@ModelAttribute注释的方法会在此controller每个方法执行前被执行，要谨慎使用
 	    */
-	    @ModelAttribute("enjoyRecord")
+	    @ModelAttribute("smsVerify")
 		public void getForUpdate(@RequestParam(value = "updId",required=false) Long updId,
 				Model model) {
 								if (null != updId) {
-									   model.addAttribute("enjoyRecord",enjoyRecordService.get(updId));
+									   model.addAttribute("smsVerify",smsVerifyService.get(updId));
 				  }else{
-				  		model.addAttribute("enjoyRecord",new EnjoyRecord());
+				  		model.addAttribute("smsVerify",new SmsVerify());
 				  }
 		}
 	}

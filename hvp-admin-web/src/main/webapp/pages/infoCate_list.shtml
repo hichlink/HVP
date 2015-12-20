@@ -49,7 +49,7 @@
                                                 </div>
                                             </span> 
                                         </div>
-																																																</div>
+																																																																																																																																</div>
 							</div>
 						</div>   
                         <div class="bs_btn">
@@ -82,13 +82,17 @@
 					url: list_url,
 					sortable : true,
 																									sortname : 'actId',
-																																													sortorder:'desc',
+																																																																																					sortorder:'desc',
 					colNames:[
 										'分类ID',
 										'活动ID',
 										'分类编码',
 										'分类名称',
 										'备注',
+										'创建者',
+										'创建时间',
+										'修改者',
+										'修改时间',
 										''
 					],
 					colModel:[
@@ -97,6 +101,10 @@
 													   					   						   												{name:'cateCode',index:'cateCode', sortable:true,sortname : 'cate_code',width:100},
 													   					   						   												{name:'cateName',index:'cateName', sortable:true,sortname : 'cate_name',width:100},
 													   					   						   												{name:'remark',index:'remark', sortable:true,sortname : 'remark',width:100},
+													   					   						   												{name:'creator',index:'creator', sortable:true,sortname : 'creator',width:100},
+													   					   						   												{name:'createTime',index:'createTime', sortable:true,sortname : 'create_time',width:100},
+													   					   						   												{name:'updator',index:'updator', sortable:true,sortname : 'updator',width:100},
+													   					   						   												{name:'updateTime',index:'updateTime', sortable:true,sortname : 'update_time',width:100},
 													   					   					{name:'myac',index:'', width:120, fixed:true, sortable:false, resize:false,formatter:actionButtons}					
 					]
 				});
@@ -145,6 +153,16 @@
 	 						 					maxlength: 128
 					 },	 				 	 					 										'remark' : {
 	 						 					maxlength: 512
+					 },	 				 	 					 										'creator' : {
+	 						 					required:true,
+	 						 					maxlength: 64
+					 },	 				 	 					 										'createTime' : {
+	 						 					required:true,
+	 						 					maxlength: 0
+					 },	 				 	 					 										'updator' : {
+	 						 					maxlength: 64
+					 },	 				 	 					 										'updateTime' : {
+	 						 					maxlength: 0
 					 }	 				 	 									},
 					submitHandler: function (form) {
 						$.ajaxSubmit(update_url,$(form).serializeJson(),function(data){

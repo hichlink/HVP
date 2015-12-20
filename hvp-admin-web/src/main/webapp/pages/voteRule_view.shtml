@@ -24,11 +24,11 @@
 			<div class="col-xs-6">
 				
 						 										 										<div class="form-group">
-							<label class="col-sm-5 control-label no-padding-right text-right" for="perVoteNum">
-							每人投票数:
+							<label class="col-sm-5 control-label no-padding-right text-right" for="actId">
+							活动ID:
 							</label>
 							<div class="col-sm-7">
-								<p name="perVoteNum" class="form-control-static"></p>
+								<p name="actId" class="form-control-static"></p>
 							</div>
 						</div>
 												 										 										<div class="form-group">
@@ -40,41 +40,33 @@
 							</div>
 						</div>
 												 										 										<div class="form-group">
-							<label class="col-sm-5 control-label no-padding-right text-right" for="actId">
-							活动ID:
+							<label class="col-sm-5 control-label no-padding-right text-right" for="creator">
+							创建者:
 							</label>
 							<div class="col-sm-7">
-								<p name="actId" class="form-control-static"></p>
+								<p name="creator" class="form-control-static"></p>
 							</div>
 						</div>
 												 										 										<div class="form-group">
-							<label class="col-sm-5 control-label no-padding-right text-right" for="createTime">
-							创建时间:
+							<label class="col-sm-5 control-label no-padding-right text-right" for="updator">
+							修改者:
 							</label>
 							<div class="col-sm-7">
-								<p name="createTime" class="form-control-static"></p>
+								<p name="updator" class="form-control-static"></p>
 							</div>
 						</div>
-												 										 										<div class="form-group">
-							<label class="col-sm-5 control-label no-padding-right text-right" for="updateTime">
-							修改时间:
-							</label>
-							<div class="col-sm-7">
-								<p name="updateTime" class="form-control-static"></p>
-							</div>
-						</div>
-																
+												 														
 					
 				
 			</div>
 			<div class="col-xs-6">
 				
 																																							<div class="form-group">
-							<label class="col-sm-5 control-label no-padding-right text-right" for="oneDayVoteNum">
-							一天投票数:
+							<label class="col-sm-5 control-label no-padding-right text-right" for="perVoteNum">
+							每人投票数:
 							</label>
 							<div class="col-sm-7">
-								<p name="oneDayVoteNum" class="form-control-static"></p>
+								<p name="perVoteNum" class="form-control-static"></p>
 							</div>
 						</div>
 																																		<div class="form-group">
@@ -86,22 +78,22 @@
 							</div>
 						</div>
 																																		<div class="form-group">
-							<label class="col-sm-5 control-label no-padding-right text-right" for="creator">
-							创建者:
+							<label class="col-sm-5 control-label no-padding-right text-right" for="createTime">
+							创建时间:
 							</label>
 							<div class="col-sm-7">
-								<p name="creator" class="form-control-static"></p>
+								<p name="createTime" class="form-control-static"></p>
 							</div>
 						</div>
 																																		<div class="form-group">
-							<label class="col-sm-5 control-label no-padding-right text-right" for="updator">
-							修改者:
+							<label class="col-sm-5 control-label no-padding-right text-right" for="updateTime">
+							修改时间:
 							</label>
 							<div class="col-sm-7">
-								<p name="updator" class="form-control-static"></p>
+								<p name="updateTime" class="form-control-static"></p>
 							</div>
 						</div>
-																											
+																
 					
 				
 			</div>

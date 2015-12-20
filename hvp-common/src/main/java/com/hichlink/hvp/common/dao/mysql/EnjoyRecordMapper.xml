@@ -8,7 +8,6 @@
     <result column="source_id" property="sourceId" jdbcType="VARCHAR" />
     <result column="ip" property="ip" jdbcType="VARCHAR" />
     <result column="create_time" property="createTime" jdbcType="TIMESTAMP" />
-    <result column="open_id" property="openId" jdbcType="VARCHAR" />
   </resultMap>
   <sql id="Example_Where_Clause" >
     <where >
@@ -16,7 +15,7 @@
     </where>
   </sql>
   <sql id="Base_Column_List" >
-    record_id, act_id, record_type, source_id, ip, create_time, open_id
+    record_id, act_id, record_type, source_id, ip, create_time
   </sql>
   <select id="pageQuery" resultMap="BaseResultMap" parameterType="com.aspire.webbas.core.pagination.mybatis.pager.Page" >
     select
@@ -38,11 +37,11 @@
   </delete>
   <insert id="insert" parameterType="com.hichlink.hvp.common.entity.EnjoyRecord" >
     insert into enjoy_record (record_id, act_id, record_type, 
-      source_id, ip, create_time, 
-      open_id)
+      source_id, ip, create_time
+      )
     values (#{recordId,jdbcType=BIGINT}, #{actId,jdbcType=VARCHAR}, #{recordType,jdbcType=INTEGER}, 
-      #{sourceId,jdbcType=VARCHAR}, #{ip,jdbcType=VARCHAR}, #{createTime,jdbcType=TIMESTAMP}, 
-      #{openId,jdbcType=VARCHAR})
+      #{sourceId,jdbcType=VARCHAR}, #{ip,jdbcType=VARCHAR}, #{createTime,jdbcType=TIMESTAMP}
+      )
   </insert>
   <insert id="insertSelective" parameterType="com.hichlink.hvp.common.entity.EnjoyRecord" >
     insert into enjoy_record
@@ -65,9 +64,6 @@
       <if test="createTime != null" >
         create_time,
       </if>
-      <if test="openId != null" >
-        open_id,
-      </if>
     </trim>
     <trim prefix="values (" suffix=")" suffixOverrides="," >
       <if test="recordId != null" >
@@ -87,9 +83,6 @@
       </if>
       <if test="createTime != null" >
         #{createTime,jdbcType=TIMESTAMP},
-      </if>
-      <if test="openId != null" >
-        #{openId,jdbcType=VARCHAR},
       </if>
     </trim>
   </insert>
@@ -111,9 +104,6 @@
       <if test="createTime != null" >
         create_time = #{createTime,jdbcType=TIMESTAMP},
       </if>
-      <if test="openId != null" >
-        open_id = #{openId,jdbcType=VARCHAR},
-      </if>
     </set>
     where record_id = #{recordId,jdbcType=BIGINT}
   </update>
@@ -123,8 +113,7 @@
       record_type = #{recordType,jdbcType=INTEGER},
       source_id = #{sourceId,jdbcType=VARCHAR},
       ip = #{ip,jdbcType=VARCHAR},
-      create_time = #{createTime,jdbcType=TIMESTAMP},
-      open_id = #{openId,jdbcType=VARCHAR}
+      create_time = #{createTime,jdbcType=TIMESTAMP}
     where record_id = #{recordId,jdbcType=BIGINT}
   </update>
 </mapper>

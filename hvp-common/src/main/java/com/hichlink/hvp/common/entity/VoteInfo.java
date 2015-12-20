@@ -1,4 +1,4 @@
-/*** Auto generator by codegenerator 2015-12-19 23:53:38*/
+/*** Auto generator by codegenerator 2015-12-20 22:14:12*/
 package com.hichlink.hvp.common.entity;
 
 import java.util.Date;
@@ -18,11 +18,6 @@ public class VoteInfo {
     选手ID
      */
     private Long playerId;
-
-    /**
-    微信OpenId
-     */
-    private String openId;
 
     /**
     票数
@@ -88,18 +83,6 @@ public class VoteInfo {
 
     public void setPlayerId(Long playerId) {
         this.playerId = playerId;
-    }
-
-    /**
-    微信OpenId
-     * @return the value of vote_info.open_id
-     */
-    public String getOpenId() {
-        return openId;
-    }
-
-    public void setOpenId(String openId) {
-        this.openId = openId == null ? null : openId.trim();
     }
 
     /**

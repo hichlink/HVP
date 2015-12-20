@@ -3,11 +3,10 @@
 <mapper namespace="com.hichlink.hvp.common.dao.VoteRuleMapper" >
   <resultMap id="BaseResultMap" type="com.hichlink.hvp.common.entity.VoteRule" >
     <id column="rule_id" property="ruleId" jdbcType="BIGINT" />
+    <result column="act_id" property="actId" jdbcType="VARCHAR" />
     <result column="per_vote_num" property="perVoteNum" jdbcType="INTEGER" />
-    <result column="one_day_vote_num" property="oneDayVoteNum" jdbcType="INTEGER" />
     <result column="vote_ratio" property="voteRatio" jdbcType="INTEGER" />
     <result column="is_repeate_vote" property="isRepeateVote" jdbcType="INTEGER" />
-    <result column="act_id" property="actId" jdbcType="VARCHAR" />
     <result column="creator" property="creator" jdbcType="VARCHAR" />
     <result column="create_time" property="createTime" jdbcType="TIMESTAMP" />
     <result column="updator" property="updator" jdbcType="VARCHAR" />
@@ -19,8 +18,8 @@
     </where>
   </sql>
   <sql id="Base_Column_List" >
-    rule_id, per_vote_num, one_day_vote_num, vote_ratio, is_repeate_vote, act_id, creator, 
-    create_time, updator, update_time
+    rule_id, act_id, per_vote_num, vote_ratio, is_repeate_vote, creator, create_time, 
+    updator, update_time
   </sql>
   <select id="pageQuery" resultMap="BaseResultMap" parameterType="com.aspire.webbas.core.pagination.mybatis.pager.Page" >
     select
@@ -41,14 +40,14 @@
     where rule_id = #{ruleId,jdbcType=BIGINT}
   </delete>
   <insert id="insert" parameterType="com.hichlink.hvp.common.entity.VoteRule" >
-    insert into vote_rule (rule_id, per_vote_num, one_day_vote_num, 
-      vote_ratio, is_repeate_vote, act_id, 
-      creator, create_time, updator, 
-      update_time)
-    values (#{ruleId,jdbcType=BIGINT}, #{perVoteNum,jdbcType=INTEGER}, #{oneDayVoteNum,jdbcType=INTEGER}, 
-      #{voteRatio,jdbcType=INTEGER}, #{isRepeateVote,jdbcType=INTEGER}, #{actId,jdbcType=VARCHAR}, 
-      #{creator,jdbcType=VARCHAR}, #{createTime,jdbcType=TIMESTAMP}, #{updator,jdbcType=VARCHAR}, 
-      #{updateTime,jdbcType=TIMESTAMP})
+    insert into vote_rule (rule_id, act_id, per_vote_num, 
+      vote_ratio, is_repeate_vote, creator, 
+      create_time, updator, update_time
+      )
+    values (#{ruleId,jdbcType=BIGINT}, #{actId,jdbcType=VARCHAR}, #{perVoteNum,jdbcType=INTEGER}, 
+      #{voteRatio,jdbcType=INTEGER}, #{isRepeateVote,jdbcType=INTEGER}, #{creator,jdbcType=VARCHAR}, 
+      #{createTime,jdbcType=TIMESTAMP}, #{updator,jdbcType=VARCHAR}, #{updateTime,jdbcType=TIMESTAMP}
+      )
   </insert>
   <insert id="insertSelective" parameterType="com.hichlink.hvp.common.entity.VoteRule" >
     insert into vote_rule
@@ -56,20 +55,17 @@
       <if test="ruleId != null" >
         rule_id,
       </if>
+      <if test="actId != null" >
+        act_id,
+      </if>
       <if test="perVoteNum != null" >
         per_vote_num,
-      </if>
-      <if test="oneDayVoteNum != null" >
-        one_day_vote_num,
       </if>
       <if test="voteRatio != null" >
         vote_ratio,
       </if>
       <if test="isRepeateVote != null" >
         is_repeate_vote,
-      </if>
-      <if test="actId != null" >
-        act_id,
       </if>
       <if test="creator != null" >
         creator,
@@ -88,20 +84,17 @@
       <if test="ruleId != null" >
         #{ruleId,jdbcType=BIGINT},
       </if>
+      <if test="actId != null" >
+        #{actId,jdbcType=VARCHAR},
+      </if>
       <if test="perVoteNum != null" >
         #{perVoteNum,jdbcType=INTEGER},
-      </if>
-      <if test="oneDayVoteNum != null" >
-        #{oneDayVoteNum,jdbcType=INTEGER},
       </if>
       <if test="voteRatio != null" >
         #{voteRatio,jdbcType=INTEGER},
       </if>
       <if test="isRepeateVote != null" >
         #{isRepeateVote,jdbcType=INTEGER},
-      </if>
-      <if test="actId != null" >
-        #{actId,jdbcType=VARCHAR},
       </if>
       <if test="creator != null" >
         #{creator,jdbcType=VARCHAR},
@@ -120,20 +113,17 @@
   <update id="updateByPrimaryKeySelective" parameterType="com.hichlink.hvp.common.entity.VoteRule" >
     update vote_rule
     <set >
+      <if test="actId != null" >
+        act_id = #{actId,jdbcType=VARCHAR},
+      </if>
       <if test="perVoteNum != null" >
         per_vote_num = #{perVoteNum,jdbcType=INTEGER},
-      </if>
-      <if test="oneDayVoteNum != null" >
-        one_day_vote_num = #{oneDayVoteNum,jdbcType=INTEGER},
       </if>
       <if test="voteRatio != null" >
         vote_ratio = #{voteRatio,jdbcType=INTEGER},
       </if>
       <if test="isRepeateVote != null" >
         is_repeate_vote = #{isRepeateVote,jdbcType=INTEGER},
-      </if>
-      <if test="actId != null" >
-        act_id = #{actId,jdbcType=VARCHAR},
       </if>
       <if test="creator != null" >
         creator = #{creator,jdbcType=VARCHAR},
@@ -152,11 +142,10 @@
   </update>
   <update id="updateByPrimaryKey" parameterType="com.hichlink.hvp.common.entity.VoteRule" >
     update vote_rule
-    set per_vote_num = #{perVoteNum,jdbcType=INTEGER},
-      one_day_vote_num = #{oneDayVoteNum,jdbcType=INTEGER},
+    set act_id = #{actId,jdbcType=VARCHAR},
+      per_vote_num = #{perVoteNum,jdbcType=INTEGER},
       vote_ratio = #{voteRatio,jdbcType=INTEGER},
       is_repeate_vote = #{isRepeateVote,jdbcType=INTEGER},
-      act_id = #{actId,jdbcType=VARCHAR},
       creator = #{creator,jdbcType=VARCHAR},
       create_time = #{createTime,jdbcType=TIMESTAMP},
       updator = #{updator,jdbcType=VARCHAR},
