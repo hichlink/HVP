@@ -12,10 +12,10 @@ import org.springframework.web.servlet.handler.HandlerInterceptorAdapter;
 
 import com.aspire.webbas.core.util.WebUtil;
 import com.aspire.webbas.portal.common.entity.Staff;
+import com.hichlink.hvp.admin.modules.mgmt.util.StaffUtil;
 
 public class ControllerInterceptor extends HandlerInterceptorAdapter {
-	private static final Logger LOGGER = LoggerFactory
-			.getLogger(ControllerInterceptor.class);
+	private static final Logger LOGGER = LoggerFactory.getLogger(ControllerInterceptor.class);
 
 	private String translateParamMap2Str(Map<String, Object> map) {
 		StringBuilder sb = new StringBuilder();
@@ -26,45 +26,36 @@ public class ControllerInterceptor extends HandlerInterceptorAdapter {
 			for (Object obj : objs) {
 				tmp += obj + ",";
 			}
-			sb.append(key
-					+ "="
-					+ (!"".equals(tmp) ? tmp.substring(0, tmp.length() - 1)
-							: "") + "&");
+			sb.append(key + "=" + (!"".equals(tmp) ? tmp.substring(0, tmp.length() - 1) : "") + "&");
 		}
-		return sb.toString().length() > 0 ? sb.substring(0, sb.toString()
-				.length() - 1) : sb.toString();
+		return sb.toString().length() > 0 ? sb.substring(0, sb.toString().length() - 1) : sb.toString();
 	}
 
 	protected boolean isAjaxRequest(HttpServletRequest request) {
 		String xRequestedWith = request.getHeader("x-requested-with");
-		return null != xRequestedWith
-				&& "XMLHttpRequest".equalsIgnoreCase(xRequestedWith) ? true
-				: false;
+		return null != xRequestedWith && "XMLHttpRequest".equalsIgnoreCase(xRequestedWith) ? true : false;
 	}
 
 	@SuppressWarnings("unchecked")
 	@Override
-	public boolean preHandle(HttpServletRequest request,
-			HttpServletResponse response, Object handler) throws Exception {
+	public boolean preHandle(HttpServletRequest request, HttpServletResponse response, Object handler)
+			throws Exception {
 
 		Staff staff = null;
 		try {
-			staff = StaffUtil.getLoginStaff();
+			staff = StaffUtil.getLoginStaff(request);
 		} catch (Exception e) {
 			// 不作处理
 			LOGGER.error(e.getMessage(), e);
 		}
 		try {
 			if (null != staff) {
-				LOGGER.debug("操作者=" + staff.getLoginName() + "("
-						+ staff.getRealName() + "),ip="
-						+ WebUtil.getIpAddr(request) + ",进入URI="
-						+ request.getRequestURI() + ",QueryString="
+				LOGGER.debug("操作者=" + staff.getLoginName() + "(" + staff.getRealName() + "),ip="
+						+ WebUtil.getIpAddr(request) + ",进入URI=" + request.getRequestURI() + ",QueryString="
 						+ translateParamMap2Str(request.getParameterMap()));
 			} else {
-				LOGGER.debug("操作者=null," + "ip=" + WebUtil.getIpAddr(request)
-						+ ",进入URI=" + request.getRequestURI() + ",QueryString="
-						+ translateParamMap2Str(request.getParameterMap()));
+				LOGGER.debug("操作者=null," + "ip=" + WebUtil.getIpAddr(request) + ",进入URI=" + request.getRequestURI()
+						+ ",QueryString=" + translateParamMap2Str(request.getParameterMap()));
 			}
 		} catch (Exception e) {
 			LOGGER.error("ControllerInterceptor.preHandle日志记录出错", e);
@@ -80,8 +71,7 @@ public class ControllerInterceptor extends HandlerInterceptorAdapter {
 	}
 
 	@Override
-	public void afterCompletion(HttpServletRequest request,
-			HttpServletResponse response, Object handler, Exception ex)
+	public void afterCompletion(HttpServletRequest request, HttpServletResponse response, Object handler, Exception ex)
 			throws Exception {
 		if (null != ex) {
 			LOGGER.error("[ControllerInterceptor.afterCompletion]", ex);
@@ -94,19 +84,16 @@ public class ControllerInterceptor extends HandlerInterceptorAdapter {
 		}
 		Staff staff = null;
 		try {
-			staff = StaffUtil.getLoginStaff();
+			staff = StaffUtil.getLoginStaff(request);
 		} catch (Exception e) {
 			// 不作处理 LOGGER.error(e.getMessage(),e);
 		}
 		try {
 			if (null != staff) {
-				LOGGER.debug("操作者=" + staff.getLoginName() + "("
-						+ staff.getRealName() + "),ip="
-						+ WebUtil.getIpAddr(request) + ",离开URI="
-						+ request.getRequestURI());
+				LOGGER.debug("操作者=" + staff.getLoginName() + "(" + staff.getRealName() + "),ip="
+						+ WebUtil.getIpAddr(request) + ",离开URI=" + request.getRequestURI());
 			} else {
-				LOGGER.debug("操作者=null," + "ip=" + WebUtil.getIpAddr(request)
-						+ ",离开URI=" + request.getRequestURI());
+				LOGGER.debug("操作者=null," + "ip=" + WebUtil.getIpAddr(request) + ",离开URI=" + request.getRequestURI());
 			}
 		} catch (Exception e) {
 			LOGGER.error("ControllerInterceptor.afterCompletion日志记录出错", e);

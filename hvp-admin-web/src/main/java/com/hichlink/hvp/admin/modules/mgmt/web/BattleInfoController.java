@@ -24,7 +24,7 @@ import com.hichlink.hvp.common.service.BattleInfoService;
  * <b>Title：</b>BattleInfoController.java<br/>
  * <b>Description：</b> <br/>
  * <b>@author： </b>oceanzhuang<br/>
- * <b>@date：</b>2015-12-20 22:13:30<br/>
+ * <b>@date：</b>2015-12-21 23:14:35<br/>
  * <b>Copyright (c) 2015 HichLink Tech.</b>
  * 
  */

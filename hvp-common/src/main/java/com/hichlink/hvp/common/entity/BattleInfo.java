@@ -1,4 +1,4 @@
-/*** Auto generator by codegenerator 2015-12-20 22:13:35*/
+/*** Auto generator by codegenerator 2015-12-21 23:14:35*/
 package com.hichlink.hvp.common.entity;
 
 import java.util.Date;
@@ -28,6 +28,11 @@ public class BattleInfo {
     图片URL
      */
     private String picUrl;
+
+    /**
+    内容
+     */
+    private String content;
 
     /**
     视频地址
@@ -90,11 +95,6 @@ public class BattleInfo {
     private Date updateTime;
 
     /**
-    内容
-     */
-    private String content;
-
-    /**
     资讯ID
      * @return the value of battle_info.info_id
      */
@@ -152,6 +152,18 @@ public class BattleInfo {
 
     public void setPicUrl(String picUrl) {
         this.picUrl = picUrl == null ? null : picUrl.trim();
+    }
+
+    /**
+    内容
+     * @return the value of battle_info.content
+     */
+    public String getContent() {
+        return content;
+    }
+
+    public void setContent(String content) {
+        this.content = content == null ? null : content.trim();
     }
 
     /**
@@ -296,17 +308,5 @@ public class BattleInfo {
 
     public void setUpdateTime(Date updateTime) {
         this.updateTime = updateTime;
-    }
-
-    /**
-    内容
-     * @return the value of battle_info.content
-     */
-    public String getContent() {
-        return content;
-    }
-
-    public void setContent(String content) {
-        this.content = content == null ? null : content.trim();
     }
 }
