@@ -1,10 +1,10 @@
 <!DOCTYPE html>
 <html lang="zh-CN">
 <head>
-	<meta charset="utf-8" />
-	<!--#include virtual="/root.jsp"  -->
-	<title>actInfo</title>
-	<!--#include virtual="/include.html"  -->
+<meta charset="utf-8" />
+<!--#include virtual="/root.jsp"  -->
+<title>actInfo</title>
+<!--#include virtual="/include.html"  -->
 </head>
 <body>
 	<div class="page-content">
@@ -13,55 +13,50 @@
 			<!-- PAGE CONTENT BEGINS -->
 			<form id="queryForm" onsubmit="return false;">
 				<div class="widget-box">
-                        <div class="widget-header widget-header-flat search_tj_bar_tit">
-                            <h5 class="widget-title">查询条件</h5>
-                            <div class="widget-toolbar">
-                                <a href="javascript:;" data-action="collapse">
-                                    <i class="1 ace-icon fa fa-chevron-up bigger-125"></i>
-                                </a>
-                            </div>
-                        </div>
-                        <div class="row search_tj_bar">
-							<div class="col-xs-12">
-								<div class="center">
-                                    <div class="row">
-																																								                                        <div class="col-xs-4">
-                                            <span>
-                                            	<label class="col-xs-12 col-sm-3">活动ID：</label>
-												<div class="input-group col-xs-12 col-sm-9">
-                                                    <input name="params['actId']" class="form-control search-query">
-                                                </div>
-                                            </span> 
-                                        </div>
-																														                                        <div class="col-xs-4">
-                                            <span>
-                                            	<label class="col-xs-12 col-sm-3">活动名称：</label>
-												<div class="input-group col-xs-12 col-sm-9">
-                                                    <input name="params['actName']" class="form-control search-query">
-                                                </div>
-                                            </span> 
-                                        </div>
-																														                                        <div class="col-xs-4">
-                                            <span>
-                                            	<label class="col-xs-12 col-sm-3">开始时间：</label>
-												<div class="input-group col-xs-12 col-sm-9">
-                                                    <input name="params['startTime']" class="form-control search-query">
-                                                </div>
-                                            </span> 
-                                        </div>
-																																																																																																																																																																																																																																				</div>
+					<div class="widget-header widget-header-flat search_tj_bar_tit">
+						<h5 class="widget-title">查询条件</h5>
+						<div class="widget-toolbar">
+							<a href="javascript:;" data-action="collapse"> <i
+								class="1 ace-icon fa fa-chevron-up bigger-125"></i>
+							</a>
+						</div>
+					</div>
+					<div class="row search_tj_bar">
+						<div class="col-xs-12">
+							<div class="center">
+								<div class="row">
+									<div class="col-xs-4">
+										<span> <label class="col-xs-12 col-sm-3">活动ID：</label>
+											<div class="input-group col-xs-12 col-sm-9">
+												<input name="params['actId']"
+													class="form-control search-query">
+											</div>
+										</span>
+									</div>
+									<div class="col-xs-4">
+										<span> <label class="col-xs-12 col-sm-3">活动名称：</label>
+											<div class="input-group col-xs-12 col-sm-9">
+												<input name="params['actName']"
+													class="form-control search-query">
+											</div>
+										</span>
+									</div>
+								</div>
 							</div>
-						</div>   
-                        <div class="bs_btn">
-						<button id="addBtn" class="btn btn-sm btn-success"><i class="ace-icon fa fa-hand-o-right bigger-120"></i>新增</button>
-						<button class="btn btn-sm" type="button" id="resetBtn">
-							<i class="ace-icon fa fa-undo bigger-110"></i>
-							重 置
-						</button>
-						<button id="seachBtn" type="button" class="btn btn-purple btn-sm">查找<i class="ace-icon fa fa-search icon-on-right bigger-110"></i></button>
-						
-                        </div>	  
-                	</div>	
+						</div>
+						<div class="bs_btn">
+							<button id="addBtn" class="btn btn-sm btn-success">
+								<i class="ace-icon fa fa-hand-o-right bigger-120"></i>新增
+							</button>
+							<button class="btn btn-sm" type="button" id="resetBtn">
+								<i class="ace-icon fa fa-undo bigger-110"></i> 重 置
+							</button>
+							<button id="seachBtn" type="button" class="btn btn-purple btn-sm">
+								查找<i class="ace-icon fa fa-search icon-on-right bigger-110"></i>
+							</button>
+
+						</div>
+					</div>
 				</div>
 			</form>
 			<div class="space-6"></div>
@@ -73,145 +68,148 @@
 	<!--#include virtual="/include_footer.html"  -->
 
 	<script type="text/javascript">
-	var list_url  = ctxPaths+ '/actInfo/query.ajax';
-	var delete_url   = ctxPaths+ '/actInfo/delete.ajax';
-	var grid_selector = "#grid-table";
-	var pager_selector = "#grid-pager";
-	$(function($) {
-				jqGrid_init($(grid_selector),pager_selector,{
-					url: list_url,
+		var list_url = ctxPaths + '/actInfo/query.ajax';
+		var delete_url = ctxPaths + '/actInfo/delete.ajax';
+		var grid_selector = "#grid-table";
+		var pager_selector = "#grid-pager";
+		$(function($) {
+			jqGrid_init($(grid_selector), pager_selector, {
+				url : list_url,
+				sortable : true,
+				sortname : 'actId',
+				sortorder : 'desc',
+				colNames : [ '活动序列', '活动ID', '活动名称', '开始时间', '结束时间', '是否有效',
+						'当前所处阶段', '创建者', '创建时间', '修改者', '修改时间', '' ],
+				colModel : [ {
+					name : 'actSeqId',
+					index : 'actSeqId',
+					hidden : true
+				}, {
+					name : 'actId',
+					index : 'actId',
 					sortable : true,
-																									sortname : 'actId',
-																																																																																																																																							sortorder:'desc',
-					colNames:[
-										'活动序列',
-										'活动ID',
-										'活动名称',
-										'开始时间',
-										'结束时间',
-										'是否有效 0:无效 1:有效',
-										'当前所处阶段',
-										'创建者',
-										'创建时间',
-										'修改者',
-										'修改时间',
-										'备注',
-										'是否强制关注,0:否 1:是',
-										'关注页面地址',
-										''
-					],
-					colModel:[
-												   					{name:'actSeqId',index:'actSeqId', hidden:true},
-						   					   						   												{name:'actId',index:'actId', sortable:true,sortname : 'act_id',width:100,formatter:formatName},
-													   					   						   												{name:'actName',index:'actName', sortable:true,sortname : 'act_name',width:100},
-													   					   						   												{name:'startTime',index:'startTime', sortable:true,sortname : 'start_time',width:100},
-													   					   						   												{name:'endTime',index:'endTime', sortable:true,sortname : 'end_time',width:100},
-													   					   						   												{name:'isValid',index:'isValid', sortable:true,sortname : 'is_valid',width:100},
-													   					   						   												{name:'stage',index:'stage', sortable:true,sortname : 'stage',width:100},
-													   					   						   												{name:'creator',index:'creator', sortable:true,sortname : 'creator',width:100},
-													   					   						   												{name:'createTime',index:'createTime', sortable:true,sortname : 'create_time',width:100},
-													   					   						   												{name:'updator',index:'updator', sortable:true,sortname : 'updator',width:100},
-													   					   						   												{name:'updateTime',index:'updateTime', sortable:true,sortname : 'update_time',width:100},
-													   					   						   												{name:'remark',index:'remark', sortable:true,sortname : 'remark',width:100},
-													   					   						   												{name:'isForce',index:'isForce', sortable:true,sortname : 'is_force',width:100},
-													   					   						   												{name:'focusUrl',index:'focusUrl', sortable:true,sortname : 'focus_url',width:100},
-													   					   					{name:'myac',index:'', width:120, fixed:true, sortable:false, resize:false,formatter:actionButtons}					
-					]
-				});
-				function formatName(cellvalue, options, rowObject){
-					return '<a href="javascript:;" onclick="viewEvent(\''+rowObject['actSeqId']+'\')">' + cellvalue + '</a>';
-				}
-				function actionButtons(cellvalue, options, rowObject){
-					return '<div >' + 
-								'<button onclick=\"editEvent('+rowObject['actSeqId']+')\" class=\"btn btn-xs btn-info\" data-rel=\"tooltip\" title=\"编辑\" >' +
-									'<i class=\"ace-icon fa fa-pencil bigger-120\"></i>' +
-								'</button>' + 
-								'<button onclick=\"deleteEvent('+rowObject['actSeqId']+')\" class=\"btn btn-xs btn-danger\" data-rel=\"tooltip\" title=\"删除\" >' +
-									'<i class=\"ace-icon fa fa-trash-o bigger-120\"></i>' +
-								'</button>'  + 
-							'</div>';
-				}
-				
+					sortname : 'act_id',
+					width : 100,
+					formatter : formatName
+				}, {
+					name : 'actName',
+					index : 'actName',
+					sortable : true,
+					sortname : 'act_name',
+					width : 100
+				}, {
+					name : 'startTime',
+					index : 'startTime',
+					sortable : true,
+					sortname : 'start_time',
+					width : 100
+				}, {
+					name : 'endTime',
+					index : 'endTime',
+					sortable : true,
+					sortname : 'end_time',
+					width : 100
+				}, {
+					name : 'isValid',
+					index : 'isValid',
+					sortable : true,
+					sortname : 'is_valid',
+					width : 100
+				}, {
+					name : 'stage',
+					index : 'stage',
+					sortable : true,
+					sortname : 'stage',
+					width : 100
+				}, {
+					name : 'creator',
+					index : 'creator',
+					sortable : true,
+					sortname : 'creator',
+					width : 100
+				}, {
+					name : 'createTime',
+					index : 'createTime',
+					sortable : true,
+					sortname : 'create_time',
+					width : 100
+				}, {
+					name : 'updator',
+					index : 'updator',
+					sortable : true,
+					sortname : 'updator',
+					width : 100
+				}, {
+					name : 'updateTime',
+					index : 'updateTime',
+					sortable : true,
+					sortname : 'update_time',
+					width : 100
+				}, {
+					name : 'myac',
+					index : '',
+					width : 120,
+					fixed : true,
+					sortable : false,
+					resize : false,
+					formatter : actionButtons
+				} ]
 			});
+			function formatName(cellvalue, options, rowObject) {
+				return '<a href="javascript:;" onclick="viewEvent(\''
+						+ rowObject['actSeqId'] + '\')">' + cellvalue + '</a>';
+			}
+			function actionButtons(cellvalue, options, rowObject) {
+				return '<div >'
+						+ '<button onclick=\"editEvent('
+						+ rowObject['actSeqId']
+						+ ')\" class=\"btn btn-xs btn-info\" data-rel=\"tooltip\" title=\"编辑\" >'
+						+ '<i class=\"ace-icon fa fa-pencil bigger-120\"></i>'
+						+ '</button>'
+						+ '<button onclick=\"deleteEvent('
+						+ rowObject['actSeqId']
+						+ ')\" class=\"btn btn-xs btn-danger\" data-rel=\"tooltip\" title=\"删除\" >'
+						+ '<i class=\"ace-icon fa fa-trash-o bigger-120\"></i>'
+						+ '</button>' + '</div>';
+			}
 
-			function editEvent(id){
-				window.location.href = ctxPaths+'/pages/actInfo_add.shtml?actSeqId=' + id;
-			};
-			function viewEvent(id){
-				window.location.href = ctxPaths+'/pages/actInfo_view.shtml?actSeqId=' + id;
-			};
-			function deleteEvent(id){
-				Q_Confirm("是否要删除？",function(result) {
-					if(result){
-						$.ajaxSubmit(delete_url,{'actSeqId' : id}, function(data){
-							$(grid_selector).jqGrid('setGridParam',{page:1}).trigger("reloadGrid");
-						});
-					}
-				});
-			};
-			
-			add_validator = $('#add-form').validate({
-					rules: {
-							 						 					 										'actId' : {
-	 						 					required:true,
-	 						 					maxlength: 20
-					 },	 				 	 					 										'actName' : {
-	 						 					required:true,
-	 						 					maxlength: 64
-					 },	 				 	 					 										'startTime' : {
-	 						 					required:true,
-	 						 					maxlength: 0
-					 },	 				 	 					 										'endTime' : {
-	 						 					required:true,
-	 						 					maxlength: 0
-					 },	 				 	 					 										'isValid' : {
-	 						 					required:true,
-	 						 					maxlength: 11
-					 },	 				 	 					 										'stage' : {
-	 						 					required:true,
-	 						 					maxlength: 11
-					 },	 				 	 					 										'creator' : {
-	 						 					required:true,
-	 						 					maxlength: 64
-					 },	 				 	 					 										'createTime' : {
-	 						 					required:true,
-	 						 					maxlength: 0
-					 },	 				 	 					 										'updator' : {
-	 						 					maxlength: 64
-					 },	 				 	 					 										'updateTime' : {
-	 						 					maxlength: 0
-					 },	 				 	 					 										'remark' : {
-	 						 					required:true,
-	 						 					maxlength: 512
-					 },	 				 	 					 										'isForce' : {
-	 						 					required:true,
-	 						 					maxlength: 11
-					 },	 				 	 					 										'focusUrl' : {
-	 						 					maxlength: 128
-					 }	 				 	 									},
-					submitHandler: function (form) {
-						$.ajaxSubmit(update_url,$(form).serializeJson(),function(data){
-								if(data.success == true){
-								    $('#add-form-modal').modal2('hide');
-									$(grid_selector).trigger("reloadGrid");
-								}else{
-									Q_Alert_Fail(data.message); 
-								}
-						});
-						return false;		
-					}
+		});
+
+		function editEvent(id) {
+			window.location.href = ctxPaths
+					+ '/pages/actInfo_add.shtml?actSeqId=' + id;
+		};
+		function viewEvent(id) {
+			window.location.href = ctxPaths
+					+ '/pages/actInfo_view.shtml?actSeqId=' + id;
+		};
+		function deleteEvent(id) {
+			Q_Confirm("是否要删除？", function(result) {
+				if (result) {
+					$.ajaxSubmit(delete_url, {
+						'actSeqId' : id
+					}, function(data) {
+						$(grid_selector).jqGrid('setGridParam', {
+							page : 1
+						}).trigger("reloadGrid");
+					});
+				}
 			});
-			
-			$('#addBtn').on('click', function(){
-				window.location.href = ctxPaths+'/pages/actInfo_add.shtml';
-			});
-			
-			$('#seachBtn').on('click', function(){
-				$(grid_selector).jqGrid('setGridParam',{postData: $('#queryForm').serializeJson(),page:1}).trigger("reloadGrid");
-			});
-			$('#resetBtn').on('click',function(){
-				resetForm($('#queryForm'));
-			});
-		</script>
+		};
+
+		$('#addBtn').on('click', function() {
+			window.location.href = ctxPaths + '/pages/actInfo_add.shtml';
+		});
+
+		$('#seachBtn').on('click', function() {
+			$(grid_selector).jqGrid('setGridParam', {
+				postData : $('#queryForm').serializeJson(),
+				page : 1
+			}).trigger("reloadGrid");
+		});
+		$('#resetBtn').on('click', function() {
+			resetForm($('#queryForm'));
+		});
+	</script>
 </body>
 </html>

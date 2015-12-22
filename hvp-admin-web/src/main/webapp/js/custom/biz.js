@@ -355,7 +355,7 @@ var ifmAutoHeight =  function(){
 	$(function(){
 		var ifmTimer = null;
 		function delayIfmAutoHeight(){
-			if (ifmTimer || ifmAutoFixCount > 5)return;
+			if (ifmTimer || ifmAutoFixCount > 10)return;
 			ifmTimer = setTimeout(function(){ifmAutoHeight();ifmTimer=null;ifmAutoFixCount++},500);
 		}
 		if(window.attachEvent){

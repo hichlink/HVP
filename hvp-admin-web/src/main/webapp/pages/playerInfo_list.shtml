@@ -1,10 +1,10 @@
 <!DOCTYPE html>
 <html lang="zh-CN">
 <head>
-	<meta charset="utf-8" />
-	<!--#include virtual="/root.jsp"  -->
-	<title>playerInfo</title>
-	<!--#include virtual="/include.html"  -->
+<meta charset="utf-8" />
+<!--#include virtual="/root.jsp"  -->
+<title>参赛选手</title>
+<!--#include virtual="/include.html"  -->
 </head>
 <body>
 	<div class="page-content">
@@ -13,55 +13,58 @@
 			<!-- PAGE CONTENT BEGINS -->
 			<form id="queryForm" onsubmit="return false;">
 				<div class="widget-box">
-                        <div class="widget-header widget-header-flat search_tj_bar_tit">
-                            <h5 class="widget-title">查询条件</h5>
-                            <div class="widget-toolbar">
-                                <a href="javascript:;" data-action="collapse">
-                                    <i class="1 ace-icon fa fa-chevron-up bigger-125"></i>
-                                </a>
-                            </div>
-                        </div>
-                        <div class="row search_tj_bar">
-							<div class="col-xs-12">
-								<div class="center">
-                                    <div class="row">
-																																								                                        <div class="col-xs-4">
-                                            <span>
-                                            	<label class="col-xs-12 col-sm-3">活动ID：</label>
-												<div class="input-group col-xs-12 col-sm-9">
-                                                    <input name="params['actId']" class="form-control search-query">
-                                                </div>
-                                            </span> 
-                                        </div>
-																														                                        <div class="col-xs-4">
-                                            <span>
-                                            	<label class="col-xs-12 col-sm-3">选手编号：</label>
-												<div class="input-group col-xs-12 col-sm-9">
-                                                    <input name="params['playerCode']" class="form-control search-query">
-                                                </div>
-                                            </span> 
-                                        </div>
-																														                                        <div class="col-xs-4">
-                                            <span>
-                                            	<label class="col-xs-12 col-sm-3">选手姓名：</label>
-												<div class="input-group col-xs-12 col-sm-9">
-                                                    <input name="params['playerName']" class="form-control search-query">
-                                                </div>
-                                            </span> 
-                                        </div>
-																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																								</div>
+					<div class="widget-header widget-header-flat search_tj_bar_tit">
+						<h5 class="widget-title">查询条件</h5>
+						<div class="widget-toolbar">
+							<a href="javascript:;" data-action="collapse"> <i
+								class="1 ace-icon fa fa-chevron-up bigger-125"></i>
+							</a>
+						</div>
+					</div>
+					<div class="row search_tj_bar">
+						<div class="col-xs-12">
+							<div class="center">
+								<div class="row">
+									<div class="col-xs-4">
+										<span> <label class="col-xs-12 col-sm-3">活动ID：</label>
+											<div class="input-group col-xs-12 col-sm-9">
+												<input name="params['actId']"
+													class="form-control search-query">
+											</div>
+										</span>
+									</div>
+									<div class="col-xs-4">
+										<span> <label class="col-xs-12 col-sm-3">选手编号：</label>
+											<div class="input-group col-xs-12 col-sm-9">
+												<input name="params['playerCode']"
+													class="form-control search-query">
+											</div>
+										</span>
+									</div>
+									<div class="col-xs-4">
+										<span> <label class="col-xs-12 col-sm-3">选手姓名：</label>
+											<div class="input-group col-xs-12 col-sm-9">
+												<input name="params['playerName']"
+													class="form-control search-query">
+											</div>
+										</span>
+									</div>
+								</div>
 							</div>
-						</div>   
-                        <div class="bs_btn">
-						<button id="addBtn" class="btn btn-sm btn-success"><i class="ace-icon fa fa-hand-o-right bigger-120"></i>新增</button>
-						<button class="btn btn-sm" type="button" id="resetBtn">
-							<i class="ace-icon fa fa-undo bigger-110"></i>
-							重 置
-						</button>
-						<button id="seachBtn" type="button" class="btn btn-purple btn-sm">查找<i class="ace-icon fa fa-search icon-on-right bigger-110"></i></button>
-						
-                        </div>	  
-                	</div>	
+						</div>
+						<div class="bs_btn">
+							<button id="addBtn" class="btn btn-sm btn-success">
+								<i class="ace-icon fa fa-hand-o-right bigger-120"></i>新增
+							</button>
+							<button class="btn btn-sm" type="button" id="resetBtn">
+								<i class="ace-icon fa fa-undo bigger-110"></i> 重 置
+							</button>
+							<button id="seachBtn" type="button" class="btn btn-purple btn-sm">
+								查找<i class="ace-icon fa fa-search icon-on-right bigger-110"></i>
+							</button>
+
+						</div>
+					</div>
 				</div>
 			</form>
 			<div class="space-6"></div>
@@ -73,205 +76,199 @@
 	<!--#include virtual="/include_footer.html"  -->
 
 	<script type="text/javascript">
-	var list_url  = ctxPaths+ '/playerInfo/query.ajax';
-	var delete_url   = ctxPaths+ '/playerInfo/delete.ajax';
-	var grid_selector = "#grid-table";
-	var pager_selector = "#grid-pager";
-	$(function($) {
-				jqGrid_init($(grid_selector),pager_selector,{
-					url: list_url,
+		var list_url = ctxPaths + '/playerInfo/query.ajax';
+		var delete_url = ctxPaths + '/playerInfo/delete.ajax';
+		var grid_selector = "#grid-table";
+		var pager_selector = "#grid-pager";
+		$(function($) {
+			jqGrid_init($(grid_selector), pager_selector, {
+				url : list_url,
+				sortable : true,
+				sortname : 'actId',
+				sortorder : 'desc',
+				colNames : [ '选手ID', '活动ID', '选手编号', '选手姓名','头像', '选手简介',
+						'所在大区', '所在办事处', '当前所处阶段', '是否晋级', '晋级之路', '一阶段总票数',
+						'二阶段总票数', '三阶段总票数', '创建者', '创建时间', '修改者', '修改时间',
+						'状态', '' ],
+				colModel : [ {
+					name : 'playerId',
+					index : 'playerId',
+					hidden : true
+				}, {
+					name : 'actId',
+					index : 'actId',
 					sortable : true,
-																									sortname : 'actId',
-																																																																																																																																																																																																																																																																									sortorder:'desc',
-					colNames:[
-										'选手ID',
-										'活动ID',
-										'选手编号',
-										'选手姓名',
-										'选手头像ID',
-										'选手头像URL',
-										'选手形象照片ID',
-										'选手形象照片url',
-										'选手简介',
-										'话剧案例',
-										'所在大区ID',
-										'所在大区',
-										'所在办事处ID',
-										'所在办事处',
-										'当前所处阶段',
-										'是否晋级 0:否 1:是',
-										'晋级之路',
-										'一阶段总票数',
-										'二阶段总票数',
-										'三阶段总票数',
-										'创建者',
-										'创建时间',
-										'修改者',
-										'修改时间',
-										'备注',
-										'视频地址',
-										'状态 0:保存 1:有效',
-										''
-					],
-					colModel:[
-												   					{name:'playerId',index:'playerId', hidden:true},
-						   					   						   												{name:'actId',index:'actId', sortable:true,sortname : 'act_id',width:100,formatter:formatName},
-													   					   						   												{name:'playerCode',index:'playerCode', sortable:true,sortname : 'player_code',width:100},
-													   					   						   												{name:'playerName',index:'playerName', sortable:true,sortname : 'player_name',width:100},
-													   					   						   												{name:'headImgId',index:'headImgId', sortable:true,sortname : 'head_img_id',width:100},
-													   					   						   												{name:'headImgUrl',index:'headImgUrl', sortable:true,sortname : 'head_img_url',width:100},
-													   					   						   												{name:'picImgId',index:'picImgId', sortable:true,sortname : 'pic_img_id',width:100},
-													   					   						   												{name:'picImgUrl',index:'picImgUrl', sortable:true,sortname : 'pic_img_url',width:100},
-													   					   						   												{name:'summary',index:'summary', sortable:true,sortname : 'summary',width:100},
-													   					   						   												{name:'caseInfo',index:'caseInfo', sortable:true,sortname : 'case_info',width:100},
-													   					   						   												{name:'bigareaId',index:'bigareaId', sortable:true,sortname : 'bigarea_id',width:100},
-													   					   						   												{name:'bigareaName',index:'bigareaName', sortable:true,sortname : 'bigarea_name',width:100},
-													   					   						   												{name:'officeId',index:'officeId', sortable:true,sortname : 'office_id',width:100},
-													   					   						   												{name:'officeName',index:'officeName', sortable:true,sortname : 'office_name',width:100},
-													   					   						   												{name:'stage',index:'stage', sortable:true,sortname : 'stage',width:100},
-													   					   						   												{name:'isUpgrade',index:'isUpgrade', sortable:true,sortname : 'is_upgrade',width:100},
-													   					   						   												{name:'stageIntro',index:'stageIntro', sortable:true,sortname : 'stage_intro',width:100},
-													   					   						   												{name:'stage1VoteNum',index:'stage1VoteNum', sortable:true,sortname : 'stage1_vote_num',width:100},
-													   					   						   												{name:'stage2VoteNum',index:'stage2VoteNum', sortable:true,sortname : 'stage2_vote_num',width:100},
-													   					   						   												{name:'stage3VoteNum',index:'stage3VoteNum', sortable:true,sortname : 'stage3_vote_num',width:100},
-													   					   						   												{name:'creator',index:'creator', sortable:true,sortname : 'creator',width:100},
-													   					   						   												{name:'createTime',index:'createTime', sortable:true,sortname : 'create_time',width:100},
-													   					   						   												{name:'updator',index:'updator', sortable:true,sortname : 'updator',width:100},
-													   					   						   												{name:'updateTime',index:'updateTime', sortable:true,sortname : 'update_time',width:100},
-													   					   						   												{name:'remark',index:'remark', sortable:true,sortname : 'remark',width:100},
-													   					   						   												{name:'videoUrl',index:'videoUrl', sortable:true,sortname : 'video_url',width:100},
-													   					   						   												{name:'status',index:'status', sortable:true,sortname : 'status',width:100},
-													   					   					{name:'myac',index:'', width:120, fixed:true, sortable:false, resize:false,formatter:actionButtons}					
-					]
-				});
-				function formatName(cellvalue, options, rowObject){
-					return '<a href="javascript:;" onclick="viewEvent(\''+rowObject['playerId']+'\')">' + cellvalue + '</a>';
-				}
-				function actionButtons(cellvalue, options, rowObject){
-					return '<div >' + 
-								'<button onclick=\"editEvent('+rowObject['playerId']+')\" class=\"btn btn-xs btn-info\" data-rel=\"tooltip\" title=\"编辑\" >' +
-									'<i class=\"ace-icon fa fa-pencil bigger-120\"></i>' +
-								'</button>' + 
-								'<button onclick=\"deleteEvent('+rowObject['playerId']+')\" class=\"btn btn-xs btn-danger\" data-rel=\"tooltip\" title=\"删除\" >' +
-									'<i class=\"ace-icon fa fa-trash-o bigger-120\"></i>' +
-								'</button>'  + 
-							'</div>';
-				}
-				
+					sortname : 'act_id',
+					width : 100,
+					formatter : formatName
+				}, {
+					name : 'playerCode',
+					index : 'playerCode',
+					sortable : true,
+					sortname : 'player_code',
+					width : 100
+				}, {
+					name : 'playerName',
+					index : 'playerName',
+					sortable : true,
+					sortname : 'player_name',
+					width : 100
+				}, {
+					name : 'headImgUrl',
+					index : 'headImgUrl',
+					sortable : true,
+					sortname : 'head_img_url',
+					width : 100
+				}, {
+					name : 'summary',
+					index : 'summary',
+					sortable : true,
+					sortname : 'summary',
+					width : 100
+				}, {
+					name : 'bigareaName',
+					index : 'bigareaName',
+					sortable : true,
+					sortname : 'bigarea_name',
+					width : 100
+				},  {
+					name : 'officeName',
+					index : 'officeName',
+					sortable : true,
+					sortname : 'office_name',
+					width : 100
+				}, {
+					name : 'stage',
+					index : 'stage',
+					sortable : true,
+					sortname : 'stage',
+					width : 100
+				}, {
+					name : 'isUpgrade',
+					index : 'isUpgrade',
+					sortable : true,
+					sortname : 'is_upgrade',
+					width : 100
+				}, {
+					name : 'stageIntro',
+					index : 'stageIntro',
+					sortable : true,
+					sortname : 'stage_intro',
+					width : 100
+				}, {
+					name : 'stage1VoteNum',
+					index : 'stage1VoteNum',
+					sortable : true,
+					sortname : 'stage1_vote_num',
+					width : 100
+				}, {
+					name : 'stage2VoteNum',
+					index : 'stage2VoteNum',
+					sortable : true,
+					sortname : 'stage2_vote_num',
+					width : 100
+				}, {
+					name : 'stage3VoteNum',
+					index : 'stage3VoteNum',
+					sortable : true,
+					sortname : 'stage3_vote_num',
+					width : 100
+				}, {
+					name : 'creator',
+					index : 'creator',
+					sortable : true,
+					sortname : 'creator',
+					width : 100
+				}, {
+					name : 'createTime',
+					index : 'createTime',
+					sortable : true,
+					sortname : 'create_time',
+					width : 100
+				}, {
+					name : 'updator',
+					index : 'updator',
+					sortable : true,
+					sortname : 'updator',
+					width : 100
+				}, {
+					name : 'updateTime',
+					index : 'updateTime',
+					sortable : true,
+					sortname : 'update_time',
+					width : 100
+				}, {
+					name : 'status',
+					index : 'status',
+					sortable : true,
+					sortname : 'status',
+					width : 100
+				}, {
+					name : 'myac',
+					index : '',
+					width : 120,
+					fixed : true,
+					sortable : false,
+					resize : false,
+					formatter : actionButtons
+				} ]
 			});
+			function formatName(cellvalue, options, rowObject) {
+				return '<a href="javascript:;" onclick="viewEvent(\''
+						+ rowObject['playerId'] + '\')">' + cellvalue + '</a>';
+			}
+			function actionButtons(cellvalue, options, rowObject) {
+				return '<div >'
+						+ '<button onclick=\"editEvent('
+						+ rowObject['playerId']
+						+ ')\" class=\"btn btn-xs btn-info\" data-rel=\"tooltip\" title=\"编辑\" >'
+						+ '<i class=\"ace-icon fa fa-pencil bigger-120\"></i>'
+						+ '</button>'
+						+ '<button onclick=\"deleteEvent('
+						+ rowObject['playerId']
+						+ ')\" class=\"btn btn-xs btn-danger\" data-rel=\"tooltip\" title=\"删除\" >'
+						+ '<i class=\"ace-icon fa fa-trash-o bigger-120\"></i>'
+						+ '</button>' + '</div>';
+			}
 
-			function editEvent(id){
-				window.location.href = ctxPaths+'/pages/playerInfo_add.shtml?playerId=' + id;
-			};
-			function viewEvent(id){
-				window.location.href = ctxPaths+'/pages/playerInfo_view.shtml?playerId=' + id;
-			};
-			function deleteEvent(id){
-				Q_Confirm("是否要删除？",function(result) {
-					if(result){
-						$.ajaxSubmit(delete_url,{'playerId' : id}, function(data){
-							$(grid_selector).jqGrid('setGridParam',{page:1}).trigger("reloadGrid");
-						});
-					}
-				});
-			};
-			
-			add_validator = $('#add-form').validate({
-					rules: {
-							 						 					 										'actId' : {
-	 						 					required:true,
-	 						 					maxlength: 20
-					 },	 				 	 					 										'playerCode' : {
-	 						 					required:true,
-	 						 					maxlength: 32
-					 },	 				 	 					 										'playerName' : {
-	 						 					required:true,
-	 						 					maxlength: 64
-					 },	 				 	 					 										'headImgId' : {
-	 						 					required:true,
-	 						 					maxlength: 32
-					 },	 				 	 					 										'headImgUrl' : {
-	 						 					required:true,
-	 						 					maxlength: 64
-					 },	 				 	 					 										'picImgId' : {
-	 						 					required:true,
-	 						 					maxlength: 32
-					 },	 				 	 					 										'picImgUrl' : {
-	 						 					maxlength: 64
-					 },	 				 	 					 										'summary' : {
-	 						 					maxlength: 4000
-					 },	 				 	 					 										'caseInfo' : {
-	 						 					maxlength: 8000
-					 },	 				 	 					 										'bigareaId' : {
-	 						 					required:true,
-	 						 					maxlength: 32
-					 },	 				 	 					 										'bigareaName' : {
-	 						 					required:true,
-	 						 					maxlength: 64
-					 },	 				 	 					 										'officeId' : {
-	 						 					required:true,
-	 						 					maxlength: 32
-					 },	 				 	 					 										'officeName' : {
-	 						 					required:true,
-	 						 					maxlength: 64
-					 },	 				 	 					 										'stage' : {
-	 						 					maxlength: 11
-					 },	 				 	 					 										'isUpgrade' : {
-	 						 					required:true,
-	 						 					maxlength: 11
-					 },	 				 	 					 										'stageIntro' : {
-	 						 					maxlength: 256
-					 },	 				 	 					 										'stage1VoteNum' : {
-	 						 					required:true,
-	 						 					maxlength: 20
-					 },	 				 	 					 										'stage2VoteNum' : {
-	 						 					required:true,
-	 						 					maxlength: 20
-					 },	 				 	 					 										'stage3VoteNum' : {
-	 						 					required:true,
-	 						 					maxlength: 20
-					 },	 				 	 					 										'creator' : {
-	 						 					required:true,
-	 						 					maxlength: 64
-					 },	 				 	 					 										'createTime' : {
-	 						 					required:true,
-	 						 					maxlength: 0
-					 },	 				 	 					 										'updator' : {
-	 						 					maxlength: 64
-					 },	 				 	 					 										'updateTime' : {
-	 						 					maxlength: 0
-					 },	 				 	 					 										'remark' : {
-	 						 					required:true,
-	 						 					maxlength: 512
-					 },	 				 	 					 										'videoUrl' : {
-	 						 					maxlength: 256
-					 },	 				 	 					 										'status' : {
-	 						 					required:true,
-	 						 					maxlength: 11
-					 }	 				 	 									},
-					submitHandler: function (form) {
-						$.ajaxSubmit(update_url,$(form).serializeJson(),function(data){
-								if(data.success == true){
-								    $('#add-form-modal').modal2('hide');
-									$(grid_selector).trigger("reloadGrid");
-								}else{
-									Q_Alert_Fail(data.message); 
-								}
-						});
-						return false;		
-					}
+		});
+
+		function editEvent(id) {
+			window.location.href = ctxPaths
+					+ '/pages/playerInfo_add.shtml?playerId=' + id;
+		};
+		function viewEvent(id) {
+			window.location.href = ctxPaths
+					+ '/pages/playerInfo_view.shtml?playerId=' + id;
+		};
+		function deleteEvent(id) {
+			Q_Confirm("是否要删除？", function(result) {
+				if (result) {
+					$.ajaxSubmit(delete_url, {
+						'playerId' : id
+					}, function(data) {
+						$(grid_selector).jqGrid('setGridParam', {
+							page : 1
+						}).trigger("reloadGrid");
+					});
+				}
 			});
-			
-			$('#addBtn').on('click', function(){
-				window.location.href = ctxPaths+'/pages/playerInfo_add.shtml';
-			});
-			
-			$('#seachBtn').on('click', function(){
-				$(grid_selector).jqGrid('setGridParam',{postData: $('#queryForm').serializeJson(),page:1}).trigger("reloadGrid");
-			});
-			$('#resetBtn').on('click',function(){
-				resetForm($('#queryForm'));
-			});
-		</script>
+		};
+
+
+		$('#addBtn').on('click', function() {
+			window.location.href = ctxPaths + '/pages/playerInfo_add.shtml';
+		});
+
+		$('#seachBtn').on('click', function() {
+			$(grid_selector).jqGrid('setGridParam', {
+				postData : $('#queryForm').serializeJson(),
+				page : 1
+			}).trigger("reloadGrid");
+		});
+		$('#resetBtn').on('click', function() {
+			resetForm($('#queryForm'));
+		});
+	</script>
 </body>
 </html>
