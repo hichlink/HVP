@@ -86,9 +86,9 @@
 	</script>
 	<#include "foot.ftl" encoding="utf-8">
 	<!--[if (gte IE 9)|!(IE)]><!-->
-	<script src="${ctx}/assets/js/jquery.min.js"></script>
+	<script src="http://libs.baidu.com/jquery/1.9.1/jquery.min.js"></script>
 	<!--<![endif]-->
-	<script src="${ctx}/assets/js/amazeui.min.js"></script>
+	<script src="http://cdn.amazeui.org/amazeui/2.5.0/js/amazeui.min.js"></script>
 	<script src="${ctx}/js/template-native.js"></script>
 	<script src="${ctx}/js/app/main.js"></script>
 </body>

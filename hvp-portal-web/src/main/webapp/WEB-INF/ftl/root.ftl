@@ -11,5 +11,5 @@
 <link rel="icon" type="image/png" href="${ctx}/assets/i/favicon.png">
 <link rel="apple-touch-icon-precomposed" href="${ctx}/assets/i/app-icon72x72@2x.png">
 <meta name="apple-mobile-web-app-title" content="流量联盟" />
-<link rel="stylesheet" href="${ctx}/assets/css/amazeui.min.css"/>
+<link rel="stylesheet" href="http://cdn.amazeui.org/amazeui/2.5.0/css/amazeui.min.css"/>
 <link rel="stylesheet" href="${ctx}/assets/css/admin.css">
